@@ -20,8 +20,8 @@ const PlaylistDB = require("./cosmos-database/v1/cosmos-playlistdb.json");
 const PlaylistCar = require("./cosmos-database/v1/carousel/con-cmos-playlistcar.json");
 
 // Quest Mode
-const QuestDB = require("./cosmos-functions/v1/quests/cosmos-questdb.json");
-const QuestCar = require("./cosmos-functions/v1/quests/cosmos-questcar.json");
+const QuestDB = require("./cosmos-database/v1/cosmos-questdb.json");
+const QuestCar = require("./cosmos-database/v1/carousel/all-cmos-questcar.json");
 
 // Add support for PC, Nintendo Switch, PlayStation 4, Xbox One and Wii U
 const PCSongDB = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json");
