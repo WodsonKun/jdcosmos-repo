@@ -1,0 +1,24 @@
+{
+	"__class": "OnlineAliasDb",
+	"aliases": {
+		"1": {
+			"DescriptionLocID": null,
+			"DifficultyColor": 0,
+			"RestrictedToUnlimitedSongs": 0,
+			"StringLocID": 15022,
+			"StringLocIDFemale": null,
+			"StringPlaceholder": "Cosmos Explorer",
+			"__class": "JD_UnlockableAliasDescriptor",
+			"UnlockObjective": {
+				"Description": 14977,
+				"MinimumValue": 1,
+				"ObjectiveType": 51,
+				"__class": "JD_ObjectiveDesc"
+			},
+			"StringOnlineLocalized": "Cosmos Explorer",
+			"StringOnlineLocalizedFemale": "Cosmos Explorer",
+			"DescriptionLocalized": "<MISSING:null>",
+			"Visibility": 1
+		}
+	}
+}
