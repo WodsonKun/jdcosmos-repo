@@ -117,19 +117,25 @@ app.post("/carousel/v2/pages/jd2019-playlists", (request, response) => {
 // SKU Packages
 app.get("/packages/:version/sku-packages", function (request, response) {
     if (cosmos.core.requestcheck(request) == true) {
-            if (request.useragent.source == "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static" &&
-                request.header("X-SkuId") == "jd2017-cmos-pc") {
+        if (request.useragent.source == "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static") {
+            if (request.header("X-SkuId") == "jdex-cmos-pc" ||
+            request.header("X-SkuId") == "jd2017-cmos-pc")
+            {
                 response.send(PCPackages)
             }
         }
-    });
+    }
+});
 
 // SongDBs
 app.get("/songdb/:version/songs", function (request, response) {
     if (cosmos.core.requestcheck(request) == true) {
-        if (request.useragent.source == "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static" &&
-            request.header("X-SkuId") == "jd2017-cmos-pc") {
+        if (request.useragent.source == "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static") {
+            if (request.header("X-SkuId") == "jdex-cmos-pc" ||
+            request.header("X-SkuId") == "jd2017-cmos-pc")
+            {
             response.send(PCSongDB)
+            }
         }
     }
 });
