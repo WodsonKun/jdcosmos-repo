@@ -156,14 +156,14 @@ var cosmos = {
     },
 }
 
-/* Makes security checks
+// Makes security checks
 app.use((req, res, next) => {
     if (cosmos.core.requestcheck(req) == true) {
         return next();
     } else {
         return res.send(cosmos.core.requestcheck(req));
     }
-})*/
+});
 
 app.post("/carousel/v2/pages/party", (request, response) => {
     if (cosmos.core.requestcheck(request) == true) {
