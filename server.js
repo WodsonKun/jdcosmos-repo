@@ -116,60 +116,19 @@ app.post("/carousel/v2/pages/jd2019-playlists", (request, response) => {
 // SKU Packages
 app.get("/packages/:version/sku-packages", function (request, response) {
     if (cosmos.core.requestcheck(request) == true) {
-        if (request.useragent.source == "UbiServices_SDK_2017.Final.28_SWITCH64" ||
-            request.header("X-SkuId") == "jd2018-nx-all" ||
-	        request.header("X-SkuId") == "jd2019-nx-all" ||
-            request.header("X-SkuId") == "jd2017-nx-all") {
-            response.send(NXPackages);
-        } else {
-            if (request.useragent.source == "UbiServices_SDK_HTTP_Client_2017.Final.4_WIIU" ||
-                request.useragent.source == "UbiServices_SDK_2017.Final.28_WIIU" ||
-                request.useragent.source == "UbiServices_SDK_HTTP_Client_4.2.9_WIIU") {
-                response.send(CAFEPackages);
-            }
             if (request.useragent.source == "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static" &&
                 request.header("X-SkuId") == "jd2017-cmos-pc") {
                 response.send(PCPackages)
             }
-            if (request.useragent.source.includes("PS4") == true) {
-                response.send(ORBISPackages);
-            }
         }
-    } else {
-        response.sendStatus(cosmos.core.requestcheck(request));
-    }
-});
+    });
 
 // SongDBs
 app.get("/songdb/:version/songs", function (request, response) {
-    if (request.useragent.source == "UbiServices_SDK_2017.Final.28_SWITCH64" ||
-        request.header("X-SkuId") == "jd2018-nx-all" ||
-        request.header("X-SkuId") == "jd2019-nx-all" ||
-        request.header("X-SkuId") == "jd2017-nx-all") {
-        response.send(NXSongDB);
-    }
-    if (request.useragent.source ==
-        "UbiServices_SDK_HTTP_Client_2017.Final.4_WIIU" ||
-        request.useragent.source == "UbiServices_SDK_2017.Final.28_WIIU" ||
-        request.useragent.source == "UbiServices_SDK_HTTP_Client_4.2.9_WIIU") {
-        response.send(CAFESongDB);
-    }
-    if (request.useragent.source.includes("PS4") == true) {
-        response.send(ORBISSongDB);
-    }
-    if (request.useragent.source == "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static" ||
-        request.header("X-SkuId") == "jd2017-cmos-pc") {
-        if (request.header("X-SkuId") == "jdex-cmos-pc") {
-            songdb = JSON.parse(JSON.stringify(PCSongDB));
-            for (var song in songdb) {
-                // skip loop if the property is from prototype
-                var obj = songdb[song];
-                obj.assets["banner_bkgImageUrl"] = obj.assets["map_bkgImageUrl"];
-            }
-            return response.send(songdb);
-        }
-        else {
-            return response.send(PCSongDB);
+    if (cosmos.core.requestcheck(request) == true) {
+        if (request.useragent.source == "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static" &&
+            request.header("X-SkuId") == "jd2017-cmos-pc") {
+            response.send(PCSongDB)
         }
     }
 });
