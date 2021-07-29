@@ -69,7 +69,7 @@ var cosmos = {
             wdfoverwritelist: ["BlackWidow", "Finesse"]
         },*/
 		playlists: {
-			recommendedbydev: ["", "", "", ""],
+			recommendedbydev: ["AllYouGottaCHN", "Intoxicated", "HeadAndHeart", "Disturbia"],
             newsongs: ["AllYouGottaCHN", "JDCDrinkingSong", "Think"],
             extremes: ["24KALT", "AnimalsALT", "BadGuyALT", "FeelSpecialALT"],
             china: ["AllYouGottaCHN", "BigBowlThickNoodle", "BigBowlThickNoodleALT", "JDCChickChick", "JDCCoolestEthnic","JDCDrinkingSong", "JDCGee"],
@@ -94,7 +94,66 @@ var cosmos = {
         getskuid: function (request) {
             return request.header("X-SkuId")
         }
+    },
+    carouselcore: {
+        returncatalog: () => {
+            party = require("./cosmos-database/v1/carousel/pcbeta-cmos-carousel.json")
+			// add categories to all
+			
+			party.categories.forEach(function(carousel){
+				// add all the songs to the jdconnect catagory
+				if (carousel.title == "Just Dance Cosmos") {
+					for (var songs in PCSongDB) {
+						song = PCSongDB[songs]
+						var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song.mapName + '"}],"actionList":"partyMap"}');
+						if (cosmos.carousel.ifsongpublic(song.mapName) == true) { carousel.items.push(obj) }
+					}
+				}
+				
+				// Add songs in their games' categories
+				for (var songs in PCSongDB) {
+						song = PCSongDB[songs]
+					if (carousel.title == "Just Dance " + song.originalJDVersion) {
+						var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song.mapName + '"}],"actionList":"partyMap"}');
+						if (cosmos.carousel.ifsongpublic(song.mapName) == true) { carousel.items.push(obj) }
+					}
+				}
+			});
+			
+            coop = JSON.parse(JSON.stringify(party))
+            sweat = JSON.parse(JSON.stringify(party))
+            search = JSON.parse(JSON.stringify(party))
+			
+			// switch actionlist for coop and sweat
+			coop.actionLists.coopMap = coop.actionLists.partyMap
+			coop.actionLists.sweatMap = coop.actionLists.partyMap
+			
+			// remove search for coop and sweat
+			coop.categories.forEach(function(carousel){ 
+				if(carousel.title == "[icon:SEARCH_FILTER] Search") {
+					delete carousel
+				}
+			})
+			sweat.categories.forEach(function(carousel){ 
+				if(carousel.title == "[icon:SEARCH_FILTER] Search") {
+					delete carousel
+				}
+			})
+			
+			// add search result to search
+			var current = 0
+			var splice = 0
+			search.categories.forEach(function(carousel){ 
+				if(carousel.title == "[icon:SEARCH_FILTER] Search") {
+				} else {
+					current = current + 1
+				}
+			});
+			var obj = JSON.parse('{ "__class": "Category", "title": "[icon:SEARCH_RESULT] insert search result here", "items": [], "isc": "grp_row", "act": "ui_carousel" }')
+			search.categories.splice(current + 1,0,obj)
+			
     }
+    },
 }
 
 /* Makes security checks
@@ -105,6 +164,63 @@ app.use((req, res, next) => {
         return res.send(cosmos.core.requestcheck(req));
     }
 })*/
+
+app.post("/carousel/v2/pages/party", (request, response) => {
+    if (cosmos.core.requestcheck(request) == true) {
+        if (request.body.searchString == "" || request.body.searchString == undefined) {
+            if (request.body.searchString == "") {
+                response.send(party);
+            } else {
+                response.send("DDOS someone else next time. - JDConnect Engineers")
+            }
+        } else {
+            var songdb = PCSongDB;
+            var query = request.body.searchString.toString().toUpperCase();
+            console.log(query + " is searched");
+
+            var matches = [];
+            for (var song in songdb) {
+                // skip loop if the property is from prototype
+
+                var obj = songdb[song];
+
+                var title = obj.title.toString().toUpperCase();
+                var artist = obj.artist.toString().toUpperCase();
+                var mapname = obj.mapName.toString().toUpperCase();
+                var jdversion = obj.originalJDVersion.toString();
+                var jdversion2 = "JUST DANCE " + obj.originalJDVersion.toString();
+                var jdversion3 = "JD" + obj.originalJDVersion.toString();
+
+                if (
+                    title.includes(query) == true ||
+                    jdversion.includes(query) == true ||
+                    jdversion2.includes(query) == true ||
+                    jdversion3.includes(query) == true ||
+                    artist.includes(query) == true ||
+                    mapname.includes(query) == true) {
+                    matches.push(obj.mapName.toString());
+                }
+            }
+
+            var carresponse = null;
+			carresponse =  JSON.parse(JSON.stringify(search))
+            
+			carresponse.categories.forEach(function(carousel) {
+				if (carousel.title == "[icon:SEARCH_RESULT] insert search result here") {
+					carousel.title = "[icon:SEARCH_RESULT] " + request.body.searchString.toString();
+					matches.forEach(function (arrayItem) {
+						var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + arrayItem + '"}],"actionList":"partyMap"}');
+						carousel.items.push(obj);
+					});
+				}
+			})
+            
+            response.send(carresponse);
+        }
+    } else {
+        response.sendStatus(cosmos.core.requestcheck(request));
+    }
+});
 
 // Playlists
 app.get("/playlistdb/v1/playlists", function (request, response) {
