@@ -96,14 +96,14 @@ var cosmos = {
     }
 }
 
-// Makes security checks
+/* Makes security checks
 app.use((req, res, next) => {
     if (cosmos.core.requestcheck(req) == true) {
         return next();
     } else {
         return res.send(cosmos.core.requestcheck(req));
     }
-})
+})*/
 
 // Playlists
 app.get("/playlistdb/v1/playlists", function (request, response) {
@@ -159,6 +159,75 @@ app.post("/home/v1/tiles", function (request, response) {
     response.send(HomeTiles);
 });
 
+// Avatars
+app.post("/carousel/v2/pages/avatars", function(request, response) {
+    response.send(AvatarDB);
+});
+
+// Dancercard / Friend Dancercard
+app.post("/carousel/v2/pages/dancerprofile", (req, res) => {
+    var auth = req.header("Authorization");
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/carousel/v2/pages/dancerprofile",
+        method: "POST",
+        headers: {
+        "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+        Accept: "*/*",
+        "Accept-Language": "en-us,en",
+        Authorization: auth,
+        "Content-Type": "application/json",
+        "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, req.body, function(redResponse) {
+        res.send(redResponse);
+    });
+});
+
+app.post("/carousel/v2/pages/friend-dancerprofile", (req, res) => {
+    var json = JSON.stringify(req.body);
+    var auth = req.header("Authorization");
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/carousel/v2/pages/friend-dancerprofile?pid=" + req.query.pid,
+        method: "POST",
+        headers: {
+        "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+        Accept: "*/*",
+        "Accept-Language": "en-us,en",
+        Authorization: auth,
+        "Content-Type": "application/json",
+        "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, json, function(redResponse) {
+        res.send(redResponse);
+    });
+});
+  
+app.get("/status/v1/ping", function(request, response) {
+    response.send(Ping);
+});
+
+app.get("/com-video/v1/com-videos-fullscreen", function(request, response) {
+    response.send(COM);
+});
+
+app.get("/constant-provider/v1/sku-constants", (req, res) => {
+    res.send(SKUConstants);
+});
+
+app.post("/carousel/v2/pages/upsell-videos", function(request, response) {
+    response.send(UpsellVideos);
+});
+
+app.post("/subscription/v1/refresh", function(request, response) {
+    response.send(SubsUpdate);
+});
+
 // No HUDs (optimized)
 app.get('/content-authorization/v1/maps/:map', function(request, response) {
     if (cosmos.core.requestcheck(request) == true) {
@@ -204,28 +273,265 @@ app.put("/profile/v2/favorites/maps/:map", function (req, res) {
     });
   });
   
-  app.delete("/profile/v2/favorites/maps/:map", (req, res) => {
+app.delete("/profile/v2/favorites/maps/:map", (req, res) => {
     var auth = req.header("Authorization");
     var json = JSON.stringify(req.body);
     const httpsopts = {
-      hostname: "prod.just-dance.com",
-      port: 443,
-      path: "/profile/v2/favorites/maps/" + req.params.map,
-      method: "DELETE",
-      headers: {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/profile/v2/favorites/maps/" + req.params.map,
+        method: "DELETE",
+        headers: {
         "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
         Accept: "*/*",
         "Accept-Language": "en-us,en",
         Authorization: auth,
         "Content-Type": "application/json",
         "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, json, function(redResponse) {
+        res.send(redResponse);
+        console.log(redResponse);
+    });
+});
+
+// Community Remix (ded)
+app.get("/community-remix/v1/active-contest", (request, response) => {
+	var auth = request.header("Authorization");
+	const httpsopts = {
+    hostname: "prod.just-dance.com",
+    port: 443,
+    path: "/community-remix/v1/active-contest",
+    method: "GET",
+    headers: {
+      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+      Accept: "*/*",
+      "Accept-Language": "en-us,en",
+      Authorization: auth,
+      "X-SkuId": "jd2017-pc-ww"
+    }
+  };
+  redirect(httpsopts, "", function(redResponse) {
+    response.send(redResponse);
+  });
+});
+
+// Leaderboards
+app.get("/leaderboard/v1/maps/:map", (req, res) => {
+    var auth = req.header("Authorization");
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/leaderboard/v1/maps/" + req.params.map,
+        method: "GET",
+        headers: {
+        "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+        Accept: "*/*",
+        Authorization: auth,
+        "Content-Type": "application/json",
+        "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, "", function(redResponse) {
+        var responsepar = JSON.parse(redResponse);
+        res.send(responsepar);
+    });
+});
+  
+app.get("/leaderboard/v1/maps/:map/dancer-of-the-week", (req, res) => {
+    var auth = req.header("Authorization");
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/leaderboard/v1/maps/" + req.params.map + "/dancer-of-the-week",
+        method: "GET",
+        headers: {
+        "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+        Accept: "*/*",
+        Authorization: auth,
+        "Content-Type": "application/json",
+        "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, "", function(redResponse) {
+        res.send(redResponse);
+    });
+});
+  
+app.post("/leaderboard/v1/maps/:map", (req, res) => {
+    var auth = req.header("Authorization");
+    var json = JSON.stringify(req.body);
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/leaderboard/v1/maps/" + req.params.map,
+        method: "POST",
+        headers: {
+        "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+        Accept: "*/*",
+        "Accept-Language": "en-us,en",
+        Authorization: auth,
+        "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, json, function(redResponse) {
+        res.send(redResponse);
+    });
+});
+  
+app.get("/leaderboard/v1/coop_points/mine", (req, res) => {
+    var auth = req.header("Authorization");
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/leaderboard/v1/coop_points/mine",
+        method: "GET",
+        headers: {
+        "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+        Accept: "*/*",
+        Authorization: auth,
+        "Content-Type": "application/json",
+        "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, "", function(redResponse) {
+        res.send(redResponse);
+    });
+});
+
+// v1
+app.get("/v1/applications/341789d4-b41f-4f40-ac79-e2bc4c94ead4/configuration", function(request, response) {
+    response.send(v1);
+});
+
+// v2
+app.get("/v2/spaces/f1ae5b84-db7c-481e-9867-861cf1852dc8/entities", function(request, response) {
+    response.send(v2);
+});
+
+app.get("/profile/v2/profiles", (req, res) => {
+    var auth = req.header('Authorization');
+    const httpsopts = {
+      hostname: 'prod.just-dance.com',
+      port: 443,
+      path: '/profile/v2/profiles?profileIds=' + req.query.profileIds,
+      method: 'GET',
+      headers: {
+        'User-Agent': 'UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static',
+        'Accept': '*/*',
+        'Authorization': auth,
+        'Content-Type': 'application/json',
+        'X-SkuId': 'jd2017-pc-ww'
+      }
+    }
+    redirect(httpsopts, '', function(redResponse){
+        res.send(redResponse)
+      console.log(redResponse);
+    })
+  })
+  app.post("/profile/v2/profiles", function(req, res){
+    res.redirect(307, "https://prod.just-dance.com/profile/v2/profiles")
+});
+
+// v3
+app.get("/v3/users/:user", (req, res) => {
+    var auth = req.header("Authorization");
+    var sessionid = req.header("Ubi-SessionId");
+    const httpsopts = {
+        hostname: "public-ubiservices.ubi.com",
+        port: 443,
+        path: "/v3/users/" + req.params.user,
+        method: "GET",
+        headers: {
+        "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+        Accept: "*/*",
+        Authorization: auth,
+        "Content-Type": "application/json",
+        "ubi-appbuildid": "BUILDID_259645",
+        "Ubi-AppId": "341789d4-b41f-4f40-ac79-e2bc4c94ead4",
+        "Ubi-localeCode": "en-us",
+        "Ubi-Populations": "US_EMPTY_VALUE",
+        "Ubi-SessionId": sessionid
+        }
+    };
+    redirect(httpsopts, "", function(redResponse) {
+        res.send(redResponse);
+        console.log(redResponse);
+    });
+});
+  
+app.post("/v3/users/:user", (req, res) => {
+    var auth = req.header("Authorization");
+    var sessionid = req.header("Ubi-SessionId");
+    const httpsopts = {
+        hostname: "public-ubiservices.ubi.com",
+        port: 443,
+        path: "/v3/users/" + req.params.user,
+        method: "GET",
+        headers: {
+        "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+        Accept: "*/*",
+        Authorization: auth,
+        "Content-Type": "application/json",
+        "ubi-appbuildid": "BUILDID_259645",
+        "Ubi-AppId": "341789d4-b41f-4f40-ac79-e2bc4c94ead4",
+        "Ubi-localeCode": "en-us",
+        "Ubi-Populations": "US_EMPTY_VALUE",
+        "Ubi-SessionId": sessionid
+        }
+    };
+    redirect(httpsopts, "", function(redResponse) {
+        res.send(redResponse);
+        console.log(redResponse);
+    });
+});
+
+// v3/profiles/sessions
+app.post("/v3/profiles/sessions", (req, res) => {
+    var json = JSON.stringify({});
+    var auth = req.header("Authorization");
+    const httpsopts = {
+      hostname: "public-ubiservices.ubi.com",
+      port: 443,
+      path: "/v3/profiles/sessions",
+      method: "POST",
+      headers: {
+        "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+        Accept: "*/*",
+        Authorization: auth,
+        "Content-Type": "application/json",
+        "ubi-appbuildid": "BUILDID_259645",
+        "Ubi-AppId": "740a6dc8-7d7a-4fbe-be2c-aa5d8c65c5e8",
+        "Ubi-localeCode": "en-us",
+        "Ubi-Populations": "US_EMPTY_VALUE"
       }
     };
     redirect(httpsopts, json, function(redResponse) {
-      res.send(redResponse);
-      console.log(redResponse);
+      var responsepar = JSON.parse(redResponse);
+      res.send(responsepar);
     });
-});
+  });
+  
+// Function to redirect to other domains
+// An OPTIONS is necessary to contain route details, GET/POST and the direction
+function redirect(options, write, callback) {
+    var Redirect = https.request(options, response => {
+        response.on("data", data => {
+        callback(data);
+        });
+    });
+    Redirect.on("error", e => {
+        console.log(e);
+    });
+    Redirect.write(write);
+    Redirect.end();
+    }
+
+// listen for requests :)
+const listener = app.listen(process.env.PORT, function() {
+    console.log("Your app is listening on port " + listener.address().port);
+});  
 
 //Add statistics to the server
 function addStats(codename) {
