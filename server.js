@@ -4,6 +4,7 @@ const https = require("https");
 const app = express();
 app.use(express.json());
 app.use(express.static("public"));
+app.use(require("express-useragent").express());
 
 // Load stuff used by Just Dance in general
 const AliasDB = require("./cosmos-database/v1/cosmos-aliasdb.json");
@@ -400,6 +401,22 @@ app.get("/leaderboard/v1/coop_points/mine", (req, res) => {
     });
 });
 
+// Country (required)
+var requestCountry = require("request-country");
+app.get("/profile/v2/country", function (request, response) {
+    var country = requestCountry(request);
+    if (country == false) {
+        country = "TR";
+    }
+    response.send('{ "country": "' + country + '" }');
+});
+
+// Filter Players (???)
+app.post("/profile/v2/filter-players", function (request, response) {
+    response.send(
+        '["00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000"]');
+});
+
 // v1
 app.get("/v1/applications/341789d4-b41f-4f40-ac79-e2bc4c94ead4/configuration", function(request, response) {
     response.send(v1);
@@ -409,6 +426,7 @@ app.get("/v1/applications/341789d4-b41f-4f40-ac79-e2bc4c94ead4/configuration", f
 app.get("/v2/spaces/f1ae5b84-db7c-481e-9867-861cf1852dc8/entities", function(request, response) {
     response.send(v2);
 });
+
 
 app.get("/profile/v2/profiles", (req, res) => {
     var auth = req.header('Authorization');
