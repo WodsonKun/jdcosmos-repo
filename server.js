@@ -13,7 +13,6 @@ const LocaleID = require("./cosmos-database/v1/cosmos-localeid.json");
 
 // Carousel
 const PCPartyCar = require("./cosmos-database/v1/carousel/pc-cmos-partycar.json");
-const EXPartyCar = require("./cosmos-database/v1/carousel/ex-cmos-partycar.json");
 
 // Playlists (for Just Dance 2019)
 const PlaylistDB = require("./cosmos-database/v1/cosmos-playlistdb.json");
@@ -23,23 +22,15 @@ const PlaylistCar = require("./cosmos-database/v1/carousel/con-cmos-playlistcar.
 const QuestDB = require("./cosmos-database/v1/cosmos-questdb.json");
 const QuestCar = require("./cosmos-database/v1/carousel/all-cmos-questcar.json");
 
-// Add support for PC, Nintendo Switch, PlayStation 4, Xbox One and Wii U
+// Add support for PC
 const PCSongDB = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json");
-const NXSongDB = require("./cosmos-database/v1/songdb/nx-cmos-songdb.json");
-const ORBISSongDB = require("./cosmos-database/v1/songdb/orbis-cmos-songdb.json");
-const CAFESongDB = require("./cosmos-database/v1/songdb/cafe-cmos-songdb.json");
-const DURANGOSongDB = require("./cosmos-database/v1/songdb/durango-cmos-songdb.json");
 const PCPackages = require("./cosmos-database/v1/packages/pc-cmos-packages.json");
-const NXPackages = require("./cosmos-database/v1/packages/nx-cmos-packages.json");
-const ORBISPackages = require("./cosmos-database/v1/packages/orbis-cmos-packages.json");
-const CAFEPackages = require("./cosmos-database/v1/packages/cafe-cmos-packages.json");
-const DURANGOPackages = require("./cosmos-database/v1/packages/durango-cmos-packages.json");
 
 // World Dance Floor (uses 2021's World Dance Floor servers)
 var room = "EasyMainJD2021";
 const RoomPC = require("./cosmos-functions/v1/wdf/screens.json");
-const WDFBosses = require("./cosmos-functions/v1/wdf/bosses.json");
-const RoomAssign = require("./cosmos-functions/v1/wdf/room-asign.json");
+const WDFBosses = require("./cosmos-functions/v1/wdf/online-bosses.json");
+const RoomAssign = require("./cosmos-functions/v1/wdf/assign-room.json");
 const ServerTime = require("./cosmos-functions/v1/wdf/server-time.json");
 
 // V1, V2 and V3
@@ -60,46 +51,47 @@ const COM = require("./cosmos-functions/v1/com-videos-fullscreen.json");
 const Ping = require("./cosmos-functions/v1/ping.json");
 const SubsUpdate = require("./cosmos-functions/v1/subscription.json");
 const SKUConstants = require("./cosmos-functions/v1/sku-constants.json");
+const { request } = require("express");
 
 // Just Dance Cosmos's core
 var cosmos = {
+    interactiveconfig: {
+        playerseason: {
+            isseasonactive: false,
+            seasonnumber: 1,
+            seasonname: "",
+            seasonplaylist: [""]
+        },
+        /*wdfoverwrite: {
+            wdfoverwriteenabled: false,
+            wdfoverwritehappyhour: '{"__class":"HappyHoursInfo","start":1615651200,"end":1615653000,"running":false}',
+            wdfoverwritelist: ["BlackWidow", "Finesse"]
+        },*/
+		playlists: {
+			recommendedbydev: ["", "", "", ""],
+            newsongs: ["AllYouGottaCHN", "JDCDrinkingSong", "Think"],
+            extremes: ["24KALT", "AnimalsALT", "BadGuyALT", "FeelSpecialALT"],
+            china: ["AllYouGottaCHN", "BigBowlThickNoodle", "BigBowlThickNoodleALT", "JDCChickChick", "JDCCoolestEthnic","JDCDrinkingSong", "JDCGee"],
+            communityremixes: ["BreakFreeCMU", "SingleLadiesCMU"],
+            mashups: ["StargateMU"]
+		}
+    },
     core: {
         requestcheck: function (request) {
-            // PC, Switch, Switch, Switch, WiiU, WiiU, WiiU
-            if (request.useragent.source == "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static" ||
-                request.useragent.source == "UbiServices_SDK_HTTP_Client_4.2.21_NNX64" ||
-                request.useragent.source == "UbiServices_SDK_HTTP_Client_2017.Final.4_SWITCH64" ||
-                request.useragent.source == "UbiServices_SDK_2017.Final.28_SWITCH64" ||
-                request.useragent.source == "UbiServices_SDK_HTTP_Client_2017.Final.4_WIIU" ||
-                request.useragent.source == "UbiServices_SDK_2017.Final.28_WIIU" ||
-                request.useragent.source == "UbiServices_SDK_HTTP_Client_4.2.9_WIIU" ||
-                request.useragent.source == "UbiServices_SDK_HTTP_Client_3.2.1.148217_WIIU" ||
-                request.useragent.source.includes("PS4") == true) {
+            if (request.useragent.source == "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static") {
+                if (request.header("X-SkuId") == "jdex-cmos-pc" ||
+                request.header("X-SkuId") == "jd2017-cmos-pc")
+                {
                     return true
+                }
             }
             else
             {
-                if (request.header("X-SkuId") == "jdex-cmos-pc" ||
-                    request.header("X-SkuId") == "jdex-cmos-nx"||
-                    request.header("X-SkuId") == "jdex-cmos-cafe" ||
-                    request.header("X-SkuId") == "jd2017-cmos-pc" ||
-                    request.header("X-SkuId") == "jd2018-ps4-scea" ||
-                    request.header("X-SkuId") == "jd2017-nx-all" ||
-                    request.header("X-SkuId") == "jd2018-nx-all" ||
-                    request.header("X-SkuId") == "jd2019-nx-all" ||
-                    request.header("X-SkuId") == "jd2016-wiiu-noa" ||
-                    request.header("X-SkuId") == "jd2017-wiiu-noa" ||
-                    request.header("X-SkuId") == "jd2018-wiiu-noa" ||
-                    request.header("X-SkuId") == "jd2019-wiiu-noa" ||
-                    request.url == "/songdb/v2/songs")
-                {
-                    return true;
-                } 
-                else
-                {
                     return 403;
-                }
             }
+        },
+        getskuid: function (request) {
+            return request.header("X-SkuId")
         }
     }
 }
