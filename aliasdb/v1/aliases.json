@@ -1,0 +1,157 @@
+{
+	"__class": "OnlineAliasDb",
+	"aliases": {
+		"1": {
+			"DescriptionLocID": null,
+			"DifficultyColor": 0,
+			"RestrictedToUnlimitedSongs": 0,
+			"StringLocID": 15022,
+			"StringLocIDFemale": null,
+			"StringPlaceholder": "smack my ass like a drum",
+			"__class": "JD_UnlockableAliasDescriptor",
+			"UnlockObjective": {
+				"Description": 14977,
+				"MinimumValue": 1,
+				"ObjectiveType": 51,
+				"__class": "JD_ObjectiveDesc"
+			},
+			"StringOnlineLocalized": "smack my ass like a drum",
+			"StringOnlineLocalizedFemale": "smack my ass like a drum",
+			"DescriptionLocalized": "<MISSING:null>",
+			"Visibility": 1
+		},
+			"2": {
+				"DescriptionLocID": null,
+				"DifficultyColor": 0,
+				"RestrictedToUnlimitedSongs": 0,
+				"StringLocID": 15023,
+				"StringLocIDFemale": null,
+				"StringPlaceholder": "A Proud JDConnect NX Tester",
+				"__class": "JD_UnlockableAliasDescriptor",
+				"UnlockObjective": {
+					"Description": 14977,
+					"MinimumValue": 1,
+					"ObjectiveType": 51,
+					"__class": "JD_ObjectiveDesc"
+				},
+				"StringOnlineLocalized": "A Proud JDConnect NX Tester",
+				"StringOnlineLocalizedFemale": "A Proud JDConnect NX Tester",
+				"DescriptionLocalized": "<MISSING:null>",
+				"Visibility": 1
+			},
+			"3": {
+				"DescriptionLocID": null,
+				"DifficultyColor": 0,
+				"RestrictedToUnlimitedSongs": 0,
+				"StringLocID": 15024,
+				"StringLocIDFemale": null,
+				"StringPlaceholder": "Anti Just Dance Best",
+				"__class": "JD_UnlockableAliasDescriptor",
+				"UnlockObjective": {
+					"Description": 14977,
+					"MinimumValue": 1,
+					"ObjectiveType": 51,
+					"__class": "JD_ObjectiveDesc"
+				},
+				"StringOnlineLocalized": "Anti Just Dance Best",
+				"StringOnlineLocalizedFemale": "Anti Just Dance Best",
+				"DescriptionLocalized": "<MISSING:null>",
+				"Visibility": 1
+			},
+			"4": {
+				"DescriptionLocID": null,
+				"DifficultyColor": 0,
+				"RestrictedToUnlimitedSongs": 0,
+				"StringLocID": 15024,
+				"StringLocIDFemale": null,
+				"StringPlaceholder": "I dance, therefore I am",
+				"__class": "JD_UnlockableAliasDescriptor",
+				"UnlockObjective": {
+					"Description": 14977,
+					"MinimumValue": 1,
+					"ObjectiveType": 51,
+					"__class": "JD_ObjectiveDesc"
+				},
+				"StringOnlineLocalized": "I dance, therefore I am",
+				"StringOnlineLocalizedFemale": "I dance, therefore I am",
+				"DescriptionLocalized": "<MISSING:null>",
+				"Visibility": 1
+			},
+			"5": {
+				"DescriptionLocID": null,
+				"DifficultyColor": 0,
+				"RestrictedToUnlimitedSongs": 0,
+				"StringLocID": 15024,
+				"StringLocIDFemale": null,
+				"StringPlaceholder": "Dump 2022 and I’ll hack DOTW 4 U",
+				"__class": "JD_UnlockableAliasDescriptor",
+				"UnlockObjective": {
+					"Description": 14977,
+					"MinimumValue": 1,
+					"ObjectiveType": 51,
+					"__class": "JD_ObjectiveDesc"
+				},
+				"StringOnlineLocalized": "Dump 2022 and I’ll hack DOTW 4 U",
+				"StringOnlineLocalizedFemale": "Dump 2022 and I’ll hack DOTW 4 U",
+				"DescriptionLocalized": "<MISSING:null>",
+				"Visibility": 1
+			},
+			"6": {
+				"DescriptionLocID": null,
+				"DifficultyColor": 0,
+				"RestrictedToUnlimitedSongs": 0,
+				"StringLocID": 15024,
+				"StringLocIDFemale": null,
+				"StringPlaceholder": "Your Downfall :rollingeyes:",
+				"__class": "JD_UnlockableAliasDescriptor",
+				"UnlockObjective": {
+					"Description": 14977,
+					"MinimumValue": 1,
+					"ObjectiveType": 51,
+					"__class": "JD_ObjectiveDesc"
+				},
+				"StringOnlineLocalized": "Your Downfall :rollingeyes:",
+				"StringOnlineLocalizedFemale": "Your Downfall :rollingeyes:",
+				"DescriptionLocalized": "<MISSING:null>",
+				"Visibility": 1
+			},
+			"7": {
+				"DescriptionLocID": null,
+				"DifficultyColor": 0,
+				"RestrictedToUnlimitedSongs": 0,
+				"StringLocID": 15024,
+				"StringLocIDFemale": null,
+				"StringPlaceholder": "I upscale elot",
+				"__class": "JD_UnlockableAliasDescriptor",
+				"UnlockObjective": {
+					"Description": 14977,
+					"MinimumValue": 1,
+					"ObjectiveType": 51,
+					"__class": "JD_ObjectiveDesc"
+				},
+				"StringOnlineLocalized": "I upscale elot",
+				"StringOnlineLocalizedFemale": "I upscale elot",
+				"DescriptionLocalized": "<MISSING:null>",
+				"Visibility": 1
+			},
+			"8": {
+				"DescriptionLocID": null,
+				"DifficultyColor": 0,
+				"RestrictedToUnlimitedSongs": 0,
+				"StringLocID": 15024,
+				"StringLocIDFemale": null,
+				"StringPlaceholder": "It came Naturally",
+				"__class": "JD_UnlockableAliasDescriptor",
+				"UnlockObjective": {
+					"Description": 14977,
+					"MinimumValue": 1,
+					"ObjectiveType": 51,
+					"__class": "JD_ObjectiveDesc"
+				},
+				"StringOnlineLocalized": "It came Naturally",
+				"StringOnlineLocalizedFemale": "It came Naturally",
+				"DescriptionLocalized": "<MISSING:null>",
+				"Visibility": 1
+			}
+	}
+}

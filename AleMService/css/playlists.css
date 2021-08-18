@@ -1,0 +1,21 @@
+#pageplaylists h1 {
+    font-family: 'Inter', sans-serif;
+    position: absolute;
+    left:1.5rem;
+    top:0.5rem;
+}
+#pageplaylists h2 {
+    font-family: 'Quicksand', sans-serif;
+    position: absolute;
+    left:1.5rem;
+    top:3.5rem;
+}
+#pageplaylists h3 {
+    font-family: 'Quicksand', sans-serif;
+    position: absolute;
+    left:0;
+    top:calc(50% - 1rem);
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+}
