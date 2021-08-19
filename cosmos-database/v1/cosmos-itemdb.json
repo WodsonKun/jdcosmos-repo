@@ -1,0 +1,33 @@
+{
+	"__class": "OnlineCustomizableItemDb",
+	"avatars": {
+    "1": {
+			"JdNowVersion": 2021,
+			"UsedAsCoach_CoachId": 0,
+			"UsedAsCoach_MapName": "TheWayIAre",
+			"__class": "OnlineCustomizableItem",
+			"jdVersion": 1,
+			"mojoPrice": 0,
+			"relativeQuestID": "",
+			"relativeSongName": "TheWayIAre",
+			"relativeWDFBossName": "",
+			"soundFamily": "AVTR_Common_Boy_Rock",
+			"status": 1,
+			"unlockType": 3,
+			"url": "https://static.wikia.nocookie.net/justdance/images/a/ad/Thewayiare_jdnow_p1_ava.png",
+			"itemType": 0
+		}
+  },
+	"skins": {
+		"1": {
+			"__class": "OnlineCustomizableItem",
+			"jdVersion": 2017,
+			"mojoPrice": 0,
+			"status": 3,
+			"unlockType": 20,
+			"url": "https://jd-s3.akamaized.net/public/skin/1/skin.png/6d8c18967391710bd4fcb9d484bb553c.png",
+			"itemType": 1
+		}
+	},
+	"portraitBorders": {}
+}
