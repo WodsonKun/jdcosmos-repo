@@ -239,6 +239,12 @@
     "url": "https://jd-s3.akamaized.net/public/map/AmIWrong/pc/AmIWrong_MAIN_SCENE_PC.zip/01b1095bb45c4129c326c21fdad8d3df.zip",
     "version": 7
   },
+  "AmericanBoy_mapContent": {
+    "md5": "28ebfbccdd5ef796f9457792560bfac7",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/987fcfcc-18ca-4bb2-8005-77d9754b14a6/AmericanBoy_MAIN_SCENE_PC.zip",
+    "version": 3
+  },
   "AmericanGirlDLC_mapContent": {
     "md5": "0719b301e2a1c7a3c226fe5df60ef524",
     "storageType": 0,
@@ -833,6 +839,18 @@
     "url": "https://jd-s3.akamaized.net/public/map/CantTouchThis/pc/CantTouchThis_MAIN_SCENE_PC.zip/49d9f241316867a4499c68b0c48feac6.zip",
     "version": 6
   },
+  "CarelessWhisper_mapContent": {
+    "md5": "0e5b48106ef5886c8745ff2449393d21",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/987fcfcc-18ca-4bb2-8005-77d9754b14a6%2FCarelessWhisper_MAIN_SCENE_PC.zip?v=1627856905076",
+    "version": 1
+  },
+  "CarelessWhisperOSC_mapContent": {
+    "md5": "16194e3724b594074a96d55e50821294",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/987fcfcc-18ca-4bb2-8005-77d9754b14a6%2FCarelessWhisperOSC_MAIN_SCENE_PC.zip?v=1627855205138",
+    "version": 2
+  },
   "Carmen_mapContent": {
     "md5": "2523d95055775f513385a21f599a5b26",
     "storageType": 0,
@@ -1055,6 +1073,12 @@
     "url": "https://jd-s3.akamaized.net/public/map/Daddy/pc/Daddy_MAIN_SCENE_PC.zip/d1e41573c68e6b6bd3e0b808dd161840.zip",
     "version": 6
   },
+   "DaFunk_mapContent": {
+    "md5": "9bdd175d6c15a0d4b6440ead5b55617d",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/3211fff3-f0e7-44ba-82a0-05eff5683c4e/DaFunk_MAIN_SCENE_PC.zip",
+    "version": 1
+  },
   "DameTu_mapContent": {
     "md5": "ed46d85b6a761f8bcdb0d9e56cc10806",
     "storageType": 0,
@@ -1071,6 +1095,12 @@
     "md5": "ef3090c8366ceec8e365f9109a08f22b",
     "storageType": 0,
     "url": "https://cdn.glitch.com/253949fc-b561-4250-aa5b-b32da09824d2%2Fdansvandefarao_main_scene_pc.zip?v=1612477187421",
+    "version": 1
+  },
+  "Dancando_mapContent": {
+    "md5": "f0bf1bb94ff046d65a7042be28262b5e",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/a4ca4d64-5597-484a-bfc7-1338482d3f6b%2Fdancando_main_scene_pc.zip?v=1627414044588",
     "version": 1
   },
   "DancingQueen_mapContent": {
@@ -1445,6 +1475,12 @@
     "url": "https://cdn.glitch.com/d844a1c8-63fc-4d18-b4f8-c1461d5a4f10%2Fflash_main_scene_pc.zip?v=1612307464564",
     "version": 1
   },
+  "FollowTheLeader_mapContent": {
+        "md5": "81cf316366d51055353dd9fb537e9aca",
+        "storageType": 0,
+        "url": "https://cdn.glitch.com/a4ca4d64-5597-484a-bfc7-1338482d3f6b%2Ffollowtheleader_main_scene_pc.zip?v=1627944318336",
+        "version": 1
+    },
   "FootlooseKids_mapContent": {
     "md5": "654e3bb3e24cc8956ad3875710418201",
     "storageType": 0,
@@ -1487,6 +1523,12 @@
     "url": "https://jd-s3.akamaized.net/public/map/Fun/pc/Fun_MAIN_SCENE_PC.zip/41adb734f9a2ac460d0a25b69ae04b52.zip",
     "version": 7
   },
+  "Funplex_mapContent": {
+    "md5": "bf29b91150c702eae63e48a0ac665672",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/987fcfcc-18ca-4bb2-8005-77d9754b14a6%2FFunplex_MAIN_SCENE_PC.zip?v=1627764308588",
+    "version": 1
+  },
   "FunkyTown_mapContent": {
     "md5": "a224442eaa9e66bf7292c151b813dfc5",
     "storageType": 0,
@@ -1510,6 +1552,12 @@
     "storageType": 0,
     "url": "https://cdn.discordapp.com/attachments/604451255703568384/740623970272804984/GakuenTengoku_main_scene_pc.zip",
     "version": 6
+  },
+  "GAndB_mapContent": {
+    "md5": "a9efd5c52f072f9155c841f06bd4e977",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/987fcfcc-18ca-4bb2-8005-77d9754b14a6%2FGAndB_MAIN_SCENE_PC.zip?v=1627748985545",
+    "version": 1
   },
   "GangnamStyleDLC_mapContent": {
     "md5": "21c776e82757b5888058ee5628155be1",
@@ -1545,6 +1593,24 @@
     "md5": "08755d11292af9d14650952b00ad8d6a",
     "storageType": 0,
     "url": "https://cdn.glitch.com/d844a1c8-63fc-4d18-b4f8-c1461d5a4f10%2Fgeorgia_main_scene_pc.zip?v=1612307472031",
+    "version": 1
+  },
+  "GeraGeraPoMAT_mapContent": {
+    "md5": "87ecfe9b020e1695753899ece62d190d",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/3211fff3-f0e7-44ba-82a0-05eff5683c4e%2FGeraGeraPoMAT_MAIN_SCENE_PC.zip",
+    "version": 1
+  },
+  "GeraGeraPoORI_mapContent": {
+    "md5": "2e9b14d8fa4902276dd216b3a5c33fe0",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/b741c197-cd73-4dcc-80f1-4f4a4fa462e0%2Fgeragerapoori_main_scene_pc.zip?v=1631046183868",
+    "version": 1
+  },
+  "GerappoDanceTrain_mapContent": {
+    "md5": "f584047940b83d1424d19cde34f2fbd1",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/3211fff3-f0e7-44ba-82a0-05eff5683c4e%2FGerappoDanceTrain_MAIN_SCENE_PC_FIX.zip?v=1627252397271",
     "version": 1
   },
   "GetAround_mapContent": {
@@ -1943,6 +2009,12 @@
     "url": "https://jd-s3.akamaized.net/public/map/IDidItAgainQUAT/pc/IDidItAgainQUAT_MAIN_SCENE_PC.zip/84d828ab689273ab3c1213f9b2e18fb6.zip",
     "version": 5
   },
+  "IdolWaUnyanyaNoKen_mapContent": {
+    "md5": "74b2e469ac07e3386bd8110f138edbce",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/3211fff3-f0e7-44ba-82a0-05eff5683c4e%2FIdolWaUnyanyaNoKen_MAIN_SCENE_PC.zip",
+    "version": 1
+  },
   "IDontCare_mapContent": {
     "md5": "932bbcd50754f787447bb6c366a7c727",
     "storageType": 0,
@@ -1978,6 +2050,12 @@
     "storageType": 0,
     "url": "https://jd-s3.akamaized.net/public/map/IGotAFeeling/pc/IGotAFeeling_MAIN_SCENE_PC.zip/e2dd24b862a3d53d2d8a034ee065169d.zip",
     "version": 5
+  },
+  "IGotYou_mapContent": {
+    "md5": "99f750889e1e1a39fb96b6e05ebce9f9",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/987fcfcc-18ca-4bb2-8005-77d9754b14a6%2FIGotYou_MAIN_SCENE_PC.zip?v=1627706452866",
+    "version": 1
   },
   "IKissedOSC_mapContent": {
     "md5": "28ff939337ec92a9e413c677c398eeca",
@@ -2087,6 +2165,12 @@
     "url": "https://jd-s3.akamaized.net/public/map/Imya505/pc/Imya505_MAIN_SCENE_PC.zip/0a8138a13fdb5f8c7292358be7f10c80.zip",
     "version": 3
   },
+  "IndepedentWoman_mapContent": {
+    "md5": "ee27d4f81190bb0608cc57ad609871d5",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/987fcfcc-18ca-4bb2-8005-77d9754b14a6/IndepedentWoman_MAIN_SCENE_PC.zip",
+    "version": 1
+  },
   "IndiaWaale_mapContent": {
     "md5": "dc59e93711222e8b1bee32fd2123350d",
     "storageType": 0,
@@ -2165,6 +2249,24 @@
     "url": "https://jd-s3.akamaized.net/public/map/JamboMambo/pc/JamboMambo_MAIN_SCENE_PC.zip/eaddd264494190573cf5aee50f4f4554.zip",
     "version": 4
   },
+  "JDCGrowl_mapContent": {
+    "md5": "f76a9b79cb75c4a17691b622847a37ad",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/f70b88ef-b738-4f26-9e12-b57c2d813021%2Fjdcgrowl_main_scene_pc.zip?v=1631983981256",
+    "version": 1
+  },
+	"JDC4Walls_mapContent": {
+    "md5": "ce8dafec361271187b6f8e1cfbabfdd4",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/a4ca4d64-5597-484a-bfc7-1338482d3f6b%2Fjdc4walls_main_scene_pc.zip?v=1631916382628",
+    "version": 1
+  },
+  "JDCBarBarBar_mapContent": {
+    "md5": "756fe31723a4e94f1e110d7f4d510c95",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/987fcfcc-18ca-4bb2-8005-77d9754b14a6%2Fjdcbarbarbar_main_scene_pc.zip?v=1628464330549",
+    "version": 2
+  },
   "JDCChickChick_mapContent": {
     "md5": "d4f14f5e609c2d1cc8a4eb0aaf5594ba",
     "storageType": 0,
@@ -2213,10 +2315,34 @@
     "url": "https://cdn.glitch.com/46a149ad-ef56-48b7-8d3a-22ca8ec6c6be%2FJDCSoGood_MAIN_SCENE_PC.zip?v=1613126548332",
     "version": 1
   },
+  "JDCSummerVoice_mapContent": {
+    "md5": "a771a5c90b8866f4a74768a99fba01ab",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/3211fff3-f0e7-44ba-82a0-05eff5683c4e/summervoice.zip",
+    "version": 1
+  },
+  "JDCYouth_mapContent": {
+    "md5": "06e84ba49ac3aceec61bf1eefcae8e81",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/987fcfcc-18ca-4bb2-8005-77d9754b14a6%2FJDCYouth_MAIN_SCENE_PC.zip",
+    "version": 1
+  },
+  "JerkItOut_mapContent": {
+    "md5": "https://cdn.glitch.com/b741c197-cd73-4dcc-80f1-4f4a4fa462e0%2Fjerkitout_main_scene_pc.zip?v=1631490834642",
+    "storageType": 0,
+    "url": "91c2c3b82faa48cd39c7b38dc1761a42",
+    "version": 1
+  },
   "JimiSeaHorse_bossContent": {
     "md5": "479b792241a67569c5734fd5ec539709",
     "storageType": 0,
     "url": "https://jd-s3.akamaized.net/public/wdf-bosses/JimiSeaHorse/pc/JimiSeaHorse_bossContent_PC.zip/479b792241a67569c5734fd5ec539709.zip",
+    "version": 1
+  },
+  "JinGoLoBa_mapContent": {
+    "md5": "b1e920c51e7e3f8e11ebb5399dfd18bf",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/987fcfcc-18ca-4bb2-8005-77d9754b14a6%2FJinGoLoBa_MAIN_SCENE_PC.zip?v=1627755766568",
     "version": 1
   },
   "Joone_mapContent": {
@@ -2254,6 +2380,12 @@
     "storageType": 0,
     "url": "https://jd-s3.akamaized.net/public/map/Juju/pc/Juju_MAIN_SCENE_PC.zip/3a0db9c4d104080dc5e4a180e21c1c3b.zip",
     "version": 18
+  },
+  "Jump_mapContent": {
+    "md5": "d867f4dc6df4f3ea6cf870a0b2d508bc",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/b741c197-cd73-4dcc-80f1-4f4a4fa462e0%2Fjump_main_scene_pc.zip?v=1631809460861",
+    "version": 2
   },
   "JumpGA_mapContent": {
     "md5": "cda48980bfaef9372612dfbf81e33f62",
@@ -3264,9 +3396,9 @@
     "version": 8
   },
   "Power_mapContent": {
-    "md5": "78e9a9cb588616712f0b1ba920841181",
+    "md5": "87561e36480d42a0f62a70b9b9f197b4",
     "storageType": 0,
-    "url": "https://cdn.glitch.com/d844a1c8-63fc-4d18-b4f8-c1461d5a4f10%2FPower_main_scene_PC.zip?v=1613062814084",
+    "url": "https://cdn.glitch.com/987fcfcc-18ca-4bb2-8005-77d9754b14a6%2FPower_MAIN_SCENE_PC.zip?v=1627862804074",
     "version": 1
   },
   "PrimaDonna_mapContent": {
@@ -3437,6 +3569,12 @@
     "url": "https://jd-s3.akamaized.net/public/wdf-bosses/Rina/pc/Rina_bosscontent_PC.zip/eb6e912e3c85d313788d920b066befd5.zip",
     "version": 5
   },
+  "RingMyBell_mapContent": {
+    "md5": "559226694e7c4a57ffde34b98afebbe1",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/a4ca4d64-5597-484a-bfc7-1338482d3f6b%2Fringmybell_main_scene_pc.zip?v=1627834043937",
+    "version": 2
+  },
   "RiverSide_mapContent": {
     "md5": "4c5e98ad0a54b8f1faa4e9ae61b473b1",
     "storageType": 0,
@@ -3473,6 +3611,12 @@
     "url": "https://jd-s3.akamaized.net/public/wdf-bosses/RocketCat/pc/RocketCat_bossContent_PC.zip/405a706a34f1265851cd764aa51c6691.zip",
     "version": 1
   },
+  "RockYourBody_mapContent": {
+    "md5": "c5c0b86f391c06166b5938032120d8f1",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/a4ca4d64-5597-484a-bfc7-1338482d3f6b%2Frockyourbody_main_scene_pc.zip?v=1631197962336",
+    "version": 1
+  },
   "Roxie_bossContent": {
     "md5": "2198f558ba4b055d2e8eae18b7423fd8",
     "storageType": 0,
@@ -3490,6 +3634,12 @@
     "storageType": 0,
     "url": "https://jd-s3.akamaized.net/public/map/RunTheNight/pc/RunTheNight_MAIN_SCENE_PC.zip/f4b7dcd96aeb1f0c1666fecd63472321.zip",
     "version": 9
+  },
+  "RunTheShow_mapContent": {
+    "md5": "805f2ac7494fa463aa71607ce86a5393",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/987fcfcc-18ca-4bb2-8005-77d9754b14a6%2FRunTheShow_MAIN_SCENE_PC.zip?v=1631565818572",
+    "version": 2
   },
   "STEREO_bossContent": {
     "md5": "a9c5138bf1fb8d1afd21d789de539924",
@@ -3550,6 +3700,12 @@
     "storageType": 0,
     "url": "https://jd-s3.akamaized.net/public/map/Satellite/pc/Satellite_MAIN_SCENE_PC.zip/ad95ade12dc8a5547e067e48edecf797.zip",
     "version": 9
+  },
+  "Satisfaction_mapContent": {
+    "md5": "fe0d571a920fe8cdc7431d6bd43d3667",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/b741c197-cd73-4dcc-80f1-4f4a4fa462e0%2Fsatisfaction_main_scene_pc.zip?v=1630986479502",
+    "version": 1
   },
   "Sax_mapContent": {
     "md5": "be6921e11cd9e0c1e0809b604e2a7762",
@@ -3683,6 +3839,18 @@
     "url": "https://jd-s3.akamaized.net/public/wdf-bosses/SnowMan/pc/SnowMan_bossContent_PC.zip/20632b06941719fb6e08a8b6bfa6d066.zip",
     "version": 6
   },
+  "SoExcited_mapContent": {
+    "md5": "8df82ecd095b35927ada6cf83955a9da",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/a4ca4d64-5597-484a-bfc7-1338482d3f6b%2Fsoexcited_main_scene_pc.zip?v=1627666379917",
+    "version": 1
+  },
+  "SoGood_mapContent": {
+    "md5": "87ccd046d7f43688bdf1f3090539231e",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/987fcfcc-18ca-4bb2-8005-77d9754b14a6%2FSoGood_MAIN_SCENE_PC.zip?v=1628377896410",
+    "version": 1
+  },
   "SomethinStupid_mapContent": {
     "md5": "40fe4861e032c6f8313af9e9d6550add",
     "storageType": 0,
@@ -3706,6 +3874,12 @@
     "storageType": 0,
     "url": "https://jd-s3.akamaized.net/public/map/Sorry/pc/Sorry_MAIN_SCENE_PC.zip/ff8113a6e162f632087643359bb28b27.zip",
     "version": 5
+  },
+    "SOS_mapContent": {
+    "md5": "7e3746952eeac0bcc0d39aa60792d49a",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/b741c197-cd73-4dcc-80f1-4f4a4fa462e0%2Fsos_main_scene_pc.zip?v=1630980760418",
+    "version": 1
   },
   "SoulBossaNova_mapContent": {
     "md5": "e9fb2266aaa0b8f3a85e56a80057fefc",
@@ -4205,6 +4379,12 @@
     "url": "https://jd-s3.akamaized.net/public/map/TicoTico/pc/TicoTico_MAIN_SCENE_PC.zip/8b74095e8d8b8a7ccf7e96c5ccb2005d.zip",
     "version": 17
   },
+  "Tightrope_mapContent": {
+    "md5": "f0b9457893820193dc1d8cdd3c4b7edb",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/a4ca4d64-5597-484a-bfc7-1338482d3f6b%2Ftightrope_main_scene_pc.zip?v=1627489852920",
+    "version": 1
+  },
   "TikTok_mapContent": {
     "md5": "aa25e232485010ea2be1fb6ef26b687f",
     "storageType": 0,
@@ -4241,6 +4421,12 @@
     "url": "https://jd-s3.akamaized.net/public/wdf-bosses/Tomato/pc/Tomato_bossContent_PC.zip/45820ea0c5955ddb666e42e4efcb2cca.zip",
     "version": 1
   },
+  "ToTheMall_mapContent": {
+    "md5": "82b18455ba2e387882992142334be6bd",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/987fcfcc-18ca-4bb2-8005-77d9754b14a6%2FToTheMall_MAIN_SCENE_PC.zip?v=1627515895348",
+    "version": 1
+  },
   "TribalDanceALT_mapContent": {
     "md5": "df66f8c7f77ad44f913ea445fc56b795",
     "storageType": 0,
@@ -4259,6 +4445,7 @@
     "url": "https://jd-s3.akamaized.net/public/map/Troublemaker/pc/Troublemaker_MAIN_SCENE_PC.zip/78444e948079ad00d9402277ab683672.zip",
     "version": 5
   },
+ 
   "TumBum_mapContent": {
     "md5": "85f53998e4ac232bf8ef10315b681f16",
     "storageType": 0,
@@ -4318,6 +4505,12 @@
     "storageType": 0,
     "url": "https://jd-s3.akamaized.net/public/wdf-bosses/TwoTeeth/pc/TwoTeeth_bossContent_PC.zip/de28b0923b0b186d9f8b477d7a27f1a7.zip",
     "version": 3
+  },
+  "UchuDance_mapContent": {
+    "md5": "c589995d074ba52fe428785701704e0b",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/3211fff3-f0e7-44ba-82a0-05eff5683c4e/c589995d074ba52fe428785701704e0b.zip",
+    "version": 1
   },
   "USA_mapContent": {
     "md5": "7500ebd19b36d08ada493215ad940543",
@@ -4510,6 +4703,18 @@
     "storageType": 0,
     "url": "https://jd-s3.akamaized.net/public/map/WhatLoversDo/pc/WhatLoversDo_MAIN_SCENE_PC.zip/f2622a3baa7b404cce2479c8b652aa05.zip",
     "version": 30
+  },
+  "WhatMakesYouBeautiful_mapContent": {
+    "md5": "0c5cfdfa892d252fb54e9722b4676ba1",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/3211fff3-f0e7-44ba-82a0-05eff5683c4e%2FWhatMakesYouBeautiful_MAIN_SCENE_PC.zip",
+    "version": 1
+  },
+  "WhatYouWait_mapContent": {
+    "md5": "383727e1de85107f2bf76612de0415e1",
+    "storageType": 0,
+    "url": "https://cdn.glitch.com/987fcfcc-18ca-4bb2-8005-77d9754b14a6%2FWhatYouWait_MAIN_SCENE_PC.zip?v=1627765560257",
+    "version": 1
   },
   "WhenTheRain_mapContent": {
     "md5": "8e459effb227f5358b7075e0729b9698",
