@@ -1,5 +1,8 @@
 /// Just Dance Cosmos
-// v2 (Private, not leaked)
+// v2 (Build 5)
+
+// Lastest addition: Map BKG for Just Dance EX, Banner BKG for Just Dance 2017
+// Next addition: Search function, automatized playlist for New and Top 20
 
 const express = require("express");
 const fs = require("fs");
@@ -48,11 +51,32 @@ const Pages = require("./cosmos-functions/v1/pages/upsell-videos.json");
 const CarouselPackages = require("./cosmos-functions/v1/pages/carousel/packages.json");
 const Subs = require("./cosmos-functions/v1/subscription.json");
 
+// Define "search" variable
+var search;
+
+// Customizable core
+var carouselcore = {
+  interactiveconfig: {
+      playerseason: {
+          isseasonactive: false,
+          seasonname: "",
+          seasonplaylist: [""]
+      },
+      playlists: {
+        newsongs: ["ComeBackHome", "JDCDrinkingSong", "TheWayIAre", "Think", "Tightrope"],
+        top20playlist: []
+		  }
+  }
+}
+
 // SKU Packages
 app.get("/packages/v1/sku-packages", function(request, response) {
   const skuId = request.header("X-SkuId");
   switch (skuId) {
     case "jdex-pc-cmos":
+      response.send(SKUPackages);
+    break;
+    case "jd2017-pc-ww":
       response.send(SKUPackages);
     break;
     default:
@@ -67,12 +91,17 @@ app.get("/songdb/v1/songs", function(request, response) {
   switch (skuId) {
     case "jdex-pc-cmos":
       // Set the variables to SongDB and Carousel
-      var OnlineDB = JSON.parse(JSON.stringify(require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")));
+      var OnlineDB = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json");
       
+      for (var song in OnlineDB) {
+        var obj = OnlineDB[song];
+        obj.assets["banner_bkgImageUrl"] = obj.assets["map_bkgImageUrl"];
+      }
+      return response.send(OnlineDB);
+    break;
+    case "jd2017-pc-ww":
       response.send(SongDB);
     break;
-    case "jd2017-pc-cmos":
-      response.send(SongDB);
     default:
       response.send("Hey there!" + "\n" + "Cosmos's SongDB are currently unavaliable through a browser");
     break;
@@ -92,6 +121,9 @@ app.get("/songdb/v1/localisation", function(request, response) {
     case "jdex-pc-cmos":
       response.send(LocaleID);
     break;
+    case "jd2017-pc-ww":
+      response.send(LocaleID);
+    break;
     default:
       response.send("Hey there!" + "\n" + "Really? Even the LocaleID file? Obviously you know that you can't get it");
     break;
@@ -107,19 +139,6 @@ app.get("/dance-machine/v1/blocks", function(request, response) {
 app.post("/carousel/v2/pages/quests", function(request, response) {
   response.send(QJSONCarousel);
 });
-
-/*/// Just Dance / Dance Quest's Rival carousel
-app.post("/carousel/v2/pages/party", function(request, response) {
-  const skuId = request.header("X-SkuId");
-  switch (skuId) {
-    case "jdex-pc-cmos":
-      response.send(EXJSONCarousel);
-    break;
-    default:
-      response.send("Hey there!" + "\n" + "It's just a carousel, get serious");
-    break;
-  }
-});*/
 
 /// New carousel code
 app.post("/carousel/v2/pages/party", function(request, response) {
@@ -141,6 +160,14 @@ app.post("/carousel/v2/pages/party", function(request, response) {
             carousel.items.push(obj);
           }
         }
+        
+        // Playlist for New Songs
+				if (carousel.title == "[icon:PLAYLIST] New songs in Just Dance Cosmos") {
+					carouselcore.interactiveconfig.playlists.newsongs.forEach(function(song) {
+						var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song + '"}],"actionList":"partyMap"}');
+						carousel.items.push(obj)
+					})
+				}
         
         // Add Just Dance songs onto it's own category
         if (carousel.title == "Just Dance") {
@@ -196,8 +223,340 @@ app.post("/carousel/v2/pages/party", function(request, response) {
         }
 			});
       
-      // Send the carousel
-      response.send(OnlineCarousel);
+      if (request.body.searchString == "" || request.body.searchString == undefined) {
+        response.send(OnlineCarousel);
+      } 
+      else {
+        search = JSON.parse(JSON.stringify(require("./cosmos-database/v1/carousel/ex-cmos-partycar.json")));
+
+        // add search result to search
+        var current = 0
+        var splice = 0
+        search.categories.forEach(function(carousel){ 
+          if(carousel.title == "[icon:SEARCH_FILTER] Search") {
+          } else {
+            current = current + 1
+          }
+        });
+        var obj = JSON.parse('{ "__class": "Category", "title": "[icon:SEARCH_RESULT] insert search result here", "items": [], "isc": "grp_row", "act": "ui_carousel" }')
+        search.categories.splice(current + 1,0,obj)
+
+          var CarouselDB = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json");
+          var query = request.body.searchString.toString().toUpperCase();
+
+          var matches = [];
+          for (var song in CarouselDB) {
+
+            var obj = CarouselDB[song];
+
+            var title = obj.title.toString().toUpperCase();
+            var artist = obj.artist.toString().toUpperCase();
+            var mapname = obj.mapName.toString().toUpperCase();
+            var jdversion = obj.originalJDVersion.toString();
+            var jdversion2 = "JUST DANCE " + obj.originalJDVersion.toString();
+            var jdversion3 = "JD" + obj.originalJDVersion.toString();
+
+            if (title.includes(query) == true ||
+                jdversion.includes(query) == true ||
+                jdversion2.includes(query) == true ||
+                jdversion3.includes(query) == true ||
+                artist.includes(query) == true ||
+                mapname.includes(query) == true) {
+                  matches.push(obj.mapName.toString());
+            }
+          }
+
+          var carresponse = search;
+          carresponse.categories.forEach(function(carousel) {
+            
+            // Add all the songs onto Just Dance Cosmos category
+        if (carousel.title == "Just Dance Cosmos") {
+          for (var songs in require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")) {
+            var song = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")[songs]
+            var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song.mapName + '"}],"actionList":"partyMap"}');
+            carousel.items.push(obj);
+          }
+        }
+        
+        // Playlist for New Songs
+				if (carousel.title == "[icon:PLAYLIST] New songs in Just Dance Cosmos") {
+					carouselcore.interactiveconfig.playlists.newsongs.forEach(function(song) {
+						var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song + '"}],"actionList":"partyMap"}');
+						carousel.items.push(obj)
+					})
+				}
+        
+        // Add Just Dance songs onto it's own category
+        if (carousel.title == "Just Dance") {
+          for (var songs in require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")) {
+            var song = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")[songs]
+            if (song.originalJDVersion == 1) {
+              var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song.mapName + '"}],"actionList":"partyMap"}');
+              carousel.items.push(obj);
+            }
+          }
+        }
+        
+        // Add songs in their game categories (excl. ABBA, East and Kids)
+				for (var songs in require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")) {
+					var song = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")[songs]
+					if (carousel.title == "Just Dance " + song.originalJDVersion) {
+						var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song.mapName + '"}],"actionList":"partyMap"}');
+						carousel.items.push(obj)
+					}
+				}
+        
+        // Add ABBA: You Can Dance songs onto it's own category
+        if (carousel.title == "ABBA: You Can Dance") {
+          for (var songs in require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")) {
+            var song = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")[songs]
+            if (song.originalJDVersion == 4884) {
+              var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song.mapName + '"}],"actionList":"partyMap"}');
+              carousel.items.push(obj);
+            }
+          }
+        }
+        
+        // Add Just Dance China and Japan songs onto it's own category
+        if (carousel.title == "Just Dance East") {
+          for (var songs in require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")) {
+            var song = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")[songs]
+            if (song.originalJDVersion == 4514) {
+              var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song.mapName + '"}],"actionList":"partyMap"}');
+              carousel.items.push(obj);
+            }
+          }
+        }
+        
+        // Add Just Dance China / Japan songs onto it's own category
+        if (carousel.title == "Just Dance Kids") {
+          for (var songs in require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")) {
+            var song = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")[songs]
+            if (song.originalJDVersion == 123) {
+              var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song.mapName + '"}],"actionList":"partyMap"}');
+              carousel.items.push(obj);
+            }
+          }
+        }
+            
+            if (carousel.title == "[icon:SEARCH_RESULT] insert search result here") {
+              carousel.title = "[icon:SEARCH_RESULT] " + request.body.searchString.toString();
+              matches.forEach(function (arrayItem) {
+                var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + arrayItem + '"}],"actionList":"partyMap"}');
+                carousel.items.push(obj);
+              });
+            }
+          })
+        
+        response.send(carresponse);
+      }
+    break;
+    case "jd2017-pc-ww":
+      // Set the variables to SongDB and Carousel
+      var OnlineDB = JSON.parse(JSON.stringify(require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")));
+      var OnlineCarousel = JSON.parse(JSON.stringify(require("./cosmos-database/v1/carousel/ex-cmos-partycar.json")));
+      
+      // Define the carousel as a function
+      OnlineCarousel.categories.forEach(function(carousel) {
+        
+        // Add all the songs onto Just Dance Cosmos category
+        if (carousel.title == "Just Dance Cosmos") {
+          for (var songs in require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")) {
+            var song = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")[songs]
+            var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song.mapName + '"}],"actionList":"partyMap"}');
+            carousel.items.push(obj);
+          }
+        }
+        
+        // Playlist for New Songs
+				if (carousel.title == "[icon:PLAYLIST] New songs in Just Dance Cosmos") {
+					carouselcore.interactiveconfig.playlists.newsongs.forEach(function(song) {
+						var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song + '"}],"actionList":"partyMap"}');
+						carousel.items.push(obj)
+					})
+				}
+        
+        // Add Just Dance songs onto it's own category
+        if (carousel.title == "Just Dance") {
+          for (var songs in require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")) {
+            var song = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")[songs]
+            if (song.originalJDVersion == 1) {
+              var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song.mapName + '"}],"actionList":"partyMap"}');
+              carousel.items.push(obj);
+            }
+          }
+        }
+        
+        // Add songs in their game categories (excl. ABBA, East and Kids)
+				for (var songs in require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")) {
+					var song = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")[songs]
+					if (carousel.title == "Just Dance " + song.originalJDVersion) {
+						var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song.mapName + '"}],"actionList":"partyMap"}');
+						carousel.items.push(obj)
+					}
+				}
+        
+        // Add ABBA: You Can Dance songs onto it's own category
+        if (carousel.title == "ABBA: You Can Dance") {
+          for (var songs in require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")) {
+            var song = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")[songs]
+            if (song.originalJDVersion == 4884) {
+              var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song.mapName + '"}],"actionList":"partyMap"}');
+              carousel.items.push(obj);
+            }
+          }
+        }
+        
+        // Add Just Dance China and Japan songs onto it's own category
+        if (carousel.title == "Just Dance East") {
+          for (var songs in require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")) {
+            var song = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")[songs]
+            if (song.originalJDVersion == 4514) {
+              var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song.mapName + '"}],"actionList":"partyMap"}');
+              carousel.items.push(obj);
+            }
+          }
+        }
+        
+        // Add Just Dance China / Japan songs onto it's own category
+        if (carousel.title == "Just Dance Kids") {
+          for (var songs in require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")) {
+            var song = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")[songs]
+            if (song.originalJDVersion == 123) {
+              var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song.mapName + '"}],"actionList":"partyMap"}');
+              carousel.items.push(obj);
+            }
+          }
+        }
+			});
+      
+      if (request.body.searchString == "" || request.body.searchString == undefined) {
+        response.send(OnlineCarousel);
+      } 
+      else {
+        search = JSON.parse(JSON.stringify(require("./cosmos-database/v1/carousel/ex-cmos-partycar.json")));
+
+        // add search result to search
+        var current = 0
+        var splice = 0
+        search.categories.forEach(function(carousel){ 
+          if(carousel.title == "[icon:SEARCH_FILTER] Search") {
+          } else {
+            current = current + 1
+          }
+        });
+        var obj = JSON.parse('{ "__class": "Category", "title": "[icon:SEARCH_RESULT] insert search result here", "items": [], "isc": "grp_row", "act": "ui_carousel" }')
+        search.categories.splice(current + 1,0,obj)
+
+          var CarouselDB = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json");
+          var query = request.body.searchString.toString().toUpperCase();
+
+          var matches = [];
+          for (var song in CarouselDB) {
+
+            var obj = CarouselDB[song];
+
+            var title = obj.title.toString().toUpperCase();
+            var artist = obj.artist.toString().toUpperCase();
+            var mapname = obj.mapName.toString().toUpperCase();
+            var jdversion = obj.originalJDVersion.toString();
+            var jdversion2 = "JUST DANCE " + obj.originalJDVersion.toString();
+            var jdversion3 = "JD" + obj.originalJDVersion.toString();
+
+            if (title.includes(query) == true ||
+                jdversion.includes(query) == true ||
+                jdversion2.includes(query) == true ||
+                jdversion3.includes(query) == true ||
+                artist.includes(query) == true ||
+                mapname.includes(query) == true) {
+                  matches.push(obj.mapName.toString());
+            }
+          }
+
+          var carresponse = search;
+          carresponse.categories.forEach(function(carousel) {
+            
+            // Add all the songs onto Just Dance Cosmos category
+        if (carousel.title == "Just Dance Cosmos") {
+          for (var songs in require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")) {
+            var song = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")[songs]
+            var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song.mapName + '"}],"actionList":"partyMap"}');
+            carousel.items.push(obj);
+          }
+        }
+        
+        // Playlist for New Songs
+				if (carousel.title == "[icon:PLAYLIST] New songs in Just Dance Cosmos") {
+					carouselcore.interactiveconfig.playlists.newsongs.forEach(function(song) {
+						var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song + '"}],"actionList":"partyMap"}');
+						carousel.items.push(obj)
+					})
+				}
+        
+        // Add Just Dance songs onto it's own category
+        if (carousel.title == "Just Dance") {
+          for (var songs in require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")) {
+            var song = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")[songs]
+            if (song.originalJDVersion == 1) {
+              var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song.mapName + '"}],"actionList":"partyMap"}');
+              carousel.items.push(obj);
+            }
+          }
+        }
+        
+        // Add songs in their game categories (excl. ABBA, East and Kids)
+				for (var songs in require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")) {
+					var song = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")[songs]
+					if (carousel.title == "Just Dance " + song.originalJDVersion) {
+						var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song.mapName + '"}],"actionList":"partyMap"}');
+						carousel.items.push(obj)
+					}
+				}
+        
+        // Add ABBA: You Can Dance songs onto it's own category
+        if (carousel.title == "ABBA: You Can Dance") {
+          for (var songs in require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")) {
+            var song = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")[songs]
+            if (song.originalJDVersion == 4884) {
+              var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song.mapName + '"}],"actionList":"partyMap"}');
+              carousel.items.push(obj);
+            }
+          }
+        }
+        
+        // Add Just Dance China and Japan songs onto it's own category
+        if (carousel.title == "Just Dance East") {
+          for (var songs in require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")) {
+            var song = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")[songs]
+            if (song.originalJDVersion == 4514) {
+              var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song.mapName + '"}],"actionList":"partyMap"}');
+              carousel.items.push(obj);
+            }
+          }
+        }
+        
+        // Add Just Dance China / Japan songs onto it's own category
+        if (carousel.title == "Just Dance Kids") {
+          for (var songs in require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")) {
+            var song = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")[songs]
+            if (song.originalJDVersion == 123) {
+              var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song.mapName + '"}],"actionList":"partyMap"}');
+              carousel.items.push(obj);
+            }
+          }
+        }
+            
+            if (carousel.title == "[icon:SEARCH_RESULT] insert search result here") {
+              carousel.title = "[icon:SEARCH_RESULT] " + request.body.searchString.toString();
+              matches.forEach(function (arrayItem) {
+                var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + arrayItem + '"}],"actionList":"partyMap"}');
+                carousel.items.push(obj);
+              });
+            }
+          })
+        
+        response.send(carresponse);
+      }
     break;
     default:
       response.send("Hey there!" + "\n" + "It's just a carousel, get serious");
@@ -212,6 +571,9 @@ app.post("/carousel/v2/pages/partycoop", function(request, response) {
     case "jdex-pc-cmos":
       response.send(EXJSONCarousel);
     break;
+    case "jd2017-pc-ww":
+      response.send(EXJSONCarousel);
+    break;
     default:
       response.send("Hey there!" + "\n" + "It's just a carousel, get serious");
     break;
@@ -223,6 +585,9 @@ app.post("/carousel/v2/pages/sweat", function(request, response) {
   const skuId = request.header("X-SkuId");
   switch (skuId) {
     case "jdex-pc-cmos":
+      response.send(EXJSONCarousel);
+    break;
+    case "jd2017-pc-ww":
       response.send(EXJSONCarousel);
     break;
     default:
@@ -303,7 +668,24 @@ app.post("/subscription/v1/refresh", function(request, response) {
 app.get("/content-authorization/v1/maps/:map", function(request, response) {
   const skuId = request.header("X-SkuId");
   switch (skuId) {
-    case "jdex-pc-cmos" || "jd2017-pc-cmos":
+    case "jdex-pc-cmos":
+      if(request.params.map) {
+        var path = "./cosmos-database/v1/content-authorization/"
+        if(fs.existsSync(path + request.params.map + ".json")) {
+          fs.readFile(path + request.params.map + ".json", function(err, data) {
+          if (err) throw err;
+          if (data) {
+          var strdata = JSON.parse(data),
+              pardata = JSON.stringify(strdata);
+          response.send(pardata)
+          }
+        })
+      } else {
+        response.send("Forbidden")
+      }
+    }
+    break;
+    case "jd2017-pc-ww":
       if(request.params.map) {
         var path = "./cosmos-database/v1/content-authorization/"
         if(fs.existsSync(path + request.params.map + ".json")) {
@@ -348,6 +730,7 @@ app.get("/profile/v2/profiles", (req, res) => {
 })
 app.post("/profile/v2/profiles", function(req, res){
   res.redirect(307, "https://prod.just-dance.com/profile/v2/profiles")
+  console.log(res);
 })
 
 app.get("/profile/v2/favorites/maps/:map", (req, res) => {
@@ -367,7 +750,6 @@ app.get("/profile/v2/favorites/maps/:map", (req, res) => {
   }
   redirect(httpsopts, '', function(redResponse){
   	res.send(redResponse)
-    console.log(redResponse)
   })
 })
 
@@ -390,7 +772,6 @@ app.put("/profile/v2/favorites/maps/:map", function (req, res) {
   };
   redirect(httpsopts, json, function(redResponse) {
     res.send(redResponse);
-    console.log(redResponse);
   });
 });
 
@@ -513,8 +894,9 @@ app.get("/leaderboard/v1/maps/:map", (req, res) => {
     }
   };
   redirect(httpsopts, "", function(redResponse) {
-	var responsepar = JSON.parse(redResponse);
+	var responsepar = JSON.parse(JSON.stringify(redResponse));
     res.send(responsepar);
+    console.log(responsepar)
   });
 });
 
@@ -584,29 +966,7 @@ app.post("/carousel/v2/packages", function(request, response) {
   response.send(CarouselPackages);
 });
 
-// Map Ended (???)
-app.post("/profile/v2/map-ended", (request, response) => {
-  var auth = request.header("Authorization");
-  const httpsopts = {
-    hostname: "prod.just-dance.com",
-    port: 443,
-    path: "/profile/v2/map-ended",
-    method: "POST",
-    headers: {
-      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
-      Accept: "*/*",
-      "Accept-Language": "en-us,en",
-      Authorization: auth,
-      "Content-Type": "application/json",
-      "X-SkuId": "jd2017-pc-ww"
-    }
-  };
-  redirect(httpsopts, "", function(redResponse) {
-    response.send(redResponse);
-  });
-});
-
-// Session Quest (???)
+/// Session Quest (???)
 app.get("/session-quest/v1/", function (request, response) {
     response.send(
         '{ "__class": "SessionQuestService::QuestData", "newReleases": [] }');
@@ -1013,27 +1373,3 @@ function redirect(options, write, callback) {
 const listener = app.listen(process.env.PORT, function() {
   console.log("Your app is listening on port " + listener.address().port);
 });
-
-//Add statistics to the server
-function addStats(codename) {
-  fs.readFile("./cosmos-functions/v1/statistics/alltime.json", "utf-8", function(err, data) {
-    if (err) throw err;
-    var arrayOfObjects = JSON.parse(data);
-    arrayOfObjects[codename] = arrayOfObjects[codename] + 1;
-    fs.writeFile("./cosmos-functions/v1/statistics/alltime.json", JSON.stringify(arrayOfObjects), "utf-8", function(err) {
-        if (err) throw err;
-        console.log("All-Time stats of " + codename + " changed");
-      }
-    );
-  });
-  fs.readFile("./cosmos-functions/v1/statistics/total.json", "utf-8", function(err, data) {
-    if (err) throw err;
-    var arrayOfObjects = JSON.parse(data);
-    arrayOfObjects["total"] = arrayOfObjects["total"] + 1;
-    fs.writeFile("./cosmos-functions/v1/statistics/total.json", JSON.stringify(arrayOfObjects), "utf-8", function(err) {
-        if (err) throw err;
-        console.log("Total stats of " + codename + " changed");
-      }
-    );
-  });
-}
