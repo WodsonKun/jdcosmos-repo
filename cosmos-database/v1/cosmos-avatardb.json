@@ -61,12 +61,23 @@
         },
         {
           "__class": "Item",
-          "isc": "quest_item",
+          "isc": "avatar_item",
           "act": "ui_component_base",
           "components": [
             {
               "__class": "JD_CarouselCustomizableItemRequest",
               "itemId": "1"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "avatar_item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselCustomizableItemRequest",
+              "itemId": "2"
             }
           ]
         }

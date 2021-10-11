@@ -6,7 +6,7 @@
 			"UsedAsCoach_CoachId": 0,
 			"UsedAsCoach_MapName": "TheWayIAre",
 			"__class": "OnlineCustomizableItem",
-			"jdVersion": 1,
+			"jdVersion": 2021,
 			"mojoPrice": 0,
 			"relativeQuestID": "",
 			"relativeSongName": "TheWayIAre",
@@ -15,6 +15,22 @@
 			"status": 1,
 			"unlockType": 3,
 			"url": "https://static.wikia.nocookie.net/justdance/images/a/ad/Thewayiare_jdnow_p1_ava.png",
+			"itemType": 0
+		},
+    "2": {
+			"JdNowVersion": 2021,
+			"UsedAsCoach_CoachId": 0,
+			"UsedAsCoach_MapName": "ComeBackHome",
+			"__class": "OnlineCustomizableItem",
+			"jdVersion": 2021,
+			"mojoPrice": 0,
+			"relativeQuestID": "",
+			"relativeSongName": "ComeBackHome",
+			"relativeWDFBossName": "",
+			"soundFamily": "AVTR_Common_Girl_Rock",
+			"status": 1,
+			"unlockType": 3,
+			"url": "https://static.wikia.nocookie.net/justdance/images/0/03/Comebackhome_p3_ava.png",
 			"itemType": 0
 		}
   },
