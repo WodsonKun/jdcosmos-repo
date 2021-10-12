@@ -36,6 +36,11 @@ const WDF = require("./cosmos-functions/v1/wdf/assign-room.json");
 const RoomPC = require("./cosmos-functions/v1/wdf/screens.json");
 const Time = require("./cosmos-functions/v1/wdf/server-time.json");
 const Bosses = require("./cosmos-functions/v1/wdf/online-bosses.json");
+var room = "HardMainJD2021";
+var prodwsurl = "https://prod.just-dance.com";
+var bosses = require("./DATABASE/wdf/v1/ccu.json");
+var ccu = require("./DATABASE/wdf/bosses.json");
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 // V1, V2 and V3
 const v1 = require("./cosmos-server/v1/configuration.json");
@@ -997,7 +1002,7 @@ app.get("/community-remix/v1/active-contest", (request, response) => {
 // World Dance Floor
 app.post("/wdf/v1/assign-room", (request, response) => {
     res.send(
-        '{ "room": "HardMainJD2021" }');
+        '{ "room": "PCJD2017" }');
 });
 
 app.get("/wdf/v1/server-time", (request, response) => {
@@ -1024,12 +1029,12 @@ app.get("/wdf/v1/online-bosses", (request, response) => {
     res.send(bosses);
 });
 
-app.get("/wdf/v1/rooms/HardMainJD2021/ccu", (req, res) => {
+app.get("/wdf/v1/rooms/PCJD2017/ccu", (req, res) => {
     var ticket = auth;
     var xhr = new XMLHttpRequest();
     xhr.open(
         "GET",
-        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/ccu",
+        prodwsurl + "/wdf/v1/rooms/PCJD2017/ccu",
         false);
     xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
     xhr.setRequestHeader("Authorization", ticket);
@@ -1039,12 +1044,12 @@ app.get("/wdf/v1/rooms/HardMainJD2021/ccu", (req, res) => {
     res.send(xhr.responseText.toString());
 });
 
-app.get("/wdf/v1/rooms/HardMainJD2021/newsfeed", (request, response) => {
+app.get("/wdf/v1/rooms/PCJD2017/newsfeed", (request, response) => {
 	var auth = request.header("Authorization");
 	const httpsopts = {
     hostname: "prod.just-dance.com",
     port: 443,
-    path: "/wdf/v1/rooms/HardMainJD2021/newsfeed",
+    path: "/wdf/v1/rooms/PCJD2017/newsfeed",
     method: "GET",
     headers: {
       "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
@@ -1059,11 +1064,11 @@ app.get("/wdf/v1/rooms/HardMainJD2021/newsfeed", (request, response) => {
   });
 });
 
-app.get("/wdf/v1/rooms/HardMainJD2021/next-happyhours", (req, res) => {
+app.get("/wdf/v1/rooms/PCJD2017/next-happyhours", (req, res) => {
         const httpsopts2 = {
             hostname: "prod.just-dance.com",
             port: 443,
-            path: "/wdf/v1/rooms/HardMainJD2021/next-happyhours",
+            path: "/wdf/v1/rooms/PCJD2017/next-happyhours",
             method: "GET",
             headers: {
                 Accept: "*/*",
@@ -1077,12 +1082,12 @@ app.get("/wdf/v1/rooms/HardMainJD2021/next-happyhours", (req, res) => {
         });
 });
 
-app.get("/wdf/v1/rooms/HardMainJD2021/notification", (request, response) => {
+app.get("/wdf/v1/rooms/PCJD2017/notification", (request, response) => {
 	var auth = request.header("Authorization");
 	const httpsopts = {
     hostname: "prod.just-dance.com",
     port: 443,
-    path: "/wdf/v1/rooms/HardMainJD2021/notification",
+    path: "/wdf/v1/rooms/PCJD2017/notification",
     method: "GET",
     headers: {
       "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
@@ -1097,12 +1102,12 @@ app.get("/wdf/v1/rooms/HardMainJD2021/notification", (request, response) => {
   });
 });
 
-app.post("/wdf/v1/rooms/HardMainJD2021/screens", (req, res) => {
+app.post("/wdf/v1/rooms/PCJD2017/screens", (req, res) => {
     var json = JSON.stringify(req.body);
         const httpsopts2 = {
             hostname: "prod.just-dance.com",
             port: 443,
-            path: "/wdf/v1/rooms/HardMainJD2021/screens",
+            path: "/wdf/v1/rooms/PCJD2017/screens",
             method: "POST",
             headers: {
                 Accept: "*/*",
@@ -1129,10 +1134,10 @@ app.post("/wdf/v1/rooms/HardMainJD2021/screens", (req, res) => {
         });
 });
 
-app.post("/wdf/v1/rooms/HardMainJD2021/session", (req, res) => {
+app.post("/wdf/v1/rooms/PCJD2017/session", (req, res) => {
     var ticket = req.header("Authorization");
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", prodwsurl + "/wdf/v1/rooms/HardMainJD2021/session", false);
+    xhr.open("POST", prodwsurl + "/wdf/v1/rooms/PCJD2017/session", false);
     xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
     xhr.setRequestHeader("Authorization", ticket);
     xhr.setRequestHeader("Content-Type", "application/json");
@@ -1140,10 +1145,10 @@ app.post("/wdf/v1/rooms/HardMainJD2021/session", (req, res) => {
     res.sendStatus(200);
 });
 
-app.delete("/wdf/v1/rooms/HardMainJD2021/session", (req, res) => {
+app.delete("/wdf/v1/rooms/PCJD2017/session", (req, res) => {
     var ticket = req.header("Authorization");
     var xhr = new XMLHttpRequest();
-    xhr.open("DELETE", prodwsurl + "/wdf/v1/rooms/HardMainJD2021/session", false);
+    xhr.open("DELETE", prodwsurl + "/wdf/v1/rooms/PCJD2017/session", false);
     xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
     xhr.setRequestHeader("Authorization", ticket);
     xhr.setRequestHeader("Content-Type", "application/json");
@@ -1152,13 +1157,13 @@ app.delete("/wdf/v1/rooms/HardMainJD2021/session", (req, res) => {
 });
 
 app.get(
-    "/wdf/v1/rooms/HardMainJD2021/themes/tournament/score-recap",
+    "/wdf/v1/rooms/PCJD2017/themes/tournament/score-recap",
     (req, res) => {
      var ticket = req.header("Authorization");
     var xhr = new XMLHttpRequest();
     xhr.open(
         "GET",
-        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/tournament/score-recap",
+        prodwsurl + "/wdf/v1/rooms/PCJD2017/themes/tournament/score-recap",
         false);
     xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
     xhr.setRequestHeader("Authorization", ticket);
@@ -1169,13 +1174,13 @@ app.get(
 });
 
 app.get(
-    "/wdf/v1/rooms/HardMainJD2021/themes/teambattle/score-status",
+    "/wdf/v1/rooms/PCJD2017/themes/teambattle/score-status",
     (req, res) => {
     var ticket = req.header("Authorization");
     var xhr = new XMLHttpRequest();
     xhr.open(
         "GET",
-        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/teambattle/score-status",
+        prodwsurl + "/wdf/v1/rooms/PCJD2017/themes/teambattle/score-status",
         false);
     xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
     xhr.setRequestHeader("Authorization", ticket);
@@ -1185,13 +1190,13 @@ app.get(
     res.send(JSON.parse(xhr.responseText));
       });
 app.get(
-    "/wdf/v1/rooms/HardMainJD2021/themes/boss/score-status",
+    "/wdf/v1/rooms/PCJD2017/themes/boss/score-status",
     (req, res) => {
     var ticket = req.header("Authorization");
     var xhr = new XMLHttpRequest();
     xhr.open(
         "GET",
-        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/boss/score-status",
+        prodwsurl + "/wdf/v1/rooms/PCJD2017/themes/boss/score-status",
         false);
     xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
     xhr.setRequestHeader("Authorization", ticket);
@@ -1202,13 +1207,13 @@ app.get(
 });
 
 app.post(
-    "/wdf/v1/rooms/HardMainJD2021/themes/tournament/update-scores",
+    "/wdf/v1/rooms/PCJD2017/themes/tournament/update-scores",
     (req, res) => {
     var ticket = req.header("Authorization");
     var xhr = new XMLHttpRequest();
     xhr.open(
         "POST",
-        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/tournament/update-scores",
+        prodwsurl + "/wdf/v1/rooms/PCJD2017/themes/tournament/update-scores",
         false);
     xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
     xhr.setRequestHeader("Authorization", ticket);
@@ -1219,13 +1224,13 @@ app.post(
 });
 
 app.get(
-    "/wdf/v1/rooms/HardMainJD2021/themes/vote/choice",
+    "/wdf/v1/rooms/PCJD2017/themes/vote/choice",
     (req, res) => {
     var ticket = req.header("Authorization");
     var xhr = new XMLHttpRequest();
     xhr.open(
         "GET",
-        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/vote/choice",
+        prodwsurl + "/wdf/v1/rooms/PCJD2017/themes/vote/choice",
         false);
     xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
     xhr.setRequestHeader("Authorization", ticket);
@@ -1236,13 +1241,13 @@ app.get(
       });
 
 app.get(
-    "/wdf/v1/rooms/HardMainJD2021/themes/vote/result",
+    "/wdf/v1/rooms/PCJD2017/themes/vote/result",
     (req, res) => {
     var ticket = req.header("Authorization");
     var xhr = new XMLHttpRequest();
     xhr.open(
         "GET",
-        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/vote/result",
+        prodwsurl + "/wdf/v1/rooms/PCJD2017/themes/vote/result",
         false);
     xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
     xhr.setRequestHeader("Authorization", ticket);
@@ -1253,13 +1258,13 @@ app.get(
       });
 
 app.get(
-    "/wdf/v1/rooms/HardMainJD2021/themes/vote/score-recap",
+    "/wdf/v1/rooms/PCJD2017/themes/vote/score-recap",
     (req, res) => {
     var ticket = req.header("Authorization");
     var xhr = new XMLHttpRequest();
     xhr.open(
         "GET",
-        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/vote/score-recap",
+        prodwsurl + "/wdf/v1/rooms/PCJD2017/themes/vote/score-recap",
         false);
     xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
     xhr.setRequestHeader("Authorization", ticket);
