@@ -33,10 +33,9 @@ const ItemDB = require("./cosmos-database/v1/cosmos-itemdb.json");
 
 //WDF
 const WDF = require("./cosmos-functions/v1/wdf/assign-room.json");
-const RoomPC = require("./cosmos-functions/v1/wdf/screens.json");
 const Time = require("./cosmos-functions/v1/wdf/server-time.json");
 const Bosses = require("./cosmos-functions/v1/wdf/online-bosses.json");
-var room = "PCJD2017";
+var room = "HardMainJD2021";
 var prodwsurl = "https://prod.just-dance.com";
 var bosses = require("./cosmos-functions/v1/wdf/ccu.json");
 var ccu = require("./cosmos-functions/v1/wdf/bosses.json");
@@ -58,6 +57,20 @@ const Subs = require("./cosmos-functions/v1/subscription.json");
 
 // Define "search" variable
 var search;
+
+var jdcosmos = {
+    core: {
+        getskuid: function (request) {
+            if (
+                request.useragent.source ==
+                "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static") {
+                    return "jd2017-pc-ww"
+                } else {
+                    return request.header("X-SkuId")
+                }
+        }
+    }
+}
 
 // Customizable core
 var carouselcore = {
@@ -1000,128 +1013,57 @@ app.get("/community-remix/v1/active-contest", (request, response) => {
 
 
 // World Dance Floor
-app.post("/wdf/v1/assign-room", (request, response) => {
+app.get("/wdf/v1/api/rooms", (req, res) => {
+    res.send(require("./DATABASE/wdf/rooms.json"));
+});
+
+app.post("/wdf/v1/assign-room", (req, res) => {
     res.send(
-        '{ "room": "PCJD2017" }');
+        '{ "room": "HardMainJD2021" }');
 });
 
-app.get("/wdf/v1/server-time", (request, response) => {
-	var auth = request.header("Authorization");
-	const httpsopts = {
-    hostname: "prod.just-dance.com",
-    port: 443,
-    path: "/wdf/v1/server-time",
-    method: "GET",
-    headers: {
-      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
-      Accept: "*/*",
-      "Accept-Language": "en-us,en",
-      Authorization: auth,
-      "X-SkuId": "jd2017-pc-ww"
-    }
-  };
-  redirect(httpsopts, "", function(redResponse) {
-    response.send(redResponse);
-  });
-});
-
-app.get("/wdf/v1/online-bosses", (request, response) => {
-    res.send(bosses);
-});
-
-app.get("/wdf/v1/rooms/PCJD2017/ccu", (req, res) => {
-    var ticket = auth;
+app.post("/wdf/v1/rooms/" + room + "/session", (req, res) => {
+    var ticket = req.header("Authorization");
     var xhr = new XMLHttpRequest();
-    xhr.open(
-        "GET",
-        prodwsurl + "/wdf/v1/rooms/PCJD2017/ccu",
-        false);
-    xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
+    xhr.open("POST", prodwsurl + "/wdf/v1/rooms/HardMainJD2021/session", false);
+    xhr.setRequestHeader("X-SkuId", jdcosmos.core.getskuid(req));
     xhr.setRequestHeader("Authorization", ticket);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(JSON.stringify(req.body), null, 2);
-
-    res.send(xhr.responseText.toString());
+    res.sendStatus(200);
 });
 
-app.get("/wdf/v1/rooms/PCJD2017/newsfeed", (request, response) => {
-	var auth = request.header("Authorization");
-	const httpsopts = {
-    hostname: "prod.just-dance.com",
-    port: 443,
-    path: "/wdf/v1/rooms/PCJD2017/newsfeed",
-    method: "GET",
-    headers: {
-      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
-      Accept: "*/*",
-      "Accept-Language": "en-us,en",
-      Authorization: auth,
-      "X-SkuId": "jd2017-pc-ww"
-    }
-  };
-  redirect(httpsopts, "", function(redResponse) {
-    response.send(redResponse);
-  });
+app.delete("/wdf/v1/rooms/" + room + "/session", (req, res) => {
+    var ticket = req.header("Authorization");
+    var xhr = new XMLHttpRequest();
+    xhr.open("DELETE", prodwsurl + "/wdf/v1/rooms/HardMainJD2021/session", false);
+    xhr.setRequestHeader("X-SkuId", jdcosmos.core.getskuid(req));
+    xhr.setRequestHeader("Authorization", ticket);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(req.body),null,2);
+    res.sendStatus(200);
 });
 
-app.get("/wdf/v1/rooms/PCJD2017/next-happyhours", (req, res) => {
-        const httpsopts2 = {
-            hostname: "prod.just-dance.com",
-            port: 443,
-            path: "/wdf/v1/rooms/PCJD2017/next-happyhours",
-            method: "GET",
-            headers: {
-                Accept: "*/*",
-                Authorization: auth,
-                "Content-Type": "application/json",
-                "X-SkuId": "jd2017-pc-ww"
-            }
-        };
-        redirect(httpsopts2, JSON.stringify({}), function (redResponse) {
-            res.send(JSON.parse(redResponse));
-        });
-});
-
-app.get("/wdf/v1/rooms/PCJD2017/notification", (request, response) => {
-	var auth = request.header("Authorization");
-	const httpsopts = {
-    hostname: "prod.just-dance.com",
-    port: 443,
-    path: "/wdf/v1/rooms/PCJD2017/notification",
-    method: "GET",
-    headers: {
-      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
-      Accept: "*/*",
-      "Accept-Language": "en-us,en",
-      Authorization: auth,
-      "X-SkuId": "jd2017-pc-ww"
-    }
-  };
-  redirect(httpsopts, "", function(redResponse) {
-    response.send(redResponse);
-  });
-});
-
-app.post("/wdf/v1/rooms/PCJD2017/screens", (req, res) => {
+app.post("/wdf/v1/rooms/HardMainJD2021/screens", (req, res) => {
     var json = JSON.stringify(req.body);
         const httpsopts2 = {
             hostname: "prod.just-dance.com",
             port: 443,
-            path: "/wdf/v1/rooms/PCJD2017/screens",
+            path: "/wdf/v1/rooms/HardMainJD2021/screens",
             method: "POST",
             headers: {
                 Accept: "*/*",
-                Authorization: auth,
+                Authorization: req.header("Authorization"),
                 "Content-Type": "application/json",
-                "X-SkuId": "jd2017-pc-ww"
+                "X-SkuId": jdcosmos.core.getskuid(req)
             }
         };
         redirect(httpsopts2, json, function (redResponse) {
             var response = JSON.parse(redResponse);
-            if ("jd2017-pc-ww" == "jd2017-pc-ww") {
+            if (jdcosmos.core.getskuid(req) == "jd2017-pc-ww") {
                 response.screens.forEach(function (object) {
                 object.schedule.theme = "RegularTournament";
-                require("./wdf/jd2021pc.json").codenames.forEach(
+                require("./DATABASE/wdf/jd2021pc_replace.json").codenames.forEach(
                     function (object2) {
                     if (object.mapName == object2.Codename) {
                         object.mapName = object2.replace;
@@ -1134,71 +1076,125 @@ app.post("/wdf/v1/rooms/PCJD2017/screens", (req, res) => {
         });
 });
 
-app.post("/wdf/v1/rooms/PCJD2017/session", (req, res) => {
+app.get("/wdf/v1/rooms/" + room + "/next-happyhours", (req, res) => {
+        const httpsopts2 = {
+            hostname: "prod.just-dance.com",
+            port: 443,
+            path: "/wdf/v1/rooms/HardMainJD2021/next-happyhours",
+            method: "GET",
+            headers: {
+                Accept: "*/*",
+                Authorization: req.header("Authorization"),
+                "Content-Type": "application/json",
+                "X-SkuId": jdcosmos.core.getskuid(req)
+            }
+        };
+        redirect(httpsopts2, JSON.stringify({}), function (redResponse) {
+            res.send(JSON.parse(redResponse));
+        });
+});
+
+
+app.get("/wdf/v1/rooms/" + room + "/online-rank-widget", (req, res) => {
+        const httpsopts2 = {
+            hostname: "prod.just-dance.com",
+            port: 443,
+            path: "/wdf/v1/rooms/HardMainJD2021/online-rank-widget",
+            method: "GET",
+            headers: {
+                Accept: "*/*",
+                Authorization: req.header("Authorization"),
+                "Content-Type": "application/json",
+                "X-SkuId": jdcosmos.core.getskuid(req)
+            }
+        };
+        redirect(httpsopts2, "{}", function (redResponse) {
+            res.send(redResponse);
+        });
+});
+app.get("/wdf/v1/rooms/" + room + "/session-recap", (req, res) => {
+        const httpsopts2 = {
+            hostname: "prod.just-dance.com",
+            port: 443,
+            path: "/wdf/v1/rooms/HardMainJD2021/session-recap",
+            method: "GET",
+            headers: {
+                Accept: "*/*",
+                Authorization: req.header("Authorization"),
+                "Content-Type": "application/json",
+                "X-SkuId": jdcosmos.core.getskuid(req)
+            }
+        };
+        redirect(httpsopts2, "{}", function (redResponse) {
+            res.send(redResponse);
+        });
+});
+
+app.get("/wdf/v1/rooms/HardMainJD2021/newsfeed", (request, response) => {
+	var auth = request.header("Authorization");
+	const httpsopts = {
+    hostname: "prod.just-dance.com",
+    port: 443,
+    path: "/wdf/v1/rooms/HardMainJD2021/newsfeed",
+    method: "GET",
+    headers: {
+      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+      Accept: "*/*",
+      "Accept-Language": "en-us,en",
+      Authorization: auth,
+      "X-SkuId": "jd2017-pc-ww"
+    }
+  };
+  redirect(httpsopts, "", function(redResponse) {
+    response.send(redResponse);
+  });
+});
+
+app.get("/wdf/v1/rooms/HardMainJD2021/notification", (request, response) => {
+	var auth = request.header("Authorization");
+	const httpsopts = {
+    hostname: "prod.just-dance.com",
+    port: 443,
+    path: "/wdf/v1/rooms/HardMainJD2021/notification",
+    method: "GET",
+    headers: {
+      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+      Accept: "*/*",
+      "Accept-Language": "en-us,en",
+      Authorization: auth,
+      "X-SkuId": "jd2017-pc-ww"
+    }
+  };
+  redirect(httpsopts, "", function(redResponse) {
+    response.send(redResponse);
+  });
+});
+
+app.get("/wdf/v1/rooms/" + room + "/ccu", (req, res) => {
     var ticket = req.header("Authorization");
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", prodwsurl + "/wdf/v1/rooms/PCJD2017/session", false);
-    xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
+    xhr.open(
+        "GET",
+        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/ccu",
+        false);
+    xhr.setRequestHeader("X-SkuId", jdcosmos.core.getskuid(req));
     xhr.setRequestHeader("Authorization", ticket);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(JSON.stringify(req.body), null, 2);
-    res.sendStatus(200);
-});
 
-app.delete("/wdf/v1/rooms/PCJD2017/session", (req, res) => {
-    var ticket = req.header("Authorization");
-    var xhr = new XMLHttpRequest();
-    xhr.open("DELETE", prodwsurl + "/wdf/v1/rooms/PCJD2017/session", false);
-    xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
-    xhr.setRequestHeader("Authorization", ticket);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify(req.body),null,2);
-    res.sendStatus(200);
+    res.send(xhr.responseText.toString());
 });
 
 app.get(
-    "/wdf/v1/rooms/PCJD2017/themes/tournament/score-recap",
+    "/wdf/v1/rooms/" + room + "/themes/tournament/score-recap",
     (req, res) => {
      var ticket = req.header("Authorization");
     var xhr = new XMLHttpRequest();
     xhr.open(
         "GET",
-        prodwsurl + "/wdf/v1/rooms/PCJD2017/themes/tournament/score-recap",
+        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/tournament/score-recap",
         false);
-    xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
-    xhr.setRequestHeader("Authorization", ticket);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify(req.body), null, 2);
-
-    res.send(JSON.parse(xhr.responseText));
-});
-
-app.get(
-    "/wdf/v1/rooms/PCJD2017/themes/teambattle/score-status",
-    (req, res) => {
-    var ticket = req.header("Authorization");
-    var xhr = new XMLHttpRequest();
-    xhr.open(
-        "GET",
-        prodwsurl + "/wdf/v1/rooms/PCJD2017/themes/teambattle/score-status",
-        false);
-    xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
-    xhr.setRequestHeader("Authorization", ticket);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify(req.body), null, 2);
-
-    res.send(JSON.parse(xhr.responseText));
-      });
-app.get(
-    "/wdf/v1/rooms/PCJD2017/themes/boss/score-status",
-    (req, res) => {
-    var ticket = req.header("Authorization");
-    var xhr = new XMLHttpRequest();
-    xhr.open(
-        "GET",
-        prodwsurl + "/wdf/v1/rooms/PCJD2017/themes/boss/score-status",
-        false);
-    xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
+    xhr.setRequestHeader("X-SkuId", jdcosmos.core.getskuid(req));
     xhr.setRequestHeader("Authorization", ticket);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(JSON.stringify(req.body), null, 2);
@@ -1207,15 +1203,49 @@ app.get(
 });
 
 app.post(
-    "/wdf/v1/rooms/PCJD2017/themes/tournament/update-scores",
+    "/wdf/v1/rooms/" + room + "/themes/tournament/update-scores",
     (req, res) => {
     var ticket = req.header("Authorization");
     var xhr = new XMLHttpRequest();
     xhr.open(
         "POST",
-        prodwsurl + "/wdf/v1/rooms/PCJD2017/themes/tournament/update-scores",
+        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/tournament/update-scores",
         false);
-    xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
+    xhr.setRequestHeader("X-SkuId", jdcosmos.core.getskuid(req));
+    xhr.setRequestHeader("Authorization", ticket);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(req.body), null, 2);
+
+    res.send(JSON.parse(xhr.responseText));
+});
+
+app.post(
+    "/wdf/v1/rooms/" + room + "/themes/vote/update-scores",
+    (req, res) => {
+    var ticket = req.header("Authorization");
+    var xhr = new XMLHttpRequest();
+    xhr.open(
+        "POST",
+        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/vote/update-scores",
+        false);
+    xhr.setRequestHeader("X-SkuId", jdcosmos.core.getskuid(req));
+    xhr.setRequestHeader("Authorization", ticket);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(req.body), null, 2);
+
+    res.send(JSON.parse(xhr.responseText));
+});
+
+app.post(
+    "/wdf/v1/rooms/" + room + "/themes/boss/update-scores",
+    (req, res) => {
+    var ticket = req.header("Authorization");
+    var xhr = new XMLHttpRequest();
+    xhr.open(
+        "POST",
+        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/boss/update-scores",
+        false);
+    xhr.setRequestHeader("X-SkuId", jdcosmos.core.getskuid(req));
     xhr.setRequestHeader("Authorization", ticket);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(JSON.stringify(req.body), null, 2);
@@ -1224,15 +1254,15 @@ app.post(
 });
 
 app.get(
-    "/wdf/v1/rooms/PCJD2017/themes/vote/choice",
+    "/wdf/v1/rooms/" + room + "/themes/vote/choice",
     (req, res) => {
     var ticket = req.header("Authorization");
     var xhr = new XMLHttpRequest();
     xhr.open(
         "GET",
-        prodwsurl + "/wdf/v1/rooms/PCJD2017/themes/vote/choice",
+        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/vote/choice",
         false);
-    xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
+    xhr.setRequestHeader("X-SkuId", jdcosmos.core.getskuid(req));
     xhr.setRequestHeader("Authorization", ticket);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(JSON.stringify(req.body), null, 2);
@@ -1241,15 +1271,15 @@ app.get(
       });
 
 app.get(
-    "/wdf/v1/rooms/PCJD2017/themes/vote/result",
+    "/wdf/v1/rooms/" + room + "/themes/vote/result",
     (req, res) => {
     var ticket = req.header("Authorization");
     var xhr = new XMLHttpRequest();
     xhr.open(
         "GET",
-        prodwsurl + "/wdf/v1/rooms/PCJD2017/themes/vote/result",
+        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/vote/result",
         false);
-    xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
+    xhr.setRequestHeader("X-SkuId", jdcosmos.core.getskuid(req));
     xhr.setRequestHeader("Authorization", ticket);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(JSON.stringify(req.body), null, 2);
@@ -1258,21 +1288,108 @@ app.get(
       });
 
 app.get(
-    "/wdf/v1/rooms/PCJD2017/themes/vote/score-recap",
+    "/wdf/v1/rooms/" + room + "/themes/vote/score-recap",
     (req, res) => {
     var ticket = req.header("Authorization");
     var xhr = new XMLHttpRequest();
     xhr.open(
         "GET",
-        prodwsurl + "/wdf/v1/rooms/PCJD2017/themes/vote/score-recap",
+        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/vote/score-recap",
         false);
-    xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
+    xhr.setRequestHeader("X-SkuId", jdcosmos.core.getskuid(req));
     xhr.setRequestHeader("Authorization", ticket);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(JSON.stringify(req.body), null, 2);
 
     res.send(JSON.parse(xhr.responseText));
       });
+
+app.get(
+    "/wdf/v1/rooms/" + room + "/themes/boss/score-recap",
+    (req, res) => {
+    var ticket = req.header("Authorization");
+    var xhr = new XMLHttpRequest();
+    xhr.open(
+        "GET",
+        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/boss/score-recap",
+        false);
+    xhr.setRequestHeader("X-SkuId", jdcosmos.core.getskuid(req));
+    xhr.setRequestHeader("Authorization", ticket);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(req.body), null, 2);
+    res.send(JSON.parse(xhr.responseText));
+});
+app.post(
+    "/wdf/v1/rooms/" + room + "/themes/teambattle/team-names",
+    (req, res) => {
+    var ticket = req.header("Authorization");
+    var xhr = new XMLHttpRequest();
+    xhr.open(
+        "POST",
+        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/teambattle/team-names",
+        false);
+    xhr.setRequestHeader("X-SkuId", jdcosmos.core.getskuid(req));
+    xhr.setRequestHeader("Authorization", ticket);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(req.body), null, 2);
+
+    res.send(JSON.parse(xhr.responseText));
+});
+
+app.get(
+    "/wdf/v1/rooms/" + room + "/themes/boss/score-recap",
+    (req, res) => {
+    var ticket = req.header("Authorization");
+    var xhr = new XMLHttpRequest();
+    xhr.open(
+        "GET",
+        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/boss/score-recap",
+        false);
+    xhr.setRequestHeader("X-SkuId", jdcosmos.core.getskuid(req));
+    xhr.setRequestHeader("Authorization", ticket);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(req.body), null, 2);
+
+    res.send(JSON.parse(xhr.responseText));
+});
+
+app.get(
+    "/wdf/v1/rooms/" + room + "/themes/teambattle/score-status",
+    (req, res) => {
+    var ticket = req.header("Authorization");
+    var xhr = new XMLHttpRequest();
+    xhr.open(
+        "GET",
+        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/teambattle/score-status",
+        false);
+    xhr.setRequestHeader("X-SkuId", jdcosmos.core.getskuid(req));
+    xhr.setRequestHeader("Authorization", ticket);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(req.body), null, 2);
+
+    res.send(JSON.parse(xhr.responseText));
+      });
+app.get(
+    "/wdf/v1/rooms/" + room + "/themes/boss/score-status",
+    (req, res) => {
+    var ticket = req.header("Authorization");
+    var xhr = new XMLHttpRequest();
+    xhr.open(
+        "GET",
+        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/boss/score-status",
+        false);
+    xhr.setRequestHeader("X-SkuId", jdcosmos.core.getskuid(req));
+    xhr.setRequestHeader("Authorization", ticket);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(req.body), null, 2);
+
+    res.send(JSON.parse(xhr.responseText));
+});
+
+
+app.get("/wdf/v1/online-bosses", (req, res) => {
+    res.send(bosses);
+});
 
 // v3/profiles/sessions
 app.post("/v3/profiles/sessions", (req, res) => {
