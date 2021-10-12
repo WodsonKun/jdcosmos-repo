@@ -38,8 +38,8 @@ const Time = require("./cosmos-functions/v1/wdf/server-time.json");
 const Bosses = require("./cosmos-functions/v1/wdf/online-bosses.json");
 var room = "PCJD2017";
 var prodwsurl = "https://prod.just-dance.com";
-var bosses = require("./wdf/v1/ccu.json");
-var ccu = require("./wdf/bosses.json");
+var bosses = require("./cosmos-functions/v1/wdf/ccu.json");
+var ccu = require("./cosmos-functions/v1/wdf/bosses.json");
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 // V1, V2 and V3
