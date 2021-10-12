@@ -996,27 +996,8 @@ app.get("/community-remix/v1/active-contest", (request, response) => {
 
 // World Dance Floor
 app.post("/wdf/v1/assign-room", (request, response) => {
-  var json = JSON.stringify({
-    "playGlobally":1
-  });
-  var auth = request.header("Authorization");
-  const httpsopts = {
-    hostname: "prod.just-dance.com",
-    port: 443,
-    path: "/wdf/v1/assign-room",
-    method: "POST",
-    headers: {
-      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
-      Accept: "*/*",
-      "Accept-Language": "en-us,en",
-      Authorization: auth,
-      "Content-Type": "application/json",
-      "X-SkuId": "jd2017-pc-ww"
-    }
-  };
-  redirect(httpsopts, "", function(redResponse) {
-    response.send(redResponse);
-  });
+    res.send(
+        '{ "room": "HardMainJD2021" }');
 });
 
 app.get("/wdf/v1/server-time", (request, response) => {
@@ -1040,11 +1021,30 @@ app.get("/wdf/v1/server-time", (request, response) => {
 });
 
 app.get("/wdf/v1/online-bosses", (request, response) => {
+    res.send(bosses);
+});
+
+app.get("/wdf/v1/rooms/HardMainJD2021/ccu", (req, res) => {
+    var ticket = auth;
+    var xhr = new XMLHttpRequest();
+    xhr.open(
+        "GET",
+        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/ccu",
+        false);
+    xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
+    xhr.setRequestHeader("Authorization", ticket);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(req.body), null, 2);
+
+    res.send(xhr.responseText.toString());
+});
+
+app.get("/wdf/v1/rooms/HardMainJD2021/newsfeed", (request, response) => {
 	var auth = request.header("Authorization");
 	const httpsopts = {
     hostname: "prod.just-dance.com",
     port: 443,
-    path: "/wdf/v1/online-bosses",
+    path: "/wdf/v1/rooms/HardMainJD2021/newsfeed",
     method: "GET",
     headers: {
       "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
@@ -1059,12 +1059,30 @@ app.get("/wdf/v1/online-bosses", (request, response) => {
   });
 });
 
-app.get("/wdf/v1/rooms/PCJD2017/ccu", (request, response) => {
+app.get("/wdf/v1/rooms/HardMainJD2021/next-happyhours", (req, res) => {
+        const httpsopts2 = {
+            hostname: "prod.just-dance.com",
+            port: 443,
+            path: "/wdf/v1/rooms/HardMainJD2021/next-happyhours",
+            method: "GET",
+            headers: {
+                Accept: "*/*",
+                Authorization: auth,
+                "Content-Type": "application/json",
+                "X-SkuId": "jd2017-pc-ww"
+            }
+        };
+        redirect(httpsopts2, JSON.stringify({}), function (redResponse) {
+            res.send(JSON.parse(redResponse));
+        });
+});
+
+app.get("/wdf/v1/rooms/HardMainJD2021/notification", (request, response) => {
 	var auth = request.header("Authorization");
 	const httpsopts = {
     hostname: "prod.just-dance.com",
     port: 443,
-    path: "/wdf/v1/rooms/PCJD2017/ccu",
+    path: "/wdf/v1/rooms/HardMainJD2021/notification",
     method: "GET",
     headers: {
       "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
@@ -1079,254 +1097,177 @@ app.get("/wdf/v1/rooms/PCJD2017/ccu", (request, response) => {
   });
 });
 
-app.get("/wdf/v1/rooms/PCJD2017/newsfeed", (request, response) => {
-	var auth = request.header("Authorization");
-	const httpsopts = {
-    hostname: "prod.just-dance.com",
-    port: 443,
-    path: "/wdf/v1/rooms/PCJD2017/newsfeed",
-    method: "GET",
-    headers: {
-      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
-      Accept: "*/*",
-      "Accept-Language": "en-us,en",
-      Authorization: auth,
-      "X-SkuId": "jd2017-pc-ww"
-    }
-  };
-  redirect(httpsopts, "", function(redResponse) {
-    response.send(redResponse);
-  });
+app.post("/wdf/v1/rooms/HardMainJD2021/screens", (req, res) => {
+    var json = JSON.stringify(req.body);
+        const httpsopts2 = {
+            hostname: "prod.just-dance.com",
+            port: 443,
+            path: "/wdf/v1/rooms/HardMainJD2021/screens",
+            method: "POST",
+            headers: {
+                Accept: "*/*",
+                Authorization: auth,
+                "Content-Type": "application/json",
+                "X-SkuId": "jd2017-pc-ww"
+            }
+        };
+        redirect(httpsopts2, json, function (redResponse) {
+            var response = JSON.parse(redResponse);
+            if ("jd2017-pc-ww" == "jd2017-pc-ww") {
+                response.screens.forEach(function (object) {
+                object.schedule.theme = "RegularTournament";
+                require("./wdf/jd2021pc.json").codenames.forEach(
+                    function (object2) {
+                    if (object.mapName == object2.Codename) {
+                        object.mapName = object2.replace;
+                    }
+                });
+                });
+            }
+            
+            res.send(response);
+        });
 });
 
-app.get("/wdf/v1/rooms/PCJD2017/next-happyhours", (request, response) => {
-	var auth = request.header("Authorization");
-	const httpsopts = {
-    hostname: "prod.just-dance.com",
-    port: 443,
-    path: "/wdf/v1/rooms/PCJD2017/next-happyhours",
-    method: "GET",
-    headers: {
-      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
-      Accept: "*/*",
-      "Accept-Language": "en-us,en",
-      Authorization: auth,
-      "X-SkuId": "jd2017-pc-ww"
-    }
-  };
-  redirect(httpsopts, "", function(redResponse) {
-    response.send(redResponse);
-  });
+app.post("/wdf/v1/rooms/HardMainJD2021/session", (req, res) => {
+    var ticket = req.header("Authorization");
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", prodwsurl + "/wdf/v1/rooms/HardMainJD2021/session", false);
+    xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
+    xhr.setRequestHeader("Authorization", ticket);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(req.body), null, 2);
+    res.sendStatus(200);
 });
 
-app.get("/wdf/v1/rooms/PCJD2017/notification", (request, response) => {
-	var auth = request.header("Authorization");
-	const httpsopts = {
-    hostname: "prod.just-dance.com",
-    port: 443,
-    path: "/wdf/v1/rooms/PCJD2017/notification",
-    method: "GET",
-    headers: {
-      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
-      Accept: "*/*",
-      "Accept-Language": "en-us,en",
-      Authorization: auth,
-      "X-SkuId": "jd2017-pc-ww"
-    }
-  };
-  redirect(httpsopts, "", function(redResponse) {
-    response.send(redResponse);
-  });
+app.delete("/wdf/v1/rooms/HardMainJD2021/session", (req, res) => {
+    var ticket = req.header("Authorization");
+    var xhr = new XMLHttpRequest();
+    xhr.open("DELETE", prodwsurl + "/wdf/v1/rooms/HardMainJD2021/session", false);
+    xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
+    xhr.setRequestHeader("Authorization", ticket);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(req.body),null,2);
+    res.sendStatus(200);
 });
 
-app.post("/wdf/v1/rooms/PCJD2017/screens", (request, response) => {
-  var json = JSON.stringify(request.body);
-  var auth = request.header("Authorization");
-  const httpsopts = {
-    hostname: "prod.just-dance.com",
-    port: 443,
-    path: "/wdf/v1/rooms/PCJD2017/screens",
-    method: "POST",
-    headers: {
-      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
-      Accept: "*/*",
-      "Accept-Language": "en-us,en",
-      Authorization: auth,
-      "Content-Type": "application/json",
-      "X-SkuId": "jd2017-pc-ww"
-    }
-  };
-  redirect(httpsopts, "", function(redResponse) {
-    response.send(redResponse);
-  });
+app.get(
+    "/wdf/v1/rooms/HardMainJD2021/themes/tournament/score-recap",
+    (req, res) => {
+     var ticket = req.header("Authorization");
+    var xhr = new XMLHttpRequest();
+    xhr.open(
+        "GET",
+        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/tournament/score-recap",
+        false);
+    xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
+    xhr.setRequestHeader("Authorization", ticket);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(req.body), null, 2);
+
+    res.send(JSON.parse(xhr.responseText));
 });
 
-app.post("/wdf/v1/rooms/PCJD2017/session", (request, response) => {
-  var auth = request.header("Authorization");
-  const httpsopts = {
-    hostname: "prod.just-dance.com",
-    port: 443,
-    path: "/wdf/v1/rooms/PCJD2017/session",
-    method: "POST",
-    headers: {
-      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
-      Accept: "*/*",
-      "Accept-Language": "en-us,en",
-      Authorization: auth,
-      "Content-Type": "application/json",
-      "X-SkuId": "jd2017-pc-ww"
-    }
-  };
-  redirect(httpsopts, "", function(redResponse) {
-    response.send(redResponse);
-  });
+app.get(
+    "/wdf/v1/rooms/HardMainJD2021/themes/teambattle/score-status",
+    (req, res) => {
+    var ticket = req.header("Authorization");
+    var xhr = new XMLHttpRequest();
+    xhr.open(
+        "GET",
+        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/teambattle/score-status",
+        false);
+    xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
+    xhr.setRequestHeader("Authorization", ticket);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(req.body), null, 2);
+
+    res.send(JSON.parse(xhr.responseText));
+      });
+app.get(
+    "/wdf/v1/rooms/HardMainJD2021/themes/boss/score-status",
+    (req, res) => {
+    var ticket = req.header("Authorization");
+    var xhr = new XMLHttpRequest();
+    xhr.open(
+        "GET",
+        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/boss/score-status",
+        false);
+    xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
+    xhr.setRequestHeader("Authorization", ticket);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(req.body), null, 2);
+
+    res.send(JSON.parse(xhr.responseText));
 });
 
-app.delete("/wdf/v1/rooms/PCJD2017/session", (request, response) => {
-  var auth = request.header("Authorization");
-  const httpsopts = {
-    hostname: "prod.just-dance.com",
-    port: 443,
-    path: "/wdf/v1/rooms/PCJD2017/session",
-    method: "DELETE",
-    headers: {
-      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
-      Accept: "*/*",
-      "Accept-Language": "en-us,en",
-      Authorization: auth,
-      "Content-Type": "application/json",
-      "X-SkuId": "jd2017-pc-ww"
-    }
-  };
-  redirect(httpsopts, "", function(redResponse) {
-    response.send(redResponse);
-  });
+app.post(
+    "/wdf/v1/rooms/HardMainJD2021/themes/tournament/update-scores",
+    (req, res) => {
+    var ticket = req.header("Authorization");
+    var xhr = new XMLHttpRequest();
+    xhr.open(
+        "POST",
+        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/tournament/update-scores",
+        false);
+    xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
+    xhr.setRequestHeader("Authorization", ticket);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(req.body), null, 2);
+
+    res.send(JSON.parse(xhr.responseText));
 });
 
-app.get("/wdf/v1/rooms/PCJD2017/themes/boss/score-recap", (request, response) => {
-	var auth = request.header("Authorization");
-	const httpsopts = {
-    hostname: "prod.just-dance.com",
-    port: 443,
-    path: "/wdf/v1/rooms/PCJD2017/themes/boss/score-recap",
-    method: "GET",
-    headers: {
-      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
-      Accept: "*/*",
-      "Accept-Language": "en-us,en",
-      Authorization: auth,
-      "X-SkuId": "jd2017-pc-ww"
-    }
-  };
-  redirect(httpsopts, "", function(redResponse) {
-    response.send(redResponse);
-  });
-});
+app.get(
+    "/wdf/v1/rooms/HardMainJD2021/themes/vote/choice",
+    (req, res) => {
+    var ticket = req.header("Authorization");
+    var xhr = new XMLHttpRequest();
+    xhr.open(
+        "GET",
+        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/vote/choice",
+        false);
+    xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
+    xhr.setRequestHeader("Authorization", ticket);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(req.body), null, 2);
 
-app.get("/wdf/v1/rooms/PCJD2017/themes/boss/score-status", (request, response) => {
-	var auth = request.header("Authorization");
-	const httpsopts = {
-    hostname: "prod.just-dance.com",
-    port: 443,
-    path: "/wdf/v1/rooms/PCJD2017/themes/boss/score-status",
-    method: "GET",
-    headers: {
-      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
-      Accept: "*/*",
-      "Accept-Language": "en-us,en",
-      Authorization: auth,
-      "X-SkuId": "jd2017-pc-ww"
-    }
-  };
-  redirect(httpsopts, "", function(redResponse) {
-    response.send(redResponse);
-  });
-});
+    res.send(JSON.parse(xhr.responseText));
+      });
 
-app.post("/wdf/v1/rooms/PCJD2017/themes/vote/update-score", (request, response) => {
-  var auth = request.header("Authorization");
-  const httpsopts = {
-    hostname: "prod.just-dance.com",
-    port: 443,
-    path: "/wdf/v1/rooms/PCJD2017/themes/vote/update-score",
-    method: "POST",
-    headers: {
-      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
-      Accept: "*/*",
-      "Accept-Language": "en-us,en",
-      Authorization: auth,
-      "Content-Type": "application/json",
-      "X-SkuId": "jd2017-pc-ww"
-    }
-  };
-  redirect(httpsopts, "", function(redResponse) {
-    response.send(redResponse);
-  });
-});
+app.get(
+    "/wdf/v1/rooms/HardMainJD2021/themes/vote/result",
+    (req, res) => {
+    var ticket = req.header("Authorization");
+    var xhr = new XMLHttpRequest();
+    xhr.open(
+        "GET",
+        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/vote/result",
+        false);
+    xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
+    xhr.setRequestHeader("Authorization", ticket);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(req.body), null, 2);
 
-app.post("/wdf/v1/rooms/PCJD2017/themes/vote/choice", (request, response) => {
-  var json = JSON.stringify({
-    "voteOption":'"' + response.params.map + '"'
-  });
-  var auth = request.header("Authorization");
-  const httpsopts = {
-    hostname: "prod.just-dance.com",
-    port: 443,
-    path: "/wdf/v1/rooms/PCJD2017/themes/vote/choice",
-    method: "POST",
-    headers: {
-      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
-      Accept: "*/*",
-      "Accept-Language": "en-us,en",
-      Authorization: auth,
-      "Content-Type": "application/json",
-      "X-SkuId": "jd2017-pc-ww"
-    }
-  };
-  redirect(httpsopts, "", function(redResponse) {
-    response.send(redResponse);
-  });
-});
+    res.send(JSON.parse(xhr.responseText));
+      });
 
-app.get("/wdf/v1/rooms/PCJD2017/themes/vote/result", (request, response) => {
-	var auth = request.header("Authorization");
-	const httpsopts = {
-    hostname: "prod.just-dance.com",
-    port: 443,
-    path: "/wdf/v1/rooms/PCJD2017/themes/vote/result",
-    method: "GET",
-    headers: {
-      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
-      Accept: "*/*",
-      "Accept-Language": "en-us,en",
-      Authorization: auth,
-      "X-SkuId": "jd2017-pc-ww"
-    }
-  };
-  redirect(httpsopts, "", function(redResponse) {
-    response.send(redResponse);
-  });
-});
+app.get(
+    "/wdf/v1/rooms/HardMainJD2021/themes/vote/score-recap",
+    (req, res) => {
+    var ticket = req.header("Authorization");
+    var xhr = new XMLHttpRequest();
+    xhr.open(
+        "GET",
+        prodwsurl + "/wdf/v1/rooms/HardMainJD2021/themes/vote/score-recap",
+        false);
+    xhr.setRequestHeader("X-SkuId", "jd2017-pc-ww");
+    xhr.setRequestHeader("Authorization", ticket);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(req.body), null, 2);
 
-app.get("/wdf/v1/rooms/PCJD2017/themes/vote/score-recap", (request, response) => {
-	var auth = request.header("Authorization");
-	const httpsopts = {
-    hostname: "prod.just-dance.com",
-    port: 443,
-    path: "/wdf/v1/rooms/PCJD2017/themes/vote/score-recap",
-    method: "GET",
-    headers: {
-      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
-      Accept: "*/*",
-      "Accept-Language": "en-us,en",
-      Authorization: auth,
-      "X-SkuId": "jd2017-pc-ww"
-    }
-  };
-  redirect(httpsopts, "", function(redResponse) {
-    response.send(redResponse);
-  });
-});
+    res.send(JSON.parse(xhr.responseText));
+      });
 
 // v3/profiles/sessions
 app.post("/v3/profiles/sessions", (req, res) => {
