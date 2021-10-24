@@ -95,7 +95,14 @@ app.get("/songdb/v1/songs", function (request, response) {
 
         for (var song in OnlineDB) {
             var obj = OnlineDB[song];
-            obj.assets["banner_bkgImageUrl"] = obj.assets["map_bkgImageUrl"];
+			if (obj.assets["map_bkgImageUrl"] == null || 
+			obj.assets["map_bkgImageUrl"] == "" ||
+			obj.assets["map_bkgImageUrl"] == undefined){
+				obj.assets["banner_bkgImageUrl"] = obj.assets["banner_bkgImageUrl"];
+			}
+			else {
+				obj.assets["banner_bkgImageUrl"] = obj.assets["map_bkgImageUrl"];
+			}
         }
         return response.send(OnlineDB);
         break;
