@@ -1,8 +1,8 @@
 {
   "configuration": {
     "platformConfig": {
-      "applicationId": "341789d4-b41f-4f40-ac79-e2bc4c94ead4",
-      "spaceId": "f1ae5b84-db7c-481e-9867-861cf1852dc8",
+      "applicationId": "036bc5f9-4b88-4847-893f-2e89b24f8b97",
+      "spaceId": "b55df2ab-19ea-4ed8-bc40-8a4bb5708484",
       "platform": "PC",
       "uplayGameCode": "",
       "environment": "prod"
@@ -324,7 +324,7 @@
       },
       {
         "name": "spaces/entities",
-        "url": "http://{env}just-icance-cos-aa.herokuapp.com/{version}/spaces/{spaceId}/entities",
+         "url": "http://{env}just-icance-cos-aa.herokuapp.com/{version}/spaces/{spaceId}/entities",
         "version": 2
       },
       {
