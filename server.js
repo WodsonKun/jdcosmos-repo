@@ -32,20 +32,15 @@ const QuestDB = require("./cosmos-database/v1/cosmos-questdb.json");
 const ItemDB = require("./cosmos-database/v1/cosmos-itemdb.json");
 
 //WDF
-const WDF = require("./DATABASE/wdf/room-asign.json");
-const RoomPC = require("./DATABASE/wdf/jd2017pc_room.json");
-const Time = require("./DATABASE/server-time.json");
-const Bosses = require("./DATABASE/wdf/bosses.json");
-var room = "MediumMainJD2021";
-var prodwsurl = "https://prod.just-dance.com";
-var bosses = require("./DATABASE/wdf/v1/ccu.json");
-var ccu = require("./DATABASE/wdf/bosses.json");
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+const WDF = require("./cosmos-functions/v1/wdf/assign-room.json");
+const RoomPC = require("./cosmos-functions/v1/wdf/screens.json");
+const Time = require("./cosmos-functions/v1/wdf/server-time.json");
+const Bosses = require("./cosmos-functions/v1/wdf/online-bosses.json");
 
 // V1, V2 and V3
-const v1 = require("./v1/config.json");
-const v2 = require("./v2/services.json");
-const v3 = require("./V3/users/0/user.json");
+const v1 = require("./cosmos-server/v1/configuration.json");
+const v2 = require("./cosmos-server/v2/entities.json");
+const v3 = require("./cosmos-server/v3/users/1b5f3c8c-4072-4d13-af9e-f47d7a6e8021.json");
 
 // Others
 const DM = require("./cosmos-functions/v1/blocks.json");
@@ -58,240 +53,6 @@ const Subs = require("./cosmos-functions/v1/subscription.json");
 
 // Define "search" variable
 var search;
-
-// WDF test
-var jdconnect = {
-    interactiveconfig: {
-        playerseason: {
-            isseasonactive: true,
-            seasonnumber: 4,
-            seasonname: "Traveler",
-            seasonplaylist: ["RockYourBody", "KissYou", "AllTheStars", "RainbowRhythm", "OnTheFloor", "WhenIGrowUp", "Levitating"]
-        },
-        wdfoverwrite: {
-            wdfoverwriteenabled: false,
-            wdfoverwritehappyhour: '{"__class":"HappyHoursInfo","start":1615651200,"end":1615653000,"running":false}',
-            wdfoverwritelist: ["BlackWidow", "Finesse"]
-        },
-		playlists: {
-			partyplaylist: ["Timber"],
-			top20playlist: []
-		},
-        songs: {
-            customsongsonly: true
-        }
-    },
-    core: {
-        currenauths: [],
-        currentbeta: [],
-
-        // DO NOT MODIFY THIS LINE WITHOUT PERMISSION
-        beta_uplayers: [
-            "cupcakkeLuv",
-            "justdancingsam",
-            "litenitee",
-            "MeowMeowMeyo",
-            "liorandron123",
-            "NicolasPlayz",
-            "AlexPokeguy4",
-            "StevenSBJD1702",
-            "justAJdance",
-            "itayblanka"
-        ],
-
-        requestcheck: function (request) {
-            // PC, Switch, Switch, Switch, WiiU, WiiU, WiiU
-            if (
-                request.useragent.source ==
-                "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static" ||
-                request.useragent.source ==
-                "UbiServices_SDK_HTTP_Client_4.2.21_NNX64" ||
-                request.useragent.source ==
-                "UbiServices_SDK_HTTP_Client_2017.Final.4_SWITCH64" ||
-                request.useragent.source == "UbiServices_SDK_2017.Final.28_SWITCH64" ||
-                request.useragent.source ==
-                "UbiServices_SDK_HTTP_Client_2017.Final.4_WIIU" ||
-                request.useragent.source == "UbiServices_SDK_2017.Final.28_WIIU" ||
-                request.useragent.source == "UbiServices_SDK_HTTP_Client_4.2.9_WIIU" ||
-                request.useragent.source == "UbiServices_SDK_HTTP_Client_3.2.1.148217_WIIU" ||
-                request.useragent.source.includes("PS4") == true) {
-                    return true
-            } else {
-                if (request.header("X-SkuId") == "jdconnect-online-web" || request.url == "/songdb/v2/songs") {
-                    return true;
-                } else {
-                    return 403;
-                }
-            }
-        },
-        getskuid: function (request) {
-            if (
-                request.useragent.source ==
-                "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static") {
-                    return "jd2017-pc-ww"
-                } else {
-                    return request.header("X-SkuId")
-                }
-        },
-        interactivemanagement: {
-            checkplayer: function (auth) {
-                if (jdconnect.core.currentbeta[auth] == undefined) {
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-        }
-    },
-    Carousel: {
-        ifsongpublic: (codename) => {
-            return true; 
-        },
-        returncatalog: () => {
-            party = require("./DATABASE/carousel.json")
-			// add categories to all
-			
-			party.categories.forEach(function(carousel){
-                // add jdmelody songs to the category
-				if (carousel.title == "Just Dance Melody") {
-					for (var songs in require("./DATABASE/Platforms/jd2017-pc-ww/SONGDBS.json")) {
-						song = require("./DATABASE/Platforms/jd2017-pc-ww/SONGDBS.json")[songs]
-						var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song.mapName + '"}],"actionList":"partyMap"}');
-						if (song.tags.includes("melody") == true) { carousel.items.push(obj) }
-					}
-				}
-
-				// add all the songs to the jdconnect catagory
-				if (carousel.title == "Just Dance Connect") {
-					for (var songs in require("./DATABASE/Platforms/jd2017-pc-ww/SONGDBS.json")) {
-						song = require("./DATABASE/Platforms/jd2017-pc-ww/SONGDBS.json")[songs]
-						var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song.mapName + '"}],"actionList":"partyMap"}');
-						if (jdconnect.Carousel.ifsongpublic(song.mapName) == true) { carousel.items.push(obj) }
-					}
-				}
-				
-				// add season songs if enabled
-				if (carousel.title == "[SEASON NUMBER] SEASON NAME") {
-					if (jdconnect.interactiveconfig.playerseason.isseasonactive == true) {
-						carousel.title = "[ Season " + jdconnect.interactiveconfig.playerseason.seasonnumber.toString() + " ] " + jdconnect.interactiveconfig.playerseason.seasonname;
-						jdconnect.interactiveconfig.playerseason.seasonplaylist.forEach(function(song) {
-							var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song + '"}],"actionList":"partyMap"}');
-							if (jdconnect.Carousel.ifsongpublic(song.mapName) == true) { carousel.items.push(obj) }
-						})
-					}
-				}
-				
-				// Non-Personalized Playlists
-				if (carousel.title == "[icon:PLAYLIST] Easy Peasy Party") {
-					jdconnect.interactiveconfig.playlists.partyplaylist.forEach(function(song) {
-						var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song + '"}],"actionList":"partyMap"}');
-						if (jdconnect.Carousel.ifsongpublic(song.mapName) == true) { carousel.items.push(obj) }
-					})
-				}
-				if (carousel.title == "[icon:PLAYLIST] Top 20 Most Played Songs") {
-					jdconnect.interactiveconfig.playlists.top20playlist.forEach(function(song) {
-						var obj = JSON.parse('{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' + song + '"}],"actionList":"partyMap"}');
-						if (jdconnect.Carousel.ifsongpublic(song.mapName) == true) { carousel.items.push(obj) }
-					})
-				}
-				
-				// Personalized Playlists
-				if (carousel.title == "[icon:PLAYLIST] Recommended") {
-					// personalized playlists are in development! Do not add code here unless you know what you are doing.
-				}
-				if (carousel.title == "[icon:PLAYLIST] Personalized Playlist Name Here") {
-					// personalized playlists are in development! Do not add code here unless you know what you are doing.
-				}
-				
-				// Add songs in their games' categories
-			});
-			
-            coop = JSON.parse(JSON.stringify(party))
-            sweat = JSON.parse(JSON.stringify(party))
-            search = JSON.parse(JSON.stringify(party))
-			
-			// switch actionlist for coop and sweat
-			coop.actionLists.coopMap = coop.actionLists.partyMap
-			coop.actionLists.sweatMap = coop.actionLists.partyMap
-			
-			// remove search for coop and sweat
-			coop.categories.forEach(function(carousel){ 
-				if(carousel.title == "[icon:SEARCH_FILTER] Search") {
-					delete carousel
-				}
-			})
-			sweat.categories.forEach(function(carousel){ 
-				if(carousel.title == "[icon:SEARCH_FILTER] Search") {
-					delete carousel
-				}
-			})
-			
-			// add search result to search
-			var current = 0
-			var splice = 0
-			search.categories.forEach(function(carousel){ 
-				if(carousel.title == "[icon:SEARCH_FILTER] Search") {
-				} else {
-					current = current + 1
-				}
-			});
-			var obj = JSON.parse('{ "__class": "Category", "title": "[icon:SEARCH_RESULT] insert search result here", "items": [], "isc": "grp_row", "act": "ui_carousel" }')
-			search.categories.splice(current + 1,0,obj)
-			
-    }
-    },
-    Connecteddb: {
-        CreateAccount: async function(info) {
-            try {
-                await client.connect();
-                const database = client.db("jdconnect");
-                const accounts = database.collection("users");
-                var parse = JSON.parse(info)
-                // create a document to be inserted
-                const doc = { accountuplayusername: parse.uplayusername, isverified: false };
-                const result = await accounts.insertOne(doc);
-                console.log("An User Registered.");
-              } finally {
-                await client.close();
-              }
-        },
-        UpdateAccount: async function(info) {
-            try {
-                await client.connect();
-                const database = client.db("jdconnect");
-                const accounts = database.collection("users");
-                // create a filter for a movie to update
-                const filter = JSON.parse(info).query
-                // this option instructs the method to create a document if no documents match the filter
-                const options = { upsert: true };
-                // create a document that sets the plot of the movie
-                const updateDoc = {
-                  $set: JSON.parse(info).querysec
-                };
-                const result = await accounts.updateOne(filter, updateDoc, options);
-                console.log(
-                  `${result.matchedCount} user accounts were matched and ${result.modifiedCount} of them were updated.`,
-                );
-              } finally {
-                await client.close();
-              }
-        },
-        GetAccountInf: async function(info) {try {
-            await client.connect();
-            const database = client.db("jdconnect");
-            const accounts = database.collection("users");
-            // Query for a movie that has the title 'The Room'
-            const query = JSON.parse(info).query
-            const options = {};
-            const account = await accounts.findOne(query, options);
-            // since this method returns the matched document, not a cursor, print it directly
-            return account
-          } finally {
-            await client.close();
-          }
-        }
-    }
-}
 
 // Customizable core
 var carouselcore = {
@@ -307,16 +68,6 @@ var carouselcore = {
         }
     }
 }
-
-// something
-
-app.use((req, res, next) => {
-        if (jdconnect.core.requestcheck(req) == true) {
-            return next();
-        } else {
-            return res.send(jdconnect.core.requestcheck(req));
-        }
-})
 
 // SKU Packages
 app.get("/packages/v1/sku-packages", function (request, response) {
@@ -1055,59 +806,20 @@ app.delete("/profile/v2/favorites/maps/:map", (req, res) => {
 });
 
 // v1
-app.get("/v1/applications/:game/configuration", function (request, response) {
-    if (jdconnect.core.requestcheck(request) == true) {
-        response.send(v1);
-    } else {
-        response.sendStatus(jdconnect.core.requestcheck(request));
-    }
+app.get(
+    "/v1/applications/341789d4-b41f-4f40-ac79-e2bc4c94ead4/configuration",
+    function (request, response) {
+    response.send(v1);
 });
 
 // v2
-app.get("/v2/spaces/:spaceid/entities", function (request, response) {
-    if (jdconnect.core.requestcheck(request) == true) {
-        response.send(v2);
-    } else {
-        response.sendStatus(jdconnect.core.requestcheck(request));
-    }
+app.get("/v2/spaces/f1ae5b84-db7c-481e-9867-861cf1852dc8/entities", function (request, response) {
+    response.send(v2);
 });
 
-app.post("/profile/v2/filter-players", (request, response) => {
-    var json = JSON.stringify(request.body);
-    const httpsopts = {
-        hostname: "public-ubiservices.ubi.com",
-        port: 443,
-        path: "/v2/profiles/sessions",
-        method: "POST",
-        headers: {
-            "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; Xbox; Xbox One) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.19022",
-            Authorization: require("./DATABASE/ubiticket.json").AuthXBOX,
-            "Content-Type": "application/json",
-            "Ubi-AppId": "7df3c817-cde1-4bf9-9b37-ceb9d06c4b96",
-            Host: "public-ubiservices.ubi.com",
-            "Content-Length": "0"
-        }
-    };
-    redirect(httpsopts, "", function (redResponse) {
-        var responsepar = JSON.parse(redResponse);
-        var auth = "Ubi_v1 " + responsepar["ticket"];
-        const httpsopts2 = {
-            hostname: "prod.just-dance.com",
-            port: 443,
-            path: "/profile/v2/filter-players",
-            method: "POST",
-            headers: {
-                Accept: "*/*",
-                Authorization: auth,
-                "Content-Type": "application/json",
-                "X-SkuId": "jd2020-xone-all"
-            }
-        };
-        redirect(httpsopts2, json, function (redResponse) {
-            response.send(JSON.parse(redResponse));
-        });
-    });
+app.post("/profile/v2/filter-players", function (request, response) {
+    response.send(
+        '["00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000"]');
 });
 
 var requestCountry = require("request-country");
@@ -1141,60 +853,59 @@ app.get("/v3/users/:user", (req, res) => {
         }
     };
     redirect(httpsopts, "", function (redResponse) {
-        res.send(JSON.parse(redResponse));
+        res.send(redResponse);
+        console.log(redResponse);
     });
 });
 
 app.post("/v3/users/:user", (req, res) => {
-    var json = JSON.stringify(req.body);
+    var auth = req.header("Authorization");
+    var sessionid = req.header("Ubi-SessionId");
     const httpsopts = {
         hostname: "public-ubiservices.ubi.com",
         port: 443,
-        path: "/v2/profiles/sessions",
-        method: "POST",
+        path: "/v3/users/" + req.params.user,
+        method: "GET",
         headers: {
-            "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; Xbox; Xbox One) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.19022",
-            Authorization: require("./DATABASE/ubiticket.json").AuthXBOX,
+            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+            Accept: "*/*",
+            Authorization: auth,
             "Content-Type": "application/json",
-            "Ubi-AppId": "155d58d0-94ae-4de2-b8f9-64ed5f299545",
-            Host: "public-ubiservices.ubi.com",
-            "Content-Length": "0"
+            "ubi-appbuildid": "BUILDID_259645",
+            "Ubi-AppId": "341789d4-b41f-4f40-ac79-e2bc4c94ead4",
+            "Ubi-localeCode": "en-us",
+            "Ubi-Populations": "US_EMPTY_VALUE",
+            "Ubi-SessionId": sessionid
         }
     };
     redirect(httpsopts, "", function (redResponse) {
-        var responsepar = JSON.parse(redResponse);
-        var auth = "Ubi_v1 " + responsepar["ticket"];
-        const httpsopts2 = {
-            hostname: "prod.just-dance.com",
-            port: 443,
-            path: "/v3/users/" + req.params.user,
-            method: "POST",
-            headers: {
-                Accept: "*/*",
-                Authorization: auth,
-                "Content-Type": "application/json",
-                "X-SkuId": "jd2017-xone-emea"
-            }
-        };
-        redirect(httpsopts2, json, function (redResponse) {
-            res.send(JSON.parse(redResponse));
-        });
+        res.send(redResponse);
+        console.log(redResponse);
     });
 });
 
-app.get("/leaderboard/v1/maps/*", (req, res) => {
-    var ticket = req.header("Authorization");
-    var xhr = new XMLHttpRequest();
-    var n = req.url.lastIndexOf("/");
-    var result = req.url.substr(0);
-    xhr.open("GET", prodwsurl + result, false);
-    xhr.setRequestHeader("X-SkuId", jdconnect.core.getskuid(req));
-    xhr.setRequestHeader("Authorization", ticket);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send();
-    res.send(xhr.responseText);
+app.get("/leaderboard/v1/maps/:map", (req, res) => {
+    var auth = req.header("Authorization");
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/leaderboard/v1/maps/" + req.params.map,
+        method: "GET",
+        headers: {
+            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+            Accept: "*/*",
+            Authorization: auth,
+            "Content-Type": "application/json",
+            "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, "", function (redResponse) {
+        var responsepar = JSON.parse(JSON.stringify(redResponse));
+        res.send(responsepar);
+        console.log(responsepar)
+    });
 });
+
 app.get("/leaderboard/v1/maps/:map/dancer-of-the-week", (req, res) => {
     var auth = req.header("Authorization");
     const httpsopts = {
@@ -1215,17 +926,25 @@ app.get("/leaderboard/v1/maps/:map/dancer-of-the-week", (req, res) => {
     });
 });
 
-app.post("/leaderboard/v1/maps/*", (req, res) => {
-    var ticket = req.header("Authorization");
-    var xhr = new XMLHttpRequest();
-    var n = req.url.lastIndexOf("/");
-    var result = req.url.substr(0);
-    xhr.open("POST", prodwsurl + result, false);
-    xhr.setRequestHeader("X-SkuId", jdconnect.core.getskuid(req));
-    xhr.setRequestHeader("Authorization", ticket);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify(req.body, null, 2));
-    res.send(xhr.responseText);
+app.post("/leaderboard/v1/maps/:map", (req, res) => {
+    var auth = req.header("Authorization");
+    var json = JSON.stringify(req.body);
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/leaderboard/v1/maps/" + req.params.map,
+        method: "POST",
+        headers: {
+            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+            Accept: "*/*",
+            "Accept-Language": "en-us,en",
+            Authorization: auth,
+            "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, json, function (redResponse) {
+        res.send(redResponse);
+    });
 });
 
 app.get("/leaderboard/v1/coop_points/mine", (req, res) => {
@@ -1281,399 +1000,364 @@ app.get("/community-remix/v1/active-contest", (request, response) => {
 });
 
 // World Dance Floor
-app.get("/wdf/v1/api/rooms", (req, res) => {
-    res.send(require("./DATABASE/wdf/rooms.json"));
-});
-
-app.post("/wdf/v1/assign-room", (req, res) => {
-    res.send(
-        '{ "room": "MediumMainJD2021" }');
+app.post("/wdf/v1/assign-room", (request, response) => {
+    var json = JSON.stringify({
+        "playGlobally": 1
+    });
+    var auth = request.header("Authorization");
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/wdf/v1/assign-room",
+        method: "POST",
+        headers: {
+            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+            Accept: "*/*",
+            "Accept-Language": "en-us,en",
+            Authorization: auth,
+            "Content-Type": "application/json",
+            "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, "", function (redResponse) {
+        response.send(redResponse);
+    });
 });
 
 app.get("/wdf/v1/server-time", (request, response) => {
-	var auth = request.header("Authorization");
-	const httpsopts = {
-    hostname: "prod.just-dance.com",
-    port: 443,
-    path: "/wdf/v1/server-time",
-    method: "GET",
-    headers: {
-      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
-      Accept: "*/*",
-      "Accept-Language": "en-us,en",
-      Authorization: auth,
-      "X-SkuId": "jd2017-pc-ww"
-    }
-  };
-  redirect(httpsopts, "", function(redResponse) {
-    response.send(redResponse);
-  });
+    var auth = request.header("Authorization");
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/wdf/v1/server-time",
+        method: "GET",
+        headers: {
+            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+            Accept: "*/*",
+            "Accept-Language": "en-us,en",
+            Authorization: auth,
+            "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, "", function (redResponse) {
+        response.send(redResponse);
+    });
 });
 
-app.get("/wdf/v1/online-bosses", (req, res) => {
-    res.send(bosses);
+app.get("/wdf/v1/online-bosses", (request, response) => {
+    var auth = request.header("Authorization");
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/wdf/v1/online-bosses",
+        method: "GET",
+        headers: {
+            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+            Accept: "*/*",
+            "Accept-Language": "en-us,en",
+            Authorization: auth,
+            "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, "", function (redResponse) {
+        response.send(redResponse);
+    });
 });
 
-app.get("/wdf/v1/rooms/" + room + "/ccu", (req, res) => {
-    var ticket = req.header("Authorization");
-    var xhr = new XMLHttpRequest();
-    xhr.open(
-        "GET",
-        prodwsurl + "/wdf/v1/rooms/MediumMainJD2021/ccu",
-        false);
-    xhr.setRequestHeader("X-SkuId", jdconnect.core.getskuid(req));
-    xhr.setRequestHeader("Authorization", ticket);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify(req.body), null, 2);
-
-    res.send(xhr.responseText.toString());
+app.get("/wdf/v1/rooms/PCJD2017/ccu", (request, response) => {
+    var auth = request.header("Authorization");
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/wdf/v1/rooms/PCJD2017/ccu",
+        method: "GET",
+        headers: {
+            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+            Accept: "*/*",
+            "Accept-Language": "en-us,en",
+            Authorization: auth,
+            "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, "", function (redResponse) {
+        response.send(redResponse);
+    });
 });
 
-app.get("/wdf/v1/rooms/MediumMainJD2021/newsfeed", (request, response) => {
-	var auth = request.header("Authorization");
-	const httpsopts = {
-    hostname: "prod.just-dance.com",
-    port: 443,
-    path: "/wdf/v1/rooms/MediumMainJD2021/newsfeed",
-    method: "GET",
-    headers: {
-      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
-      Accept: "*/*",
-      "Accept-Language": "en-us,en",
-      Authorization: auth,
-      "X-SkuId": "jd2017-pc-ww"
-    }
-  };
-  redirect(httpsopts, "", function(redResponse) {
-    response.send(redResponse);
-  });
+app.get("/wdf/v1/rooms/PCJD2017/newsfeed", (request, response) => {
+    var auth = request.header("Authorization");
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/wdf/v1/rooms/PCJD2017/newsfeed",
+        method: "GET",
+        headers: {
+            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+            Accept: "*/*",
+            "Accept-Language": "en-us,en",
+            Authorization: auth,
+            "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, "", function (redResponse) {
+        response.send(redResponse);
+    });
 });
 
-app.get("/wdf/v1/rooms/" + room + "/next-happyhours", (req, res) => {
-        const httpsopts2 = {
-            hostname: "prod.just-dance.com",
-            port: 443,
-            path: "/wdf/v1/rooms/MediumMainJD2021/next-happyhours",
-            method: "GET",
-            headers: {
-                Accept: "*/*",
-                Authorization: req.header("Authorization"),
-                "Content-Type": "application/json",
-                "X-SkuId": jdconnect.core.getskuid(req)
-            }
-        };
-        redirect(httpsopts2, JSON.stringify({}), function (redResponse) {
-            res.send(JSON.parse(redResponse));
-        });
+app.get("/wdf/v1/rooms/PCJD2017/next-happyhours", (request, response) => {
+    var auth = request.header("Authorization");
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/wdf/v1/rooms/PCJD2017/next-happyhours",
+        method: "GET",
+        headers: {
+            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+            Accept: "*/*",
+            "Accept-Language": "en-us,en",
+            Authorization: auth,
+            "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, "", function (redResponse) {
+        response.send(redResponse);
+    });
 });
 
-app.get("/wdf/v1/rooms/MediumMainJD2021/notification", (request, response) => {
-	var auth = request.header("Authorization");
-	const httpsopts = {
-    hostname: "prod.just-dance.com",
-    port: 443,
-    path: "/wdf/v1/rooms/MediumMainJD2021/notification",
-    method: "GET",
-    headers: {
-      "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
-      Accept: "*/*",
-      "Accept-Language": "en-us,en",
-      Authorization: auth,
-      "X-SkuId": "jd2017-pc-ww"
-    }
-  };
-  redirect(httpsopts, "", function(redResponse) {
-    response.send(redResponse);
-  });
+app.get("/wdf/v1/rooms/PCJD2017/notification", (request, response) => {
+    var auth = request.header("Authorization");
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/wdf/v1/rooms/PCJD2017/notification",
+        method: "GET",
+        headers: {
+            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+            Accept: "*/*",
+            "Accept-Language": "en-us,en",
+            Authorization: auth,
+            "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, "", function (redResponse) {
+        response.send(redResponse);
+    });
 });
 
-app.post("/wdf/v1/rooms/MediumMainJD2021/screens", (req, res) => {
-    var json = JSON.stringify(req.body);
-        const httpsopts2 = {
-            hostname: "prod.just-dance.com",
-            port: 443,
-            path: "/wdf/v1/rooms/MediumMainJD2021/screens",
-            method: "POST",
-            headers: {
-                Accept: "*/*",
-                Authorization: req.header("Authorization"),
-                "Content-Type": "application/json",
-                "X-SkuId": jdconnect.core.getskuid(req)
-            }
-        };
-        redirect(httpsopts2, json, function (redResponse) {
-            var response = JSON.parse(redResponse);
-            if (jdconnect.core.getskuid(req) == "jd2017-pc-ww") {
-                response.screens.forEach(function (object) {
-                object.schedule.theme = "RegularTournament";
-                require("./DATABASE/wdf/jd2021pc_replace.json").codenames.forEach(
-                    function (object2) {
-                    if (object.mapName == object2.Codename) {
-                        object.mapName = object2.replace;
-                    }
-                });
-                });
-            }
-            
-            res.send(response);
-        });
+app.post("/wdf/v1/rooms/PCJD2017/screens", (request, response) => {
+    var json = JSON.stringify(request.body);
+    var auth = request.header("Authorization");
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/wdf/v1/rooms/PCJD2017/screens",
+        method: "POST",
+        headers: {
+            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+            Accept: "*/*",
+            "Accept-Language": "en-us,en",
+            Authorization: auth,
+            "Content-Type": "application/json",
+            "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, "", function (redResponse) {
+        response.send(redResponse);
+    });
 });
 
-app.post("/wdf/v1/rooms/" + room + "/session", (req, res) => {
-    var ticket = req.header("Authorization");
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", prodwsurl + "/wdf/v1/rooms/MediumMainJD2021/session", false);
-    xhr.setRequestHeader("X-SkuId", jdconnect.core.getskuid(req));
-    xhr.setRequestHeader("Authorization", ticket);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify(req.body), null, 2);
-    res.sendStatus(200);
+app.post("/wdf/v1/rooms/PCJD2017/session", (request, response) => {
+    var auth = request.header("Authorization");
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/wdf/v1/rooms/PCJD2017/session",
+        method: "POST",
+        headers: {
+            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+            Accept: "*/*",
+            "Accept-Language": "en-us,en",
+            Authorization: auth,
+            "Content-Type": "application/json",
+            "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, "", function (redResponse) {
+        response.send(redResponse);
+    });
 });
 
-app.delete("/wdf/v1/rooms/" + room + "/session", (req, res) => {
-    var ticket = req.header("Authorization");
-    var xhr = new XMLHttpRequest();
-    xhr.open("DELETE", prodwsurl + "/wdf/v1/rooms/MediumMainJD2021/session", false);
-    xhr.setRequestHeader("X-SkuId", jdconnect.core.getskuid(req));
-    xhr.setRequestHeader("Authorization", ticket);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify(req.body),null,2);
-    res.sendStatus(200);
+app.delete("/wdf/v1/rooms/PCJD2017/session", (request, response) => {
+    var auth = request.header("Authorization");
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/wdf/v1/rooms/PCJD2017/session",
+        method: "DELETE",
+        headers: {
+            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+            Accept: "*/*",
+            "Accept-Language": "en-us,en",
+            Authorization: auth,
+            "Content-Type": "application/json",
+            "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, "", function (redResponse) {
+        response.send(redResponse);
+    });
 });
 
-app.get(
-    "/wdf/v1/rooms/" + room + "/themes/boss/score-recap",
-    (req, res) => {
-    var ticket = req.header("Authorization");
-    var xhr = new XMLHttpRequest();
-    xhr.open(
-        "GET",
-        prodwsurl + "/wdf/v1/rooms/MediumMainJD2021/themes/boss/score-recap",
-        false);
-    xhr.setRequestHeader("X-SkuId", jdconnect.core.getskuid(req));
-    xhr.setRequestHeader("Authorization", ticket);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify(req.body), null, 2);
-    res.send(JSON.parse(xhr.responseText));
+app.get("/wdf/v1/rooms/PCJD2017/themes/boss/score-recap", (request, response) => {
+    var auth = request.header("Authorization");
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/wdf/v1/rooms/PCJD2017/themes/boss/score-recap",
+        method: "GET",
+        headers: {
+            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+            Accept: "*/*",
+            "Accept-Language": "en-us,en",
+            Authorization: auth,
+            "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, "", function (redResponse) {
+        response.send(redResponse);
+    });
 });
 
-app.get(
-    "/wdf/v1/rooms/" + room + "/themes/boss/score-status",
-    (req, res) => {
-    var ticket = req.header("Authorization");
-    var xhr = new XMLHttpRequest();
-    xhr.open(
-        "GET",
-        prodwsurl + "/wdf/v1/rooms/MediumMainJD2021/themes/boss/score-status",
-        false);
-    xhr.setRequestHeader("X-SkuId", jdconnect.core.getskuid(req));
-    xhr.setRequestHeader("Authorization", ticket);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify(req.body), null, 2);
-
-    res.send(JSON.parse(xhr.responseText));
+app.get("/wdf/v1/rooms/PCJD2017/themes/boss/score-status", (request, response) => {
+    var auth = request.header("Authorization");
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/wdf/v1/rooms/PCJD2017/themes/boss/score-status",
+        method: "GET",
+        headers: {
+            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+            Accept: "*/*",
+            "Accept-Language": "en-us,en",
+            Authorization: auth,
+            "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, "", function (redResponse) {
+        response.send(redResponse);
+    });
 });
 
-app.post(
-    "/wdf/v1/rooms/" + room + "/themes/tournament/update-scores",
-    (req, res) => {
-    var ticket = req.header("Authorization");
-    var xhr = new XMLHttpRequest();
-    xhr.open(
-        "POST",
-        prodwsurl + "/wdf/v1/rooms/MediumMainJD2021/themes/tournament/update-scores",
-        false);
-    xhr.setRequestHeader("X-SkuId", jdconnect.core.getskuid(req));
-    xhr.setRequestHeader("Authorization", ticket);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify(req.body), null, 2);
-
-    res.send(JSON.parse(xhr.responseText));
+app.post("/wdf/v1/rooms/PCJD2017/themes/vote/update-score", (request, response) => {
+    var auth = request.header("Authorization");
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/wdf/v1/rooms/PCJD2017/themes/vote/update-score",
+        method: "POST",
+        headers: {
+            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+            Accept: "*/*",
+            "Accept-Language": "en-us,en",
+            Authorization: auth,
+            "Content-Type": "application/json",
+            "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, "", function (redResponse) {
+        response.send(redResponse);
+    });
 });
 
-app.get(
-    "/wdf/v1/rooms/" + room + "/themes/vote/choice",
-    (req, res) => {
-    var ticket = req.header("Authorization");
-    var xhr = new XMLHttpRequest();
-    xhr.open(
-        "GET",
-        prodwsurl + "/wdf/v1/rooms/MediumMainJD2021/themes/vote/choice",
-        false);
-    xhr.setRequestHeader("X-SkuId", jdconnect.core.getskuid(req));
-    xhr.setRequestHeader("Authorization", ticket);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify(req.body), null, 2);
-
-    res.send(JSON.parse(xhr.responseText));
-      });
-
-app.get(
-    "/wdf/v1/rooms/" + room + "/themes/vote/result",
-    (req, res) => {
-    var ticket = req.header("Authorization");
-    var xhr = new XMLHttpRequest();
-    xhr.open(
-        "GET",
-        prodwsurl + "/wdf/v1/rooms/MediumMainJD2021/themes/vote/result",
-        false);
-    xhr.setRequestHeader("X-SkuId", jdconnect.core.getskuid(req));
-    xhr.setRequestHeader("Authorization", ticket);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify(req.body), null, 2);
-
-    res.send(JSON.parse(xhr.responseText));
-      });
-
-app.get(
-    "/wdf/v1/rooms/" + room + "/themes/vote/score-recap",
-    (req, res) => {
-    var ticket = req.header("Authorization");
-    var xhr = new XMLHttpRequest();
-    xhr.open(
-        "GET",
-        prodwsurl + "/wdf/v1/rooms/MediumMainJD2021/themes/vote/score-recap",
-        false);
-    xhr.setRequestHeader("X-SkuId", jdconnect.core.getskuid(req));
-    xhr.setRequestHeader("Authorization", ticket);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify(req.body), null, 2);
-
-    res.send(JSON.parse(xhr.responseText));
-      });
-	  
-app.post(
-    "/wdf/v1/rooms/" + room + "/themes/teambattle/team-names",
-    (req, res) => {
-    var ticket = req.header("Authorization");
-    var xhr = new XMLHttpRequest();
-    xhr.open(
-        "POST",
-        prodwsurl + "/wdf/v1/rooms/MediumMainJD2021/themes/teambattle/team-names",
-        false);
-    xhr.setRequestHeader("X-SkuId", jdconnect.core.getskuid(req));
-    xhr.setRequestHeader("Authorization", ticket);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify(req.body), null, 2);
-
-    res.send(JSON.parse(xhr.responseText));
+app.post("/wdf/v1/rooms/PCJD2017/themes/vote/choice", (request, response) => {
+    var json = JSON.stringify({
+        "voteOption": '"' + response.params.map + '"'
+    });
+    var auth = request.header("Authorization");
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/wdf/v1/rooms/PCJD2017/themes/vote/choice",
+        method: "POST",
+        headers: {
+            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+            Accept: "*/*",
+            "Accept-Language": "en-us,en",
+            Authorization: auth,
+            "Content-Type": "application/json",
+            "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, "", function (redResponse) {
+        response.send(redResponse);
+    });
 });
 
-app.get(
-    "/wdf/v1/rooms/" + room + "/themes/teambattle/score-status",
-    (req, res) => {
-    var ticket = req.header("Authorization");
-    var xhr = new XMLHttpRequest();
-    xhr.open(
-        "GET",
-        prodwsurl + "/wdf/v1/rooms/MediumMainJD2021/themes/teambattle/score-status",
-        false);
-    xhr.setRequestHeader("X-SkuId", jdconnect.core.getskuid(req));
-    xhr.setRequestHeader("Authorization", ticket);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify(req.body), null, 2);
+app.get("/wdf/v1/rooms/PCJD2017/themes/vote/result", (request, response) => {
+    var auth = request.header("Authorization");
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/wdf/v1/rooms/PCJD2017/themes/vote/result",
+        method: "GET",
+        headers: {
+            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+            Accept: "*/*",
+            "Accept-Language": "en-us,en",
+            Authorization: auth,
+            "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, "", function (redResponse) {
+        response.send(redResponse);
+    });
+});
 
-    res.send(JSON.parse(xhr.responseText));
-      });
+app.get("/wdf/v1/rooms/PCJD2017/themes/vote/score-recap", (request, response) => {
+    var auth = request.header("Authorization");
+    const httpsopts = {
+        hostname: "prod.just-dance.com",
+        port: 443,
+        path: "/wdf/v1/rooms/PCJD2017/themes/vote/score-recap",
+        method: "GET",
+        headers: {
+            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+            Accept: "*/*",
+            "Accept-Language": "en-us,en",
+            Authorization: auth,
+            "X-SkuId": "jd2017-pc-ww"
+        }
+    };
+    redirect(httpsopts, "", function (redResponse) {
+        response.send(redResponse);
+    });
+});
 
 // v3/profiles/sessions
-app.post("/v3/*", (req, res) => {
-    var reqheaders = Object.assign({}, req.headers);
-    reqheaders["host"] = "public-ubiservices.ubi.com"
-    axios.post("https://public-ubiservices.ubi.com/" + req.url, JSON.stringify(req.body), {
-        headers: reqheaders
-    })
-    .then(response => {
-        res.send(response.data)
-    })
-    .catch(err => {
-        res.send(err)
-        console.log("Sessions Report: An request have failed: " + err)
-    })
+app.post("/v3/profiles/sessions", (req, res) => {
+    var json = JSON.stringify({});
+    var auth = req.header("Authorization");
+    const httpsopts = {
+        hostname: "public-ubiservices.ubi.com",
+        port: 443,
+        path: "/v3/profiles/sessions",
+        method: "POST",
+        headers: {
+            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+            Accept: "*/*",
+            Authorization: auth,
+            "Content-Type": "application/json",
+            "ubi-appbuildid": "BUILDID_259645",
+            "Ubi-AppId": "740a6dc8-7d7a-4fbe-be2c-aa5d8c65c5e8",
+            "Ubi-localeCode": "en-us",
+            "Ubi-Populations": "US_EMPTY_VALUE"
+        }
+    };
+    redirect(httpsopts, json, function (redResponse) {
+        var responsepar = JSON.parse(redResponse);
+        res.send(responsepar);
+    });
 });
-app.delete("/v3/*", (req, res) => {
-    var reqheaders = Object.assign({}, req.headers);
-    reqheaders["host"] = "public-ubiservices.ubi.com"
-    axios.delete("https://public-ubiservices.ubi.com/" + req.url, JSON.stringify(req.body), {
-        headers: reqheaders
-    })
-    .then(response => {
-        res.send(response.data)
-    })
-    .catch(err => {
-        res.send(err)
-        console.log("Sessions Report: An request have failed: " + err)
-    })
-});
-app.get("/v3/*", (req, res) => {
-    var reqheaders = Object.assign({}, req.headers);
-    reqheaders["host"] = "public-ubiservices.ubi.com"
-    axios.get("https://public-ubiservices.ubi.com/" + req.url, JSON.stringify(req.body), {
-        headers: reqheaders
-    })
-    .then(response => {
-        res.send(response.data)
-    })
-    .catch(err => {
-        res.send(err)
-        console.log("Sessions Report: An request have failed: " + err)
-    })
-});
-
-var requestCountry = require("request-country");
-app.all("*", (req, res) => {
-    transactiondate = new Date().toISOString();
-    transactionid = uuid();
-    fullurl = req.protocol + "://" + req.get("host") + req.originalUrl;
-    res.send(
-        '<pre>{"errorCode":1003,"message":"Resource ' +
-        req.url +
-        ' not found.","httpCode":404,"errorContext":"' + req.method + '","moreInfo":"A link to more information will be coming soon. Please contact AleMService for more support.","transactionTime":"' +
-        transactiondate +
-        '","transactionId":"' +
-        transactionid +
-        '"}</pre>');
-    console.log(req.url + " is not found (" + req.method + ")");
-    console.log("transactionid: " + transactionid);
-    console.log("transactiondate: " + transactiondate);
-    console.log("useragent: " + req.header("User-Agent"));
-    console.log("country: " + requestCountry(req));
-});
-
-// Connected App
-
-var bodyParser = require('body-parser');
-connectedapp.use(bodyParser.json());
-connectedapp.use(bodyParser.urlencoded({ extended: false }));
-connectedapp.use(express.static('AleMService'))
-
-connectedapp.post("/v1/createaccount", (req,res) => {
-        var queryinfo = JSON.stringify('{"query": { accountuplayusername: "' + req.query.nameOnPlatform + '"}')
-        MongoClient.connect(url, function(err, db) {
-            if (err) throw err;
-            var dbo = db.db("jdconnect");
-            let query = function() {
-                return dbo.collection("users").findOne(JSON.parse(queryinfo).query);
-            }
-            var letquery = query()
-            letquery.then(function(result) {
-                //if (result.accountuplayusername !== undefined) {
-                    //res.sendStatus(401)
-                //} else {  
-                    jdconnect.Connecteddb.CreateAccount('{"uplayusername": "' + req.query.nameOnPlatform + '"}')
-                    res.sendStatus(200)
-                //}
-                db.close();
-            })
-        });
-})
-connectedapp.post("/v1/updateaccount", (req,res) => {
-    jdconnect.Connecteddb.UpdateAccount(JSON.stringify(req.body))
-    res.sendStatus(200)
-})
-connectedapp.post("/v1/getaccountinf", (req,res) => {
-    jdconnect.Connecteddb.GetAccountInf(JSON.stringify(req.body))
-})
 
 // Function to redirect to other domains
 // An OPTIONS is necessary to contain route details, GET/POST and the direction
