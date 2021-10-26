@@ -1055,20 +1055,74 @@ app.delete("/profile/v2/favorites/maps/:map", (req, res) => {
 });
 
 // v1
-app.get(
-    "/v1/applications/341789d4-b41f-4f40-ac79-e2bc4c94ead4/configuration",
-    function (request, response) {
-    response.send(v1);
+app.get("/v1/applications/:game/configuration", function (request, response) {
+    if (jdconnect.core.requestcheck(request) == true) {
+        response.send(v1);
+    } else {
+        response.sendStatus(jdconnect.core.requestcheck(request));
+    }
 });
 
 // v2
-app.get("/v2/spaces/f1ae5b84-db7c-481e-9867-861cf1852dc8/entities", function (request, response) {
-    response.send(v2);
+app.get("/v2/spaces/:spaceid/entities", function (request, response) {
+    if (jdconnect.core.requestcheck(request) == true) {
+        response.send(v2);
+    } else {
+        response.sendStatus(jdconnect.core.requestcheck(request));
+    }
 });
 
-app.post("/profile/v2/filter-players", function (request, response) {
-    response.send(
-        '["00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000"]');
+app.all("/v2/profiles/sessions", (req, res) => {
+    if (jdconnect.core.requestcheck(req)) {
+        var ticket = req.header("Authorization");
+        var xhr = new XMLHttpRequest();
+        xhr.open(req.method, "https://public-ubiservices.ubi.com/v2/profiles/sessions", true);
+        xhr.setRequestHeader("X-SkuId", jdconnect.core.getskuid(req));
+        xhr.setRequestHeader("Authorization", ticket);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify(req.body, null, 2));
+        res.send(xhr.responseText);
+    } else {
+        res.send(jdconnect.core.requestcheck(req));
+    }
+});
+
+app.post("/profile/v2/filter-players", (request, response) => {
+    var json = JSON.stringify(request.body);
+    const httpsopts = {
+        hostname: "public-ubiservices.ubi.com",
+        port: 443,
+        path: "/v2/profiles/sessions",
+        method: "POST",
+        headers: {
+            "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; Xbox; Xbox One) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.19022",
+            Authorization: require("./DATABASE/ubiticket.json").AuthXBOX,
+            "Content-Type": "application/json",
+            "Ubi-AppId": "7df3c817-cde1-4bf9-9b37-ceb9d06c4b96",
+            Host: "public-ubiservices.ubi.com",
+            "Content-Length": "0"
+        }
+    };
+    redirect(httpsopts, "", function (redResponse) {
+        var responsepar = JSON.parse(redResponse);
+        var auth = "Ubi_v1 " + responsepar["ticket"];
+        const httpsopts2 = {
+            hostname: "prod.just-dance.com",
+            port: 443,
+            path: "/profile/v2/filter-players",
+            method: "POST",
+            headers: {
+                Accept: "*/*",
+                Authorization: auth,
+                "Content-Type": "application/json",
+                "X-SkuId": "jd2020-xone-all"
+            }
+        };
+        redirect(httpsopts2, json, function (redResponse) {
+            response.send(JSON.parse(redResponse));
+        });
+    });
 });
 
 var requestCountry = require("request-country");
@@ -1102,34 +1156,88 @@ app.get("/v3/users/:user", (req, res) => {
         }
     };
     redirect(httpsopts, "", function (redResponse) {
-        res.send(redResponse);
-        console.log(redResponse);
+        res.send(JSON.parse(redResponse));
     });
 });
 
+app.post("/v3/*", (req, res) => {
+    var reqheaders = Object.assign({}, req.headers);
+    reqheaders["host"] = "public-ubiservices.ubi.com"
+    axios.post("https://public-ubiservices.ubi.com/" + req.url, JSON.stringify(req.body), {
+        headers: reqheaders
+    })
+    .then(response => {
+        res.send(response.data)
+    })
+    .catch(err => {
+        res.send(err)
+        console.log("Sessions Report: An request have failed: " + err)
+    })
+});
+app.delete("/v3/*", (req, res) => {
+    var reqheaders = Object.assign({}, req.headers);
+    reqheaders["host"] = "public-ubiservices.ubi.com"
+    axios.delete("https://public-ubiservices.ubi.com/" + req.url, JSON.stringify(req.body), {
+        headers: reqheaders
+    })
+    .then(response => {
+        res.send(response.data)
+    })
+    .catch(err => {
+        res.send(err)
+        console.log("Sessions Report: An request have failed: " + err)
+    })
+});
+app.get("/v3/*", (req, res) => {
+    var reqheaders = Object.assign({}, req.headers);
+    reqheaders["host"] = "public-ubiservices.ubi.com"
+    axios.get("https://public-ubiservices.ubi.com/" + req.url, JSON.stringify(req.body), {
+        headers: reqheaders
+    })
+    .then(response => {
+        res.send(response.data)
+    })
+    .catch(err => {
+        res.send(err)
+        console.log("Sessions Report: An request have failed: " + err)
+    })
+});
+
 app.post("/v3/users/:user", (req, res) => {
-    var auth = req.header("Authorization");
-    var sessionid = req.header("Ubi-SessionId");
+    var json = JSON.stringify(req.body);
     const httpsopts = {
         hostname: "public-ubiservices.ubi.com",
         port: 443,
-        path: "/v3/users/" + req.params.user,
-        method: "GET",
+        path: "/v2/profiles/sessions",
+        method: "POST",
         headers: {
-            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
-            Accept: "*/*",
-            Authorization: auth,
+            "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; Xbox; Xbox One) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.19022",
+            Authorization: require("./DATABASE/ubiticket.json").AuthXBOX,
             "Content-Type": "application/json",
-            "ubi-appbuildid": "BUILDID_259645",
-            "Ubi-AppId": "341789d4-b41f-4f40-ac79-e2bc4c94ead4",
-            "Ubi-localeCode": "en-us",
-            "Ubi-Populations": "US_EMPTY_VALUE",
-            "Ubi-SessionId": sessionid
+            "Ubi-AppId": "155d58d0-94ae-4de2-b8f9-64ed5f299545",
+            Host: "public-ubiservices.ubi.com",
+            "Content-Length": "0"
         }
     };
     redirect(httpsopts, "", function (redResponse) {
-        res.send(redResponse);
-        console.log(redResponse);
+        var responsepar = JSON.parse(redResponse);
+        var auth = "Ubi_v1 " + responsepar["ticket"];
+        const httpsopts2 = {
+            hostname: "prod.just-dance.com",
+            port: 443,
+            path: "/v3/users/" + req.params.user,
+            method: "POST",
+            headers: {
+                Accept: "*/*",
+                Authorization: auth,
+                "Content-Type": "application/json",
+                "X-SkuId": "jd2017-xone-emea"
+            }
+        };
+        redirect(httpsopts2, json, function (redResponse) {
+            res.send(JSON.parse(redResponse));
+        });
     });
 });
 
@@ -1551,6 +1659,41 @@ app.post("/v3/profiles/sessions", (req, res) => {
         res.send(responsepar);
     });
 });
+
+// Connected App
+
+var bodyParser = require('body-parser');
+connectedapp.use(bodyParser.json());
+connectedapp.use(bodyParser.urlencoded({ extended: false }));
+connectedapp.use(express.static('AleMService'))
+
+connectedapp.post("/v1/createaccount", (req,res) => {
+        var queryinfo = JSON.stringify('{"query": { accountuplayusername: "' + req.query.nameOnPlatform + '"}')
+        MongoClient.connect(url, function(err, db) {
+            if (err) throw err;
+            var dbo = db.db("jdconnect");
+            let query = function() {
+                return dbo.collection("users").findOne(JSON.parse(queryinfo).query);
+            }
+            var letquery = query()
+            letquery.then(function(result) {
+                //if (result.accountuplayusername !== undefined) {
+                    //res.sendStatus(401)
+                //} else {  
+                    jdconnect.Connecteddb.CreateAccount('{"uplayusername": "' + req.query.nameOnPlatform + '"}')
+                    res.sendStatus(200)
+                //}
+                db.close();
+            })
+        });
+})
+connectedapp.post("/v1/updateaccount", (req,res) => {
+    jdconnect.Connecteddb.UpdateAccount(JSON.stringify(req.body))
+    res.sendStatus(200)
+})
+connectedapp.post("/v1/getaccountinf", (req,res) => {
+    jdconnect.Connecteddb.GetAccountInf(JSON.stringify(req.body))
+})
 
 // Function to redirect to other domains
 // An OPTIONS is necessary to contain route details, GET/POST and the direction
