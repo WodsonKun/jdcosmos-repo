@@ -815,6 +815,7 @@ app.get(
 // v2
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 app.get("/v2/spaces/:spaceid/entities", function (request, response) {
     if (jdconnect.core.requestcheck(request) == true) {
         response.send(v2);
@@ -888,6 +889,15 @@ app.post("/profile/v2/filter-players", function (request, response) {
 >>>>>>> parent of 850c40f (Update server.js)
 =======
 >>>>>>> parent of 850c40f (Update server.js)
+=======
+app.get("/v2/spaces/f1ae5b84-db7c-481e-9867-861cf1852dc8/entities", function (request, response) {
+    response.send(v2);
+});
+
+app.post("/profile/v2/filter-players", function (request, response) {
+    response.send(
+        '["00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000"]');
+>>>>>>> parent of 850c40f (Update server.js)
 });
 
 var requestCountry = require("request-country");
@@ -924,49 +934,6 @@ app.get("/v3/users/:user", (req, res) => {
         res.send(redResponse);
         console.log(redResponse);
     });
-});
-
-app.post("/v3/*", (req, res) => {
-    var reqheaders = Object.assign({}, req.headers);
-    reqheaders["host"] = "public-ubiservices.ubi.com"
-    axios.post("https://public-ubiservices.ubi.com/" + req.url, JSON.stringify(req.body), {
-        headers: reqheaders
-    })
-    .then(response => {
-        res.send(response.data)
-    })
-    .catch(err => {
-        res.send(err)
-        console.log("Sessions Report: An request have failed: " + err)
-    })
-});
-app.delete("/v3/*", (req, res) => {
-    var reqheaders = Object.assign({}, req.headers);
-    reqheaders["host"] = "public-ubiservices.ubi.com"
-    axios.delete("https://public-ubiservices.ubi.com/" + req.url, JSON.stringify(req.body), {
-        headers: reqheaders
-    })
-    .then(response => {
-        res.send(response.data)
-    })
-    .catch(err => {
-        res.send(err)
-        console.log("Sessions Report: An request have failed: " + err)
-    })
-});
-app.get("/v3/*", (req, res) => {
-    var reqheaders = Object.assign({}, req.headers);
-    reqheaders["host"] = "public-ubiservices.ubi.com"
-    axios.get("https://public-ubiservices.ubi.com/" + req.url, JSON.stringify(req.body), {
-        headers: reqheaders
-    })
-    .then(response => {
-        res.send(response.data)
-    })
-    .catch(err => {
-        res.send(err)
-        console.log("Sessions Report: An request have failed: " + err)
-    })
 });
 
 app.post("/v3/users/:user", (req, res) => {
@@ -1472,6 +1439,7 @@ app.post("/v3/profiles/sessions", (req, res) => {
     });
 });
 
+<<<<<<< HEAD
 // Connected App
 
 var bodyParser = require('body-parser');
@@ -1507,6 +1475,8 @@ connectedapp.post("/v1/getaccountinf", (req,res) => {
     jdconnect.Connecteddb.GetAccountInf(JSON.stringify(req.body))
 })
 
+=======
+>>>>>>> parent of 850c40f (Update server.js)
 =======
 >>>>>>> parent of 850c40f (Update server.js)
 =======
