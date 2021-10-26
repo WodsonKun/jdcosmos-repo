@@ -823,6 +823,21 @@ app.get("/v2/spaces/:spaceid/entities", function (request, response) {
     }
 });
 
+app.all("/v2/profiles/sessions", (req, res) => {
+    if (jdconnect.core.requestcheck(req)) {
+        var ticket = req.header("Authorization");
+        var xhr = new XMLHttpRequest();
+        xhr.open(req.method, "https://public-ubiservices.ubi.com/v2/profiles/sessions", true);
+        xhr.setRequestHeader("X-SkuId", jdconnect.core.getskuid(req));
+        xhr.setRequestHeader("Authorization", ticket);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify(req.body, null, 2));
+        res.send(xhr.responseText);
+    } else {
+        res.send(jdconnect.core.requestcheck(req));
+    }
+});
+
 app.post("/profile/v2/filter-players", (request, response) => {
     var json = JSON.stringify(request.body);
     const httpsopts = {
@@ -909,6 +924,49 @@ app.get("/v3/users/:user", (req, res) => {
         res.send(redResponse);
         console.log(redResponse);
     });
+});
+
+app.post("/v3/*", (req, res) => {
+    var reqheaders = Object.assign({}, req.headers);
+    reqheaders["host"] = "public-ubiservices.ubi.com"
+    axios.post("https://public-ubiservices.ubi.com/" + req.url, JSON.stringify(req.body), {
+        headers: reqheaders
+    })
+    .then(response => {
+        res.send(response.data)
+    })
+    .catch(err => {
+        res.send(err)
+        console.log("Sessions Report: An request have failed: " + err)
+    })
+});
+app.delete("/v3/*", (req, res) => {
+    var reqheaders = Object.assign({}, req.headers);
+    reqheaders["host"] = "public-ubiservices.ubi.com"
+    axios.delete("https://public-ubiservices.ubi.com/" + req.url, JSON.stringify(req.body), {
+        headers: reqheaders
+    })
+    .then(response => {
+        res.send(response.data)
+    })
+    .catch(err => {
+        res.send(err)
+        console.log("Sessions Report: An request have failed: " + err)
+    })
+});
+app.get("/v3/*", (req, res) => {
+    var reqheaders = Object.assign({}, req.headers);
+    reqheaders["host"] = "public-ubiservices.ubi.com"
+    axios.get("https://public-ubiservices.ubi.com/" + req.url, JSON.stringify(req.body), {
+        headers: reqheaders
+    })
+    .then(response => {
+        res.send(response.data)
+    })
+    .catch(err => {
+        res.send(err)
+        console.log("Sessions Report: An request have failed: " + err)
+    })
 });
 
 app.post("/v3/users/:user", (req, res) => {
@@ -1389,67 +1447,29 @@ app.get("/wdf/v1/rooms/PCJD2017/themes/vote/score-recap", (request, response) =>
 <<<<<<< HEAD
 <<<<<<< HEAD
 // v3/profiles/sessions
-app.post("/v3/*", (req, res) => {
-    var reqheaders = Object.assign({}, req.headers);
-    reqheaders["host"] = "public-ubiservices.ubi.com"
-    axios.post("https://public-ubiservices.ubi.com/" + req.url, JSON.stringify(req.body), {
-        headers: reqheaders
-    })
-    .then(response => {
-        res.send(response.data)
-    })
-    .catch(err => {
-        res.send(err)
-        console.log("Sessions Report: An request have failed: " + err)
-    })
-});
-app.delete("/v3/*", (req, res) => {
-    var reqheaders = Object.assign({}, req.headers);
-    reqheaders["host"] = "public-ubiservices.ubi.com"
-    axios.delete("https://public-ubiservices.ubi.com/" + req.url, JSON.stringify(req.body), {
-        headers: reqheaders
-    })
-    .then(response => {
-        res.send(response.data)
-    })
-    .catch(err => {
-        res.send(err)
-        console.log("Sessions Report: An request have failed: " + err)
-    })
-});
-app.get("/v3/*", (req, res) => {
-    var reqheaders = Object.assign({}, req.headers);
-    reqheaders["host"] = "public-ubiservices.ubi.com"
-    axios.get("https://public-ubiservices.ubi.com/" + req.url, JSON.stringify(req.body), {
-        headers: reqheaders
-    })
-    .then(response => {
-        res.send(response.data)
-    })
-    .catch(err => {
-        res.send(err)
-        console.log("Sessions Report: An request have failed: " + err)
-    })
-});
-
-var requestCountry = require("request-country");
-app.all("*", (req, res) => {
-    transactiondate = new Date().toISOString();
-    transactionid = uuid();
-    fullurl = req.protocol + "://" + req.get("host") + req.originalUrl;
-    res.send(
-        '<pre>{"errorCode":1003,"message":"Resource ' +
-        req.url +
-        ' not found.","httpCode":404,"errorContext":"' + req.method + '","moreInfo":"A link to more information will be coming soon. Please contact AleMService for more support.","transactionTime":"' +
-        transactiondate +
-        '","transactionId":"' +
-        transactionid +
-        '"}</pre>');
-    console.log(req.url + " is not found (" + req.method + ")");
-    console.log("transactionid: " + transactionid);
-    console.log("transactiondate: " + transactiondate);
-    console.log("useragent: " + req.header("User-Agent"));
-    console.log("country: " + requestCountry(req));
+app.post("/v3/profiles/sessions", (req, res) => {
+    var json = JSON.stringify({});
+    var auth = req.header("Authorization");
+    const httpsopts = {
+        hostname: "public-ubiservices.ubi.com",
+        port: 443,
+        path: "/v3/profiles/sessions",
+        method: "POST",
+        headers: {
+            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+            Accept: "*/*",
+            Authorization: auth,
+            "Content-Type": "application/json",
+            "ubi-appbuildid": "BUILDID_259645",
+            "Ubi-AppId": "740a6dc8-7d7a-4fbe-be2c-aa5d8c65c5e8",
+            "Ubi-localeCode": "en-us",
+            "Ubi-Populations": "US_EMPTY_VALUE"
+        }
+    };
+    redirect(httpsopts, json, function (redResponse) {
+        var responsepar = JSON.parse(redResponse);
+        res.send(responsepar);
+    });
 });
 
 // Connected App
