@@ -806,15 +806,14 @@ app.delete("/profile/v2/favorites/maps/:map", (req, res) => {
 });
 
 // v1
-app.get("/v1/applications/:game/configuration", function (request, response) {
-    if (jdconnect.core.requestcheck(request) == true) {
-        response.send(v1);
-    } else {
-        response.sendStatus(jdconnect.core.requestcheck(request));
-    }
+app.get(
+    "/v1/applications/341789d4-b41f-4f40-ac79-e2bc4c94ead4/configuration",
+    function (request, response) {
+    response.send(v1);
 });
 
 // v2
+<<<<<<< HEAD
 app.get("/v2/spaces/:spaceid/entities", function (request, response) {
     if (jdconnect.core.requestcheck(request) == true) {
         response.send(v2);
@@ -859,6 +858,15 @@ app.post("/profile/v2/filter-players", (request, response) => {
             response.send(JSON.parse(redResponse));
         });
     });
+=======
+app.get("/v2/spaces/f1ae5b84-db7c-481e-9867-861cf1852dc8/entities", function (request, response) {
+    response.send(v2);
+});
+
+app.post("/profile/v2/filter-players", function (request, response) {
+    response.send(
+        '["00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000"]');
+>>>>>>> parent of 850c40f (Update server.js)
 });
 
 var requestCountry = require("request-country");
@@ -892,45 +900,34 @@ app.get("/v3/users/:user", (req, res) => {
         }
     };
     redirect(httpsopts, "", function (redResponse) {
-        res.send(JSON.parse(redResponse));
+        res.send(redResponse);
+        console.log(redResponse);
     });
 });
 
 app.post("/v3/users/:user", (req, res) => {
-    var json = JSON.stringify(req.body);
+    var auth = req.header("Authorization");
+    var sessionid = req.header("Ubi-SessionId");
     const httpsopts = {
         hostname: "public-ubiservices.ubi.com",
         port: 443,
-        path: "/v2/profiles/sessions",
-        method: "POST",
+        path: "/v3/users/" + req.params.user,
+        method: "GET",
         headers: {
-            "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; Xbox; Xbox One) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.19022",
-            Authorization: require("./DATABASE/ubiticket.json").AuthXBOX,
+            "User-Agent": "UbiServices_SDK_HTTP_Client_4.2.9_PC32_ansi_static",
+            Accept: "*/*",
+            Authorization: auth,
             "Content-Type": "application/json",
-            "Ubi-AppId": "155d58d0-94ae-4de2-b8f9-64ed5f299545",
-            Host: "public-ubiservices.ubi.com",
-            "Content-Length": "0"
+            "ubi-appbuildid": "BUILDID_259645",
+            "Ubi-AppId": "341789d4-b41f-4f40-ac79-e2bc4c94ead4",
+            "Ubi-localeCode": "en-us",
+            "Ubi-Populations": "US_EMPTY_VALUE",
+            "Ubi-SessionId": sessionid
         }
     };
     redirect(httpsopts, "", function (redResponse) {
-        var responsepar = JSON.parse(redResponse);
-        var auth = "Ubi_v1 " + responsepar["ticket"];
-        const httpsopts2 = {
-            hostname: "prod.just-dance.com",
-            port: 443,
-            path: "/v3/users/" + req.params.user,
-            method: "POST",
-            headers: {
-                Accept: "*/*",
-                Authorization: auth,
-                "Content-Type": "application/json",
-                "X-SkuId": "jd2017-xone-emea"
-            }
-        };
-        redirect(httpsopts2, json, function (redResponse) {
-            res.send(JSON.parse(redResponse));
-        });
+        res.send(redResponse);
+        console.log(redResponse);
     });
 });
 
@@ -1383,6 +1380,7 @@ app.get("/wdf/v1/rooms/PCJD2017/themes/vote/score-recap", (request, response) =>
     });
 });
 
+<<<<<<< HEAD
 // v3/profiles/sessions
 app.post("/v3/*", (req, res) => {
     var reqheaders = Object.assign({}, req.headers);
@@ -1482,6 +1480,8 @@ connectedapp.post("/v1/getaccountinf", (req,res) => {
     jdconnect.Connecteddb.GetAccountInf(JSON.stringify(req.body))
 })
 
+=======
+>>>>>>> parent of 850c40f (Update server.js)
 // Function to redirect to other domains
 // An OPTIONS is necessary to contain route details, GET/POST and the direction
 function redirect(options, write, callback) {
