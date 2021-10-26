@@ -813,71 +813,6 @@ app.get(
 });
 
 // v2
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-app.get("/v2/spaces/:spaceid/entities", function (request, response) {
-    if (jdconnect.core.requestcheck(request) == true) {
-        response.send(v2);
-    } else {
-        response.sendStatus(jdconnect.core.requestcheck(request));
-    }
-});
-
-app.all("/v2/profiles/sessions", (req, res) => {
-    if (jdconnect.core.requestcheck(req)) {
-        var ticket = req.header("Authorization");
-        var xhr = new XMLHttpRequest();
-        xhr.open(req.method, "https://public-ubiservices.ubi.com/v2/profiles/sessions", true);
-        xhr.setRequestHeader("X-SkuId", jdconnect.core.getskuid(req));
-        xhr.setRequestHeader("Authorization", ticket);
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.send(JSON.stringify(req.body, null, 2));
-        res.send(xhr.responseText);
-    } else {
-        res.send(jdconnect.core.requestcheck(req));
-    }
-});
-
-app.post("/profile/v2/filter-players", (request, response) => {
-    var json = JSON.stringify(request.body);
-    const httpsopts = {
-        hostname: "public-ubiservices.ubi.com",
-        port: 443,
-        path: "/v2/profiles/sessions",
-        method: "POST",
-        headers: {
-            "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; Xbox; Xbox One) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.19022",
-            Authorization: require("./DATABASE/ubiticket.json").AuthXBOX,
-            "Content-Type": "application/json",
-            "Ubi-AppId": "7df3c817-cde1-4bf9-9b37-ceb9d06c4b96",
-            Host: "public-ubiservices.ubi.com",
-            "Content-Length": "0"
-        }
-    };
-    redirect(httpsopts, "", function (redResponse) {
-        var responsepar = JSON.parse(redResponse);
-        var auth = "Ubi_v1 " + responsepar["ticket"];
-        const httpsopts2 = {
-            hostname: "prod.just-dance.com",
-            port: 443,
-            path: "/profile/v2/filter-players",
-            method: "POST",
-            headers: {
-                Accept: "*/*",
-                Authorization: auth,
-                "Content-Type": "application/json",
-                "X-SkuId": "jd2020-xone-all"
-            }
-        };
-        redirect(httpsopts2, json, function (redResponse) {
-            response.send(JSON.parse(redResponse));
-        });
-    });
-=======
-=======
->>>>>>> parent of 850c40f (Update server.js)
 app.get("/v2/spaces/f1ae5b84-db7c-481e-9867-861cf1852dc8/entities", function (request, response) {
     response.send(v2);
 });
@@ -885,19 +820,6 @@ app.get("/v2/spaces/f1ae5b84-db7c-481e-9867-861cf1852dc8/entities", function (re
 app.post("/profile/v2/filter-players", function (request, response) {
     response.send(
         '["00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000"]');
-<<<<<<< HEAD
->>>>>>> parent of 850c40f (Update server.js)
-=======
->>>>>>> parent of 850c40f (Update server.js)
-=======
-app.get("/v2/spaces/f1ae5b84-db7c-481e-9867-861cf1852dc8/entities", function (request, response) {
-    response.send(v2);
-});
-
-app.post("/profile/v2/filter-players", function (request, response) {
-    response.send(
-        '["00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000"]');
->>>>>>> parent of 850c40f (Update server.js)
 });
 
 var requestCountry = require("request-country");
@@ -1411,8 +1333,6 @@ app.get("/wdf/v1/rooms/PCJD2017/themes/vote/score-recap", (request, response) =>
     });
 });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 // v3/profiles/sessions
 app.post("/v3/profiles/sessions", (req, res) => {
     var json = JSON.stringify({});
@@ -1439,48 +1359,6 @@ app.post("/v3/profiles/sessions", (req, res) => {
     });
 });
 
-<<<<<<< HEAD
-// Connected App
-
-var bodyParser = require('body-parser');
-connectedapp.use(bodyParser.json());
-connectedapp.use(bodyParser.urlencoded({ extended: false }));
-connectedapp.use(express.static('AleMService'))
-
-connectedapp.post("/v1/createaccount", (req,res) => {
-        var queryinfo = JSON.stringify('{"query": { accountuplayusername: "' + req.query.nameOnPlatform + '"}')
-        MongoClient.connect(url, function(err, db) {
-            if (err) throw err;
-            var dbo = db.db("jdconnect");
-            let query = function() {
-                return dbo.collection("users").findOne(JSON.parse(queryinfo).query);
-            }
-            var letquery = query()
-            letquery.then(function(result) {
-                //if (result.accountuplayusername !== undefined) {
-                    //res.sendStatus(401)
-                //} else {  
-                    jdconnect.Connecteddb.CreateAccount('{"uplayusername": "' + req.query.nameOnPlatform + '"}')
-                    res.sendStatus(200)
-                //}
-                db.close();
-            })
-        });
-})
-connectedapp.post("/v1/updateaccount", (req,res) => {
-    jdconnect.Connecteddb.UpdateAccount(JSON.stringify(req.body))
-    res.sendStatus(200)
-})
-connectedapp.post("/v1/getaccountinf", (req,res) => {
-    jdconnect.Connecteddb.GetAccountInf(JSON.stringify(req.body))
-})
-
-=======
->>>>>>> parent of 850c40f (Update server.js)
-=======
->>>>>>> parent of 850c40f (Update server.js)
-=======
->>>>>>> parent of 850c40f (Update server.js)
 // Function to redirect to other domains
 // An OPTIONS is necessary to contain route details, GET/POST and the direction
 function redirect(options, write, callback) {
