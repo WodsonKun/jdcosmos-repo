@@ -814,6 +814,7 @@ app.get(
 
 // v2
 <<<<<<< HEAD
+<<<<<<< HEAD
 app.get("/v2/spaces/:spaceid/entities", function (request, response) {
     if (jdconnect.core.requestcheck(request) == true) {
         response.send(v2);
@@ -859,6 +860,8 @@ app.post("/profile/v2/filter-players", (request, response) => {
         });
     });
 =======
+=======
+>>>>>>> parent of 850c40f (Update server.js)
 app.get("/v2/spaces/f1ae5b84-db7c-481e-9867-861cf1852dc8/entities", function (request, response) {
     response.send(v2);
 });
@@ -866,6 +869,9 @@ app.get("/v2/spaces/f1ae5b84-db7c-481e-9867-861cf1852dc8/entities", function (re
 app.post("/profile/v2/filter-players", function (request, response) {
     response.send(
         '["00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000","00000000-0000-0000-0000-000000000000"]');
+<<<<<<< HEAD
+>>>>>>> parent of 850c40f (Update server.js)
+=======
 >>>>>>> parent of 850c40f (Update server.js)
 });
 
@@ -1381,6 +1387,7 @@ app.get("/wdf/v1/rooms/PCJD2017/themes/vote/score-recap", (request, response) =>
 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // v3/profiles/sessions
 app.post("/v3/*", (req, res) => {
     var reqheaders = Object.assign({}, req.headers);
@@ -1480,6 +1487,8 @@ connectedapp.post("/v1/getaccountinf", (req,res) => {
     jdconnect.Connecteddb.GetAccountInf(JSON.stringify(req.body))
 })
 
+=======
+>>>>>>> parent of 850c40f (Update server.js)
 =======
 >>>>>>> parent of 850c40f (Update server.js)
 // Function to redirect to other domains
