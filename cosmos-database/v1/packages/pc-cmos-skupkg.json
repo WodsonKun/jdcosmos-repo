@@ -2699,6 +2699,12 @@
         "url": "https://cdn.glitch.com/d844a1c8-63fc-4d18-b4f8-c1461d5a4f10%2Flacrimosa_main_scene_pc.zip?v=1612414250233",
         "version": 1
     },
+	"Langkawi_mapContent": {
+        "md5": "67598d050021481f699115c359ac296f",
+        "storageType": 0,
+        "url": "https://jd-s3.akamaized.net/public/map/Langkawi/pc/Langkawi_MAIN_SCENE_PC.zip/67598d050021481f699115c359ac296f.zip",
+        "version": 1
+    },
     "LaRespuesta_mapContent": {
         "md5": "aaf1cd6c9a07fc29442c49c3301e9e4e",
         "storageType": 0,
