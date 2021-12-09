@@ -185,6 +185,12 @@
         "url": "https://jd-s3.akamaized.net/public/map/Airplanes/pc/Airplanes_MAIN_SCENE_PC.zip/ec118ca5f4c71baa4a14c580145fd3c6.zip",
         "version": 9
     },
+    "ALaFolie_mapContent": {
+        "md5": "0722be2c6ae5b7c6a9bc268ce24665e1",
+        "storageType": 0,
+        "url": "https://jd-s3.akamaized.net/public/map/ALaFolie/pc/ALaFolie_MAIN_SCENE_PC.zip/0722be2c6ae5b7c6a9bc268ce24665e1.zip",
+        "version": 1
+    },
     "AlbatraozCMU_mapContent": {
         "md5": "b526c5e558298fcace9527c63191835c",
         "storageType": 0,
@@ -2655,6 +2661,12 @@
         "md5": "4add1220b0f0fc56718283e4f69f9af3",
         "storageType": 0,
         "url": "https://jd-s3.akamaized.net/public/wdf-bosses/KingJumbo/pc/KingJumbo_bossContent_PC.zip/4add1220b0f0fc56718283e4f69f9af3.zip",
+        "version": 1
+    },
+    "Koi_mapContent": {
+        "md5": "775ecf4a66945e763241bab79159ed0c",
+        "storageType": 0,
+        "url": "https://jd-s3.akamaized.net/public/map/Koi/pc/Koi_MAIN_SCENE_PC.zip/775ecf4a66945e763241bab79159ed0c.zip",
         "version": 1
     },
     "Kuliki_mapContent": {
