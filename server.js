@@ -78,7 +78,8 @@ app.get("/packages/v1/sku-packages", function(request, response) {
       break;
     default:
       response.send(
-        "Hey there!" +"\n" +
+        "Hey there!" +
+          "\n" +
           "Cosmos's SKU Packages (otherwise known as mainscenes) aren't currently unavaliable for public use"
       );
       break;
@@ -256,6 +257,23 @@ app.post("/carousel/v2/pages/party", function(request, response) {
               songs
             ];
             if (song.originalJDVersion == 4514) {
+              var obj = JSON.parse(
+                '{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' +
+                  song.mapName +
+                  '"}],"actionList":"partyMap"}'
+              );
+              carousel.items.push(obj);
+            }
+          }
+        }
+
+        // Add MUs and CMUs into their own category
+        if (carousel.title == "Community Remixes & Mashups") {
+          for (var songs in require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")) {
+            var song = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")[
+              songs
+            ];
+            if (song.mapName.includes("CMU") || song.mapName.includes("MU")) {
               var obj = JSON.parse(
                 '{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' +
                   song.mapName +
@@ -452,6 +470,23 @@ app.post("/carousel/v2/pages/party", function(request, response) {
             }
           }
 
+          // Add MUs and CMUs into their own category
+          if (carousel.title == "Community Remixes & Mashups") {
+            for (var songs in require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")) {
+              var song = require("./cosmos-database/v1/songdb/pc-cmos-songdb.json")[
+                songs
+              ];
+              if (song.mapName.includes("CMU") || song.mapName.includes("MU")) {
+                var obj = JSON.parse(
+                  '{"__class":"Item","isc":"grp_cover","act":"ui_component_base","components":[{"__class":"JD_CarouselContentComponent_Song","mapName":"' +
+                    song.mapName +
+                    '"}],"actionList":"partyMap"}'
+                );
+                carousel.items.push(obj);
+              }
+            }
+          }
+
           if (
             carousel.title == "[icon:SEARCH_RESULT] insert search result here"
           ) {
@@ -470,10 +505,10 @@ app.post("/carousel/v2/pages/party", function(request, response) {
 
         response.send(carresponse);
       }
-    break;
+      break;
     default:
       response.send("Hey there!" + "\n" + "It's just a carousel, get serious");
-    break;
+      break;
   }
 });
 
@@ -483,10 +518,10 @@ app.post("/carousel/v2/pages/partycoop", function(request, response) {
   switch (skuId) {
     case "jdex-pc-cmos":
       response.send(EXJSONCarousel);
-    break;
+      break;
     default:
       response.send("Hey there!" + "\n" + "It's just a carousel, get serious");
-    break;
+      break;
   }
 });
 
@@ -499,7 +534,7 @@ app.post("/carousel/v2/pages/sweat", function(request, response) {
       break;
     default:
       response.send("Hey there!" + "\n" + "It's just a carousel, get serious");
-    break;
+      break;
   }
 });
 
@@ -605,12 +640,14 @@ app.get("/content-authorization/v1/maps/:map", function(request, response) {
           response.send("Forbidden");
         }
       }
-    break;
+      break;
     default:
       response.send(
-        "Hey there!" + "\n" + "We spent a real good time getting all of those No HUDs... So, is a no go"
+        "Hey there!" +
+          "\n" +
+          "We spent a real good time getting all of those No HUDs... So, is a no go"
       );
-    break;
+      break;
   }
 });
 
@@ -631,7 +668,6 @@ app.get("/profile/v2/profiles", (req, res) => {
   };
   redirect(httpsopts, "", function(redResponse) {
     res.send(redResponse);
-    console.log(redResponse);
   });
 });
 app.post("/profile/v2/profiles", function(req, res) {
@@ -700,7 +736,6 @@ app.delete("/profile/v2/favorites/maps/:map", (req, res) => {
   };
   redirect(httpsopts, json, function(redResponse) {
     res.send(redResponse);
-    console.log(redResponse);
   });
 });
 
