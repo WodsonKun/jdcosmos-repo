@@ -1,0 +1,12 @@
+{
+  "__class": "ContentAuthorizationEntry",
+  "duration": 300,
+  "changelist": 480634,
+  "urls": {
+    "jmcs://jd-contents/TheChoiceCMU/TheChoiceCMU_ULTRA.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/TheChoiceCMU_ULTRA.webm?v=1639457189642",
+    "jmcs://jd-contents/TheChoiceCMU/TheChoiceCMU_MID.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/TheChoiceCMU_MID.webm?v=1639457206925",
+    "jmcs://jd-contents/TheChoiceCMU/TheChoiceCMU_LOW.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/TheChoiceCMU_LOW.webm?v=1639457116024",
+    "jmcs://jd-contents/TheChoiceCMU/TheChoiceCMU_HIGH.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/TheChoiceCMU_ULTRA.webm?v=1639457189642",
+    "jmcs://jd-contents/TheChoiceCMU/TheChoiceCMU.ogg": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/TheChoiceCMU.ogg?v=1639457539192"
+  }
+}
