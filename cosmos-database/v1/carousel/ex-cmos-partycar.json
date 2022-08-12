@@ -1,1391 +1,1553 @@
 {
-    "__class": "JD_CarouselContent",
-    "categories": [{
-            "__class": "Category",
-            "title": "Just Dance EX",
-            "act": "ui_carousel",
-            "isc": "grp_row",
-            "items": [{
-                    "__class": "Item",
-                    "offlineRequest": {
-                        "__class": "JD_CarouselMapRequest",
-                        "actionListName": "partyMap",
-                        "actionListNameUpsell": "_None",
-                        "includedTags": ["Main_EX"],
-                        "offline": true,
-                        "order": "title",
-                        "JDVersion": 2017,
-                        "uuid": "5f3d837c-54d1-46e4-88f7-327b7ff6fff0"
-                    }
-                }
-            ]
-        }, {
-            "__class": "Category",
-            "title": "Just Dance EX | Alternate Routines",
-            "act": "ui_carousel",
-            "isc": "grp_row",
-            "items": [{
-                    "__class": "Item",
-                    "offlineRequest": {
-                        "__class": "JD_CarouselMapRequest",
-                        "actionListName": "partyMap",
-                        "actionListNameUpsell": "_None",
-                        "includedTags": ["Alternate_EX"],
-                        "offline": true,
-                        "order": "title",
-                        "JDVersion": 2017,
-                        "uuid": "5f3d837c-54d1-46e4-88f7-327b7ff6fff0"
-                    }
-                }
-            ]
-        }, {
-            "__class": "Category",
-            "title": "Favorites",
-            "act": "ui_carousel",
-            "isc": "grp_row_favorite",
-            "items": []
-        }, {
-            "__class": "Category",
-            "title": "[icon:PLAYLIST] New songs in Just Dance Cosmos",
-            "act": "ui_carousel",
-            "isc": "grp_row",
-            "items": []
-        }, {
-            "__class": "Category",
-            "title": "Just Dance Cosmos",
-            "act": "ui_carousel",
-            "isc": "grp_row",
-            "items": [{
-                    "__class": "Item",
-                    "isc": "grp_shuffle",
-                    "act": "ui_component_base",
-                    "components": [{
-                            "__class": "JD_CarouselContentComponent_Shuffle"
-                        }
-                    ],
-                    "endPos": 16,
-                    "actionList": "NonStop"
-                }
-            ]
-        }, {
-            "__class": "Category",
-            "title": "Just Dance",
-            "act": "ui_carousel",
-            "isc": "grp_row",
-            "items": []
-        }, {
-            "__class": "Category",
-            "title": "Just Dance 2",
-            "act": "ui_carousel",
-            "isc": "grp_row",
-            "items": []
-        }, {
-            "__class": "Category",
-            "title": "Just Dance 3",
-            "act": "ui_carousel",
-            "isc": "grp_row",
-            "items": []
-        }, {
-            "__class": "Category",
-            "title": "Just Dance 4",
-            "act": "ui_carousel",
-            "isc": "grp_row",
-            "items": []
-        }, {
-            "__class": "Category",
-            "title": "Just Dance 2014",
-            "act": "ui_carousel",
-            "isc": "grp_row",
-            "items": []
-        }, {
-            "__class": "Category",
-            "title": "Just Dance 2015",
-            "act": "ui_carousel",
-            "isc": "grp_row",
-            "items": []
-        }, {
-            "__class": "Category",
-            "title": "Just Dance 2016",
-            "act": "ui_carousel",
-            "isc": "grp_row",
-            "items": []
-        }, {
-            "__class": "Category",
-            "title": "Just Dance 2017",
-            "act": "ui_carousel",
-            "isc": "grp_row",
-            "items": []
-        }, {
-            "__class": "Category",
-            "title": "Just Dance 2018",
-            "act": "ui_carousel",
-            "isc": "grp_row",
-            "items": []
-        }, {
-            "__class": "Category",
-            "title": "Just Dance 2019",
-            "act": "ui_carousel",
-            "isc": "grp_row",
-            "items": []
-        }, {
-            "__class": "Category",
-            "title": "Just Dance 2020",
-            "act": "ui_carousel",
-            "isc": "grp_row",
-            "items": []
-        }, {
-            "__class": "Category",
-            "title": "Just Dance 2021",
-            "act": "ui_carousel",
-            "isc": "grp_row",
-            "items": []
-        }, {
-            "__class": "Category",
-            "title": "Just Dance 2022",
-            "act": "ui_carousel",
-            "isc": "grp_row",
-            "items": []
-        }, {
-            "__class": "Category",
-            "title": "Just Dance East",
-            "act": "ui_carousel",
-            "isc": "grp_row",
-            "items": []
-        }, {
-            "__class": "Category",
-            "title": "Just Dance Kids",
-            "act": "ui_carousel",
-            "isc": "grp_row",
-            "items": []
-        }, {
-            "__class": "Category",
-            "title": "ABBA: You Can Dance",
-            "act": "ui_carousel",
-            "isc": "grp_row",
-            "items": []
-        }, {
-            "__class": "Category",
-            "title": "Communnity Remixes & Mashups",
-            "act": "ui_carousel",
-            "isc": "grp_row",
-            "items": []
-        }, {
-            "__class": "Category",
-            "title": "Shuffle",
-            "act": "ui_carousel",
-            "isc": "grp_row",
-            "items": [{
-                    "__class": "Item",
-                    "isc": "grp_shuffle",
-                    "act": "ui_component_base",
-                    "components": [{
-                            "__class": "JD_CarouselContentComponent_Shuffle"
-                        }
-                    ],
-                    "endPos": 16,
-                    "actionList": "NonStop"
-                }
-            ]
-        }, {
-            "__class": "Category",
-            "title": "[icon:SEARCH_FILTER] Search",
-            "act": "ui_carousel",
-            "isc": "grp_row_search",
-            "items": [{
-                    "__class": "Item",
-                    "act": "ui_component_base",
-                    "components": [],
-                    "isc": "grp_search",
-                    "actionList": "search"
-                }, {
-                    "__class": "Item",
-                    "act": "ui_component_base",
-                    "components": [{
-                            "__class": "JD_CarouselContentComponent_SearchPreset",
-                            "presetTags": ["Solo"],
-                            "presetTitle": "Solo",
-                            "trackingTitle": "Solo"
-                        }
-                    ],
-                    "isc": "grp_search_preset",
-                    "actionList": "searchPreset"
-                }, {
-                    "__class": "Item",
-                    "act": "ui_component_base",
-                    "components": [{
-                            "__class": "JD_CarouselContentComponent_SearchPreset",
-                            "presetTags": ["Duet"],
-                            "presetTitle": "Duet",
-                            "trackingTitle": "Duet"
-                        }
-                    ],
-                    "isc": "grp_search_preset",
-                    "actionList": "searchPreset"
-                }, {
-                    "__class": "Item",
-                    "act": "ui_component_base",
-                    "components": [{
-                            "__class": "JD_CarouselContentComponent_SearchPreset",
-                            "presetTags": ["Trio"],
-                            "presetTitle": "Trio",
-                            "trackingTitle": "Trio"
-                        }
-                    ],
-                    "isc": "grp_search_preset",
-                    "actionList": "searchPreset"
-                }, {
-                    "__class": "Item",
-                    "act": "ui_component_base",
-                    "components": [{
-                            "__class": "JD_CarouselContentComponent_SearchPreset",
-                            "presetTags": ["Quartet"],
-                            "presetTitle": "Quartet",
-                            "trackingTitle": "Quartet"
-                        }
-                    ],
-                    "isc": "grp_search_preset",
-                    "actionList": "searchPreset"
-                }, {
-                    "__class": "Item",
-                    "act": "ui_component_base",
-                    "components": [{
-                            "__class": "JD_CarouselContentComponent_SearchPreset",
-                            "presetTags": ["Just Dance 2021"],
-                            "presetTitle": "Just Dance 2021",
-                            "trackingTitle": "Just Dance 2021"
-                        }
-                    ],
-                    "isc": "grp_search_preset",
-                    "actionList": "searchPreset"
-                }, {
-                    "__class": "Item",
-                    "act": "ui_component_base",
-                    "components": [{
-                            "__class": "JD_CarouselContentComponent_SearchPreset",
-                            "presetTags": ["Just Dance 2020"],
-                            "presetTitle": "Just Dance 2020",
-                            "trackingTitle": "Just Dance 2020"
-                        }
-                    ],
-                    "isc": "grp_search_preset",
-                    "actionList": "searchPreset"
-                }, {
-                    "__class": "Item",
-                    "act": "ui_component_base",
-                    "components": [{
-                            "__class": "JD_CarouselContentComponent_SearchPreset",
-                            "presetTags": ["Just Dance 2019"],
-                            "presetTitle": "Just Dance 2019",
-                            "trackingTitle": "Just Dance 2019"
-                        }
-                    ],
-                    "isc": "grp_search_preset",
-                    "actionList": "searchPreset"
-                }, {
-                    "__class": "Item",
-                    "act": "ui_component_base",
-                    "components": [{
-                            "__class": "JD_CarouselContentComponent_SearchPreset",
-                            "presetTags": ["Just Dance 2018"],
-                            "presetTitle": "Just Dance 2018",
-                            "trackingTitle": "Just Dance 2018"
-                        }
-                    ],
-                    "isc": "grp_search_preset",
-                    "actionList": "searchPreset"
-                }, {
-                    "__class": "Item",
-                    "act": "ui_component_base",
-                    "components": [{
-                            "__class": "JD_CarouselContentComponent_SearchPreset",
-                            "presetTags": ["Just Dance 2017"],
-                            "presetTitle": "Just Dance 2017",
-                            "trackingTitle": "Just Dance 2017"
-                        }
-                    ],
-                    "isc": "grp_search_preset",
-                    "actionList": "searchPreset"
-                }, {
-                    "__class": "Item",
-                    "act": "ui_component_base",
-                    "components": [{
-                            "__class": "JD_CarouselContentComponent_SearchPreset",
-                            "presetTags": ["Just Dance 2016"],
-                            "presetTitle": "Just Dance 2016",
-                            "trackingTitle": "Just Dance 2016"
-                        }
-                    ],
-                    "isc": "grp_search_preset",
-                    "actionList": "searchPreset"
-                }, {
-                    "__class": "Item",
-                    "act": "ui_component_base",
-                    "components": [{
-                            "__class": "JD_CarouselContentComponent_SearchPreset",
-                            "presetTags": ["Just Dance 2015"],
-                            "presetTitle": "Just Dance 2015",
-                            "trackingTitle": "Just Dance 2015"
-                        }
-                    ],
-                    "isc": "grp_search_preset",
-                    "actionList": "searchPreset"
-                }, {
-                    "__class": "Item",
-                    "act": "ui_component_base",
-                    "components": [{
-                            "__class": "JD_CarouselContentComponent_SearchPreset",
-                            "presetTags": ["Just Dance 2014"],
-                            "presetTitle": "Just Dance 2014",
-                            "trackingTitle": "Just Dance 2014"
-                        }
-                    ],
-                    "isc": "grp_search_preset",
-                    "actionList": "searchPreset"
-                }, {
-                    "__class": "Item",
-                    "act": "ui_component_base",
-                    "components": [{
-                            "__class": "JD_CarouselContentComponent_SearchPreset",
-                            "presetTags": ["Just Dance 4"],
-                            "presetTitle": "Just Dance 4",
-                            "trackingTitle": "Just Dance 4"
-                        }
-                    ],
-                    "isc": "grp_search_preset",
-                    "actionList": "searchPreset"
-                }, {
-                    "__class": "Item",
-                    "act": "ui_component_base",
-                    "components": [{
-                            "__class": "JD_CarouselContentComponent_SearchPreset",
-                            "presetTags": ["Just Dance 3"],
-                            "presetTitle": "Just Dance 3",
-                            "trackingTitle": "Just Dance 3"
-                        }
-                    ],
-                    "isc": "grp_search_preset",
-                    "actionList": "searchPreset"
-                }, {
-                    "__class": "Item",
-                    "act": "ui_component_base",
-                    "components": [{
-                            "__class": "JD_CarouselContentComponent_SearchPreset",
-                            "presetTags": ["Just Dance 2"],
-                            "presetTitle": "Just Dance 2",
-                            "trackingTitle": "Just Dance 2"
-                        }
-                    ],
-                    "isc": "grp_search_preset",
-                    "actionList": "searchPreset"
-                }, {
-                    "__class": "Item",
-                    "act": "ui_component_base",
-                    "components": [{
-                            "__class": "JD_CarouselContentComponent_SearchPreset",
-                            "presetTags": ["Just Dance"],
-                            "presetTitle": "Just Dance",
-                            "trackingTitle": "Just Dance"
-                        }
-                    ],
-                    "isc": "grp_search_preset",
-                    "actionList": "searchPreset"
-                }
-            ]
+  "__class": "JD_CarouselContent",
+  "categories": [
+    {
+      "__class": "Category",
+      "title": "Just Dance EX",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselMapRequest",
+            "actionListName": "partyMap",
+            "actionListNameUpsell": "_None",
+            "includedTags": [],
+            "offline": true,
+            "order": "title",
+            "JDVersion": 2017,
+            "uuid": "5f3d837c-54d1-46e4-88f7-327b7ff6fff0"
+          }
         }
-    ],
-    "actionLists": {
-        "search": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerType": "SEARCH",
-                    "title": "New search",
-                    "type": "open-keyboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "default",
-                    "bannerTheme": "DEFAULT",
-                    "bannerType": "SEARCH",
-                    "title": "Previous search",
-                    "type": "previous-search"
-                }
-            ],
-            "itemType": "search"
-        },
-        "searchPreset": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerType": "SEARCH",
-                    "title": "Search preset",
-                    "type": "search-preset"
-                }
-            ],
-            "itemType": "search"
-        },
-        "upsell_rival": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "DEFAULT",
-                    "bannerType": "song",
-                    "title": "Subscribe",
-                    "type": "display-upsell"
-                }
-            ],
-            "itemType": "map"
-        },
-        "NonStop": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerType": "SHUFFLE",
-                    "title": "Dance",
-                    "type": "start-rowPlaylist"
-                }
-            ],
-            "itemType": "map"
-        },
-        "create-playlist": {
-            "__class": "ActionList",
-            "itemType": "map",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerType": "",
-                    "bannerTheme": "",
-                    "bannerContext": "",
-                    "type": "add-song",
-                    "title": "Add song"
-                }
-            ]
-        },
-        "WorkshopPlaylist": {
-            "__class": "ActionList",
-            "itemType": "map",
-            "actions": [{
-                    "__class": "Action",
-                    "type": "start-rowPlaylist",
-                    "title": "Shuffle",
-                    "bannerType": "song",
-                    "bannerTheme": "DEFAULT",
-                    "bannerContext": "family_rival"
-                }, {
-                    "__class": "Action",
-                    "type": "set-favorite",
-                    "title": "Favorites",
-                    "bannerType": "song",
-                    "bannerTheme": "DEFAULT",
-                    "bannerContext": "family_rival"
-                }, {
-                    "__class": "Action",
-                    "type": "leaderboard",
-                    "title": "Leaderboard",
-                    "bannerType": "song_leaderboard",
-                    "bannerTheme": "DEFAULT",
-                    "bannerContext": "family_rival"
-                }, {
-                    "__class": "Action",
-                    "type": "credits",
-                    "title": "Credits",
-                    "bannerType": "song_licensing",
-                    "bannerTheme": "DEFAULT",
-                    "bannerContext": "family_rival"
-                }
-            ]
-        },
-
-        "partyMap": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "DEFAULT",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "DEFAULT",
-                    "bannerType": "song",
-                    "title": "Add to favorites",
-                    "type": "set-favorite"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "DEFAULT",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "DEFAULT",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapCoop": {
-            "__class": "ActionList",
-            "itemType": "map",
-            "actions": [{
-                    "__class": "Action",
-                    "type": "play-song",
-                    "title": "Play",
-                    "bannerType": "song",
-                    "bannerTheme": "DEFAULT",
-                    "bannerContext": "family_coop"
-                }
-            ]
-        },
-        "sweatMap": {
-            "__class": "ActionList",
-            "itemType": "map",
-            "actions": [{
-                    "__class": "Action",
-                    "type": "play-song",
-                    "title": "Play",
-                    "bannerType": "song",
-                    "bannerTheme": "DEFAULT",
-                    "bannerContext": "CONTEXT_SWEAT"
-                }, {
-                    "__class": "Action",
-                    "type": "set-favorite",
-                    "title": "Favorites",
-                    "bannerType": "song",
-                    "bannerTheme": "DEFAULT",
-                    "bannerContext": "CONTEXT_SWEAT"
-                }, {
-                    "__class": "Action",
-                    "type": "leaderboard",
-                    "title": "Leaderboard",
-                    "bannerType": "song_leaderboard",
-                    "bannerTheme": "DEFAULT",
-                    "bannerContext": "CONTEXT_SWEAT"
-                }, {
-                    "__class": "Action",
-                    "type": "credits",
-                    "title": "Credits",
-                    "bannerType": "song_licensing",
-                    "bannerTheme": "DEFAULT",
-                    "bannerContext": "CONTEXT_SWEAT"
-                }
-            ]
-        },
-        "partyMapKIDSPirateYouShallBe": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapKIDSAccidentallyInLove": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapKIDSABC": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapABBADancingQueen": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapKIDSDayO": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapABBAFernando": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapKIDSFiveLittleMonkeys": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapKIDSFraggleRock": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapABBAGimmeGimme": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapKIDSHickoryDickoryDock": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapABBAHoneyHoney": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapKIDSILikeToMoveIt": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapKIDSWorkingOnTheRailroad": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapKIDSIfYoureHappy": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapKIDSJingleBells": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapABBAKnowingMe": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapABBALayAllYourLove": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapABBAMammaMia": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapKIDSMaryHadALittleLamb": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapABBAMoneyMoney": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapABBASOS": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapABBASuperTrooper": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapABBATakeAChance": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapKIDSTheLionSleepsTonight": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapABBATheWinner": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapThisIsHow": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "KP",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "KP",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "KP",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapABBAVoulezVous": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapABBAWaterloo": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "abba_2017",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapKIDSWeGoWellTogether": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        },
-        "partyMapKIDSWheelsOnTheBus": {
-            "__class": "ActionList",
-            "actions": [{
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song",
-                    "title": "Dance",
-                    "type": "play-song"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_leaderboard",
-                    "title": "Leaderboard",
-                    "type": "leaderboard"
-                }, {
-                    "__class": "Action",
-                    "bannerContext": "family_rival",
-                    "bannerTheme": "kids3",
-                    "bannerType": "song_licensing",
-                    "title": "Credits",
-                    "type": "credits"
-                }
-            ],
-            "itemType": "map"
-        }
+      ]
     },
-    "songItemLists": {}
+    {
+      "__class": "CategoryRule",
+      "act": "ui_carousel",
+      "isc": "grp_row_favorite",
+      "title": "[icon:FAVORITE] Favorites",
+      "titleId": 7001,
+      "requests": [
+        {
+          "__class": "JD_CarouselMapRequestDesc",
+          "actionListName": "partyMap",
+          "originalJDVersion": 0,
+          "coachCount": 0,
+          "order": "title",
+          "subscribed": true,
+          "favorites": true
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "[icon:PLAYLIST] New songs in Just Dance Cosmos",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": []
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance Cosmos",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "isc": "grp_shuffle",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Shuffle"
+            }
+          ],
+          "endPos": 16,
+          "actionList": "NonStop"
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": []
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 2",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": []
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 3",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": []
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 4",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": []
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 2014",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": []
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 2015",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": []
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 2016",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": []
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 2017",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": []
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 2018",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": []
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 2019",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": []
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 2020",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": []
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 2021",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": []
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 2022",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": []
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance East",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": []
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance Kids",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": []
+    },
+    {
+      "__class": "Category",
+      "title": "ABBA: You Can Dance",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": []
+    },
+    {
+      "__class": "Category",
+      "title": "Communnity Remixes & Mashups",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": []
+    },
+    {
+      "__class": "Category",
+      "title": "Shuffle",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "isc": "grp_shuffle",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Shuffle"
+            }
+          ],
+          "endPos": 16,
+          "actionList": "NonStop"
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "[icon:SEARCH_FILTER] Search",
+      "act": "ui_carousel",
+      "isc": "grp_row_search",
+      "items": [
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [],
+          "isc": "grp_search",
+          "actionList": "search"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Solo"],
+              "presetTitle": "Solo",
+              "trackingTitle": "Solo"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Duet"],
+              "presetTitle": "Duet",
+              "trackingTitle": "Duet"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Trio"],
+              "presetTitle": "Trio",
+              "trackingTitle": "Trio"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Quartet"],
+              "presetTitle": "Quartet",
+              "trackingTitle": "Quartet"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance 2021"],
+              "presetTitle": "Just Dance 2021",
+              "trackingTitle": "Just Dance 2021"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance 2020"],
+              "presetTitle": "Just Dance 2020",
+              "trackingTitle": "Just Dance 2020"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance 2019"],
+              "presetTitle": "Just Dance 2019",
+              "trackingTitle": "Just Dance 2019"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance 2018"],
+              "presetTitle": "Just Dance 2018",
+              "trackingTitle": "Just Dance 2018"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance 2017"],
+              "presetTitle": "Just Dance 2017",
+              "trackingTitle": "Just Dance 2017"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance 2016"],
+              "presetTitle": "Just Dance 2016",
+              "trackingTitle": "Just Dance 2016"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance 2015"],
+              "presetTitle": "Just Dance 2015",
+              "trackingTitle": "Just Dance 2015"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance 2014"],
+              "presetTitle": "Just Dance 2014",
+              "trackingTitle": "Just Dance 2014"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance 4"],
+              "presetTitle": "Just Dance 4",
+              "trackingTitle": "Just Dance 4"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance 3"],
+              "presetTitle": "Just Dance 3",
+              "trackingTitle": "Just Dance 3"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance 2"],
+              "presetTitle": "Just Dance 2",
+              "trackingTitle": "Just Dance 2"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance"],
+              "presetTitle": "Just Dance",
+              "trackingTitle": "Just Dance"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        }
+      ]
+    }
+  ],
+  "actionLists": {
+    "search": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerType": "SEARCH",
+          "title": "New search",
+          "type": "open-keyboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "default",
+          "bannerTheme": "DEFAULT",
+          "bannerType": "SEARCH",
+          "title": "Previous search",
+          "type": "previous-search"
+        }
+      ],
+      "itemType": "search"
+    },
+    "searchPreset": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerType": "SEARCH",
+          "title": "Search preset",
+          "type": "search-preset"
+        }
+      ],
+      "itemType": "search"
+    },
+    "upsell_rival": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "DEFAULT",
+          "bannerType": "song",
+          "title": "Subscribe",
+          "type": "display-upsell"
+        }
+      ],
+      "itemType": "map"
+    },
+    "NonStop": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerType": "SHUFFLE",
+          "title": "Dance",
+          "type": "start-rowPlaylist"
+        }
+      ],
+      "itemType": "map"
+    },
+    "create-playlist": {
+      "__class": "ActionList",
+      "itemType": "map",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerType": "",
+          "bannerTheme": "",
+          "bannerContext": "",
+          "type": "add-song",
+          "title": "Add song"
+        }
+      ]
+    },
+    "WorkshopPlaylist": {
+      "__class": "ActionList",
+      "itemType": "map",
+      "actions": [
+        {
+          "__class": "Action",
+          "type": "start-rowPlaylist",
+          "title": "Shuffle",
+          "bannerType": "song",
+          "bannerTheme": "DEFAULT",
+          "bannerContext": "family_rival"
+        },
+        {
+          "__class": "Action",
+          "type": "set-favorite",
+          "title": "Favorites",
+          "bannerType": "song",
+          "bannerTheme": "DEFAULT",
+          "bannerContext": "family_rival"
+        },
+        {
+          "__class": "Action",
+          "type": "leaderboard",
+          "title": "Leaderboard",
+          "bannerType": "song_leaderboard",
+          "bannerTheme": "DEFAULT",
+          "bannerContext": "family_rival"
+        },
+        {
+          "__class": "Action",
+          "type": "credits",
+          "title": "Credits",
+          "bannerType": "song_licensing",
+          "bannerTheme": "DEFAULT",
+          "bannerContext": "family_rival"
+        }
+      ]
+    },
+
+    "partyMap": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "DEFAULT",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "DEFAULT",
+          "bannerType": "song",
+          "title": "Add to favorites",
+          "type": "set-favorite"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "DEFAULT",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "DEFAULT",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapCoop": {
+      "__class": "ActionList",
+      "itemType": "map",
+      "actions": [
+        {
+          "__class": "Action",
+          "type": "play-song",
+          "title": "Play",
+          "bannerType": "song",
+          "bannerTheme": "DEFAULT",
+          "bannerContext": "family_coop"
+        }
+      ]
+    },
+    "sweatMap": {
+      "__class": "ActionList",
+      "itemType": "map",
+      "actions": [
+        {
+          "__class": "Action",
+          "type": "play-song",
+          "title": "Play",
+          "bannerType": "song",
+          "bannerTheme": "DEFAULT",
+          "bannerContext": "CONTEXT_SWEAT"
+        },
+        {
+          "__class": "Action",
+          "type": "set-favorite",
+          "title": "Favorites",
+          "bannerType": "song",
+          "bannerTheme": "DEFAULT",
+          "bannerContext": "CONTEXT_SWEAT"
+        },
+        {
+          "__class": "Action",
+          "type": "leaderboard",
+          "title": "Leaderboard",
+          "bannerType": "song_leaderboard",
+          "bannerTheme": "DEFAULT",
+          "bannerContext": "CONTEXT_SWEAT"
+        },
+        {
+          "__class": "Action",
+          "type": "credits",
+          "title": "Credits",
+          "bannerType": "song_licensing",
+          "bannerTheme": "DEFAULT",
+          "bannerContext": "CONTEXT_SWEAT"
+        }
+      ]
+    },
+    "partyMapKIDSPirateYouShallBe": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapKIDSAccidentallyInLove": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapKIDSABC": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapABBADancingQueen": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapKIDSDayO": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapABBAFernando": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapKIDSFiveLittleMonkeys": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapKIDSFraggleRock": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapABBAGimmeGimme": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapKIDSHickoryDickoryDock": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapABBAHoneyHoney": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapKIDSILikeToMoveIt": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapKIDSWorkingOnTheRailroad": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapKIDSIfYoureHappy": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapKIDSJingleBells": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapABBAKnowingMe": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapABBALayAllYourLove": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapABBAMammaMia": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapKIDSMaryHadALittleLamb": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapABBAMoneyMoney": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapABBASOS": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapABBASuperTrooper": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapABBATakeAChance": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapKIDSTheLionSleepsTonight": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapABBATheWinner": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapThisIsHow": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "KP",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "KP",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "KP",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapABBAVoulezVous": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapABBAWaterloo": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "abba_2017",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapKIDSWeGoWellTogether": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    },
+    "partyMapKIDSWheelsOnTheBus": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song",
+          "title": "Dance",
+          "type": "play-song"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_leaderboard",
+          "title": "Leaderboard",
+          "type": "leaderboard"
+        },
+        {
+          "__class": "Action",
+          "bannerContext": "family_rival",
+          "bannerTheme": "kids3",
+          "bannerType": "song_licensing",
+          "title": "Credits",
+          "type": "credits"
+        }
+      ],
+      "itemType": "map"
+    }
+  },
+  "songItemLists": {}
 }

@@ -26,20 +26,30 @@
 	},
 	"JDVersion": {
     "Override": {
+      "1": "",
       "123": "Kids",
+      "2373": "Black Eyed Peas Experience",
+      "3118": "Japan",
+      "4175": "Disney Party",
+      "4514": "China",
       "4884": "ABBA: You Can Dance",
-      "4514": "Vitality School",
-      "3118": "Wii U",
-      "3114": "China"
+      "5583": "Michael Jackson: The Experience",
+      "6633": "Hip Hop Dance Experience",
+      "8643": "The Smurfs: Dance Party"
     }
   },
   "originalJDVersion": {
     "Override": {
+      "1": "",
       "123": "Kids",
+      "2373": "Black Eyed Peas Experience",
+      "3118": "Japan",
+      "4175": "Disney Party",
+      "4514": "China",
       "4884": "ABBA: You Can Dance",
-      "4514": "Vitality School",
-      "3118": "Wii U",
-      "3114": "China"
+      "5583": "Michael Jackson: The Experience",
+      "6633": "Hip Hop Dance Experience",
+      "8643": "The Smurfs: Dance Party"
     }
   },
 	"Quest": {
