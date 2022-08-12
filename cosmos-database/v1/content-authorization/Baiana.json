@@ -1,16 +1,1 @@
-{
-    "__class": "ContentAuthorizationEntry",
-    "duration": 300,
-    "changelist": 280634,
-    "urls": {
-        "jmcs://jd-contents/Baiana/Baiana_ULTRA.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBaiana_ULTRA.webm?v=1636051007483",
-        "jmcs://jd-contents/Baiana/Baiana_MID.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBaiana_MID.webm?v=1636050973041",
-        "jmcs://jd-contents/Baiana/Baiana_LOW.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBaiana_LOW.webm?v=1636050972087",
-        "jmcs://jd-contents/Baiana/Baiana_HIGH.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBaiana_HIGH.webm?v=1636050989444",
-        "jmcs://jd-contents/Baiana/Baiana_ULTRA.hd.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBaiana_ULTRA.webm?v=1636051007483",
-        "jmcs://jd-contents/Baiana/Baiana_MID.hd.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBaiana_MID.webm?v=1636050973041",
-        "jmcs://jd-contents/Baiana/Baiana_LOW.hd.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBaiana_LOW.webm?v=1636050972087",
-        "jmcs://jd-contents/Baiana/Baiana_HIGH.hd.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBaiana_HIGH.webm?v=1636050989444",
-        "jmcs://jd-contents/Baiana/Baiana.ogg": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBaiana.ogg?v=1636050959647"
-    }
-}
+{"__class": "ContentAuthorizationEntry", "duration": 300, "changelist": 280634, "urls": {"jmcs://jd-contents/Baiana/Baiana_ULTRA.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBaiana_ULTRA.webm?v=1636051007483", "jmcs://jd-contents/Baiana/Baiana_MID.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBaiana_MID.webm?v=1636050973041", "jmcs://jd-contents/Baiana/Baiana_LOW.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBaiana_LOW.webm?v=1636050972087", "jmcs://jd-contents/Baiana/Baiana_HIGH.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBaiana_HIGH.webm?v=1636050989444", "jmcs://jd-contents/Baiana/Baiana_ULTRA.hd.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBaiana_ULTRA.webm?v=1636051007483", "jmcs://jd-contents/Baiana/Baiana_MID.hd.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBaiana_MID.webm?v=1636050973041", "jmcs://jd-contents/Baiana/Baiana_LOW.hd.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBaiana_LOW.webm?v=1636050972087", "jmcs://jd-contents/Baiana/Baiana_HIGH.hd.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBaiana_HIGH.webm?v=1636050989444", "jmcs://jd-contents/Baiana/Baiana.ogg": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBaiana.ogg?v=1636050959647"}}

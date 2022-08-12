@@ -1,12 +1,1 @@
-{
-  "__class": "ContentAuthorizationEntry",
-  "duration": 300,
-  "changelist": 480634,
-  "urls": {
-    "jmcs://jd-contents/CopaCabanaMU/CopaCabanaMU_ULTRA.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/CopaCabanaMU_ULTRA.webm?v=1639457866402",
-    "jmcs://jd-contents/CopaCabanaMU/CopaCabanaMU_MID.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/CopaCabanaMU_MID.webm?v=1639457827343",
-    "jmcs://jd-contents/CopaCabanaMU/CopaCabanaMU_LOW.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/CopaCabanaMU_LOW.webm?v=1639457803318",
-    "jmcs://jd-contents/CopaCabanaMU/CopaCabanaMU_HIGH.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/CopaCabanaMU_HIGH.webm?v=1639457841202",
-    "jmcs://jd-contents/CopaCabanaMU/CopaCabanaMU.ogg": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/CopaCabanaMU.ogg?v=1639457803318"
-  }
-}
+{"__class": "ContentAuthorizationEntry", "duration": 300, "changelist": 480634, "urls": {"jmcs://jd-contents/CopaCabanaMU/CopaCabanaMU_ULTRA.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/CopaCabanaMU_ULTRA.webm?v=1639457866402", "jmcs://jd-contents/CopaCabanaMU/CopaCabanaMU_MID.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/CopaCabanaMU_MID.webm?v=1639457827343", "jmcs://jd-contents/CopaCabanaMU/CopaCabanaMU_LOW.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/CopaCabanaMU_LOW.webm?v=1639457803318", "jmcs://jd-contents/CopaCabanaMU/CopaCabanaMU_HIGH.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/CopaCabanaMU_HIGH.webm?v=1639457841202", "jmcs://jd-contents/CopaCabanaMU/CopaCabanaMU.ogg": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/CopaCabanaMU.ogg?v=1639457803318"}}

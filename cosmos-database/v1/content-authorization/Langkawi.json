@@ -1,12 +1,1 @@
-{
-    "__class": "ContentAuthorizationEntry",
-    "duration": 300000,
-    "changelist": 300,
-    "urls": {
-        "jmcs://jd-contents/Langkawi/Langkawi_ULTRA.webm": "https://cdn.glitch.me/e092a75c-c5cd-46e2-95a4-4e4eac406eee%2FLangkawi_ULTRA.webm?v=1639060988472",
-        "jmcs://jd-contents/Langkawi/Langkawi_HIGH.webm": "https://cdn.glitch.me/e092a75c-c5cd-46e2-95a4-4e4eac406eee%2FLangkawi_HIGH.webm?v=1639060814190",
-        "jmcs://jd-contents/Langkawi/Langkawi_MID.webm": "https://cdn.glitch.me/e092a75c-c5cd-46e2-95a4-4e4eac406eee%2FLangkawi_MID.webm?v=1639060601014",
-        "jmcs://jd-contents/Langkawi/Langkawi_LOW.webm": "https://cdn.glitch.me/e092a75c-c5cd-46e2-95a4-4e4eac406eee%2FLangkawi_LOW.webm?v=1639060514386",
-        "jmcs://jd-contents/Langkawi/Langkawi.ogg": "https://cdn.glitch.me/e092a75c-c5cd-46e2-95a4-4e4eac406eee%2FLangkawi.ogg?v=1639060528345"
-    }
-}
+{"__class": "ContentAuthorizationEntry", "duration": 300000, "changelist": 300, "urls": {"jmcs://jd-contents/Langkawi/Langkawi_ULTRA.webm": "https://cdn.glitch.me/e092a75c-c5cd-46e2-95a4-4e4eac406eee%2FLangkawi_ULTRA.webm?v=1639060988472", "jmcs://jd-contents/Langkawi/Langkawi_HIGH.webm": "https://cdn.glitch.me/e092a75c-c5cd-46e2-95a4-4e4eac406eee%2FLangkawi_HIGH.webm?v=1639060814190", "jmcs://jd-contents/Langkawi/Langkawi_MID.webm": "https://cdn.glitch.me/e092a75c-c5cd-46e2-95a4-4e4eac406eee%2FLangkawi_MID.webm?v=1639060601014", "jmcs://jd-contents/Langkawi/Langkawi_LOW.webm": "https://cdn.glitch.me/e092a75c-c5cd-46e2-95a4-4e4eac406eee%2FLangkawi_LOW.webm?v=1639060514386", "jmcs://jd-contents/Langkawi/Langkawi.ogg": "https://cdn.glitch.me/e092a75c-c5cd-46e2-95a4-4e4eac406eee%2FLangkawi.ogg?v=1639060528345"}}

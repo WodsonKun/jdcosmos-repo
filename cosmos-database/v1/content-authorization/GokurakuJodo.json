@@ -1,12 +1,1 @@
-{
-  "__class": "ContentAuthorizationEntry",
-  "duration": 300,
-  "changelist": 480634,
-  "urls": {
-    "jmcs://jd-contents/GokurakuJodo/GokurakuJodo_ULTRA.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/GokurakuJodo_ULTRA.webm?v=1660244087396",
-    "jmcs://jd-contents/GokurakuJodo/GokurakuJodo_MID.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/GokurakuJodo_MID.webm?v=1660244030077",
-    "jmcs://jd-contents/GokurakuJodo/GokurakuJodo_LOW.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/GokurakuJodo_LOW.webm?v=1660244037391",
-    "jmcs://jd-contents/GokurakuJodo/GokurakuJodo_HIGH.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/GokurakuJodo_HIGH.webm?v=1660244073549",
-    "jmcs://jd-contents/GokurakuJodo/GokurakuJodo.ogg": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/GokurakuJodo.ogg?v=1660244270964"
-  }
-}
+{"__class": "ContentAuthorizationEntry", "duration": 300, "changelist": 480634, "urls": {"jmcs://jd-contents/GokurakuJodo/GokurakuJodo_ULTRA.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/GokurakuJodo_ULTRA.webm?v=1660244087396", "jmcs://jd-contents/GokurakuJodo/GokurakuJodo_MID.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/GokurakuJodo_MID.webm?v=1660244030077", "jmcs://jd-contents/GokurakuJodo/GokurakuJodo_LOW.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/GokurakuJodo_LOW.webm?v=1660244037391", "jmcs://jd-contents/GokurakuJodo/GokurakuJodo_HIGH.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/GokurakuJodo_HIGH.webm?v=1660244073549", "jmcs://jd-contents/GokurakuJodo/GokurakuJodo.ogg": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/GokurakuJodo.ogg?v=1660244270964"}}

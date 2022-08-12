@@ -1,12 +1,1 @@
-{
-  "__class": "ContentAuthorizationEntry",
-  "duration": 300,
-  "changelist": 480634,
-  "urls": {
-    "jmcs://jd-contents/AlbatraozCMU/AlbatraozCMU_ULTRA.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/AlbatraozCMU_ULTRA.webm?v=1639458255269",
-    "jmcs://jd-contents/AlbatraozCMU/AlbatraozCMU_MID.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/AlbatraozCMU_MID.webm?v=1639458239226",
-    "jmcs://jd-contents/AlbatraozCMU/AlbatraozCMU_LOW.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/AlbatraozCMU_LOW.webm?v=1639458248314",
-    "jmcs://jd-contents/AlbatraozCMU/AlbatraozCMU_HIGH.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/AlbatraozCMU_ULTRA.webm?v=1639458255269",
-    "jmcs://jd-contents/AlbatraozCMU/AlbatraozCMU.ogg": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/AlbatraozCMU.ogg?v=1639458229941"
-  }
-}
+{"__class": "ContentAuthorizationEntry", "duration": 300, "changelist": 480634, "urls": {"jmcs://jd-contents/AlbatraozCMU/AlbatraozCMU_ULTRA.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/AlbatraozCMU_ULTRA.webm?v=1639458255269", "jmcs://jd-contents/AlbatraozCMU/AlbatraozCMU_MID.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/AlbatraozCMU_MID.webm?v=1639458239226", "jmcs://jd-contents/AlbatraozCMU/AlbatraozCMU_LOW.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/AlbatraozCMU_LOW.webm?v=1639458248314", "jmcs://jd-contents/AlbatraozCMU/AlbatraozCMU_HIGH.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/AlbatraozCMU_ULTRA.webm?v=1639458255269", "jmcs://jd-contents/AlbatraozCMU/AlbatraozCMU.ogg": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/AlbatraozCMU.ogg?v=1639458229941"}}
