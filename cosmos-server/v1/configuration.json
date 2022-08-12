@@ -324,7 +324,7 @@
       },
       {
         "name": "spaces/entities",
-        "url": "http://{env}prestige-constitution-perform.glitch.me/{version}/spaces/{spaceId}/entities",
+        "url": "http://{env}cosmos-jdcs-web.glitch.me/{version}/spaces/{spaceId}/entities",
         "version": 2
       },
       {

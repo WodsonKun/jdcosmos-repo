@@ -1,0 +1,16 @@
+{
+    "__class": "ContentAuthorizationEntry",
+    "duration": 300,
+    "changelist": 280634,
+    "urls": {
+        "jmcs://jd-contents/Believer/Believer_ULTRA.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBeliever_ULTRA.webm?v=1636051818161",
+        "jmcs://jd-contents/Believer/Believer_MID.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBeliever_MID.webm?v=1636051786788",
+        "jmcs://jd-contents/Believer/Believer_LOW.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBeliever_LOW.webm?v=1636051778707",
+        "jmcs://jd-contents/Believer/Believer_HIGH.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBeliever_HIGH.webm?v=1636051811805",
+        "jmcs://jd-contents/Believer/Believer_ULTRA.hd.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBeliever_ULTRA.webm?v=1636051818161",
+        "jmcs://jd-contents/Believer/Believer_MID.hd.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBeliever_MID.webm?v=1636051786788",
+        "jmcs://jd-contents/Believer/Believer_LOW.hd.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBeliever_LOW.webm?v=1636051778707",
+        "jmcs://jd-contents/Believer/Believer_HIGH.hd.webm": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBeliever_HIGH.webm?v=1636051811805",
+        "jmcs://jd-contents/Believer/Believer.ogg": "https://cdn.glitch.me/fb7f2dff-1b2b-4061-b9eb-992a5de935d4%2FBeliever.ogg?v=1636051771555"
+    }
+}

@@ -1,0 +1,12 @@
+{
+  "__class": "ContentAuthorizationEntry",
+  "duration": 300000,
+  "changelist": 300,
+  "urls": {
+    "jmcs://jd-contents/LittleAppleCHN/LittleAppleCHN_ULTRA.webm": "https://cdn.glitch.me/391f7295-e652-4714-99d3-aec558a1d20d%2FLittleAppleCHN_ULTRA.webm?v=1614284174358",
+    "jmcs://jd-contents/LittleAppleCHN/LittleAppleCHN_HIGH.webm": "https://cdn.glitch.me/391f7295-e652-4714-99d3-aec558a1d20d%2FLittleAppleCHN_HIGH.webm?v=1614284018116",
+    "jmcs://jd-contents/LittleAppleCHN/LittleAppleCHN_MID.webm": "https://cdn.glitch.me/391f7295-e652-4714-99d3-aec558a1d20d%2FLittleAppleCHN_MID.webm?v=1614283843139",
+    "jmcs://jd-contents/LittleAppleCHN/LittleAppleCHN_LOW.webm": "https://cdn.glitch.me/391f7295-e652-4714-99d3-aec558a1d20d%2FLittleAppleCHN_LOW.webm?v=1614283743938",
+    "jmcs://jd-contents/LittleAppleCHN/LittleAppleCHN.ogg": "https://cdn.glitch.me/391f7295-e652-4714-99d3-aec558a1d20d%2FLIttleApple_Audio_V2.ogg?v=1617197718953"
+  }
+}

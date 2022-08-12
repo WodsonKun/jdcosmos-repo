@@ -1,0 +1,12 @@
+{
+  "__class": "ContentAuthorizationEntry",
+  "duration": 300,
+  "changelist": 480634,
+  "urls": {
+    "jmcs://jd-contents/LevanPolkkaCMU/LevanPolkkaCMU_ULTRA.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/LevanPolkkaCMU_ULTRA.webm?v=1639457145209",
+    "jmcs://jd-contents/LevanPolkkaCMU/LevanPolkkaCMU_MID.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/LevanPolkkaCMU_MID.webm?v=1639457174725",
+    "jmcs://jd-contents/LevanPolkkaCMU/LevanPolkkaCMU_LOW.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/LevanPolkkaCMU_LOW.webm?v=1639457109344",
+    "jmcs://jd-contents/LevanPolkkaCMU/LevanPolkkaCMU_HIGH.webm": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/LevanPolkkaCMU_ULTRA.webm?v=1639457145209",
+    "jmcs://jd-contents/LevanPolkkaCMU/LevanPolkkaCMU.ogg": "https://cdn.glitch.me/f2501b94-ff89-4784-84e4-c6499f81f09e/LevanPolkkaCMU.ogg?v=1639457241072"
+  }
+}

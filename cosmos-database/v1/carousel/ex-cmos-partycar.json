@@ -13,7 +13,7 @@
             "__class": "JD_CarouselMapRequest",
             "actionListName": "partyMap",
             "actionListNameUpsell": "_None",
-            "includedTags": ["Main_EX"],
+            "includedTags": [],
             "offline": true,
             "order": "title",
             "JDVersion": 2017,
@@ -23,32 +23,22 @@
       ]
     },
     {
-      "__class": "Category",
-      "title": "Just Dance 2017 (Local)",
-      "act": "ui_carousel",
-      "isc": "grp_row",
-      "items": [
-        {
-          "__class": "Item",
-          "offlineRequest": {
-            "__class": "JD_CarouselMapRequest",
-            "actionListName": "partyMap",
-            "actionListNameUpsell": "_None",
-            "includedTags": ["Main"],
-            "offline": true,
-            "order": "title",
-            "JDVersion": 2017,
-            "uuid": "5f3d837c-54d1-46e4-88f7-327b7ff6fff0"
-          }
-        }
-      ]
-    },
-    {
-      "__class": "Category",
-      "title": "Favorites",
+      "__class": "CategoryRule",
       "act": "ui_carousel",
       "isc": "grp_row_favorite",
-      "items": []
+      "title": "[icon:FAVORITE] Favorites",
+      "titleId": 7001,
+      "requests": [
+        {
+          "__class": "JD_CarouselMapRequestDesc",
+          "actionListName": "partyMap",
+          "originalJDVersion": 0,
+          "coachCount": 0,
+          "order": "title",
+          "subscribed": true,
+          "favorites": true
+        }
+      ]
     },
     {
       "__class": "Category",
@@ -234,230 +224,224 @@
           "act": "ui_component_base",
           "components": [
             {
-              "__class": "Item",
-              "act": "ui_component_base",
-              "components": [
-                {
-                  "__class": "JD_CarouselContentComponent_SearchPreset",
-                  "presetTags": ["Solo"],
-                  "presetTitle": "Solo",
-                  "trackingTitle": "Solo"
-                }
-              ],
-              "isc": "grp_search_preset",
-              "actionList": "searchPreset"
-            },
-            {
-              "__class": "Item",
-              "act": "ui_component_base",
-              "components": [
-                {
-                  "__class": "JD_CarouselContentComponent_SearchPreset",
-                  "presetTags": ["Duet"],
-                  "presetTitle": "Duet",
-                  "trackingTitle": "Duet"
-                }
-              ],
-              "isc": "grp_search_preset",
-              "actionList": "searchPreset"
-            },
-            {
-              "__class": "Item",
-              "act": "ui_component_base",
-              "components": [
-                {
-                  "__class": "JD_CarouselContentComponent_SearchPreset",
-                  "presetTags": ["Trio"],
-                  "presetTitle": "Trio",
-                  "trackingTitle": "Trio"
-                }
-              ],
-              "isc": "grp_search_preset",
-              "actionList": "searchPreset"
-            },
-            {
-              "__class": "Item",
-              "act": "ui_component_base",
-              "components": [
-                {
-                  "__class": "JD_CarouselContentComponent_SearchPreset",
-                  "presetTags": ["Quartet"],
-                  "presetTitle": "Quartet",
-                  "trackingTitle": "Quartet"
-                }
-              ],
-              "isc": "grp_search_preset",
-              "actionList": "searchPreset"
-            },
-            {
-              "__class": "Item",
-              "act": "ui_component_base",
-              "components": [
-                {
-                  "__class": "JD_CarouselContentComponent_SearchPreset",
-                  "presetTags": ["Just Dance 2021"],
-                  "presetTitle": "Just Dance 2021",
-                  "trackingTitle": "Just Dance 2021"
-                }
-              ],
-              "isc": "grp_search_preset",
-              "actionList": "searchPreset"
-            },
-            {
-              "__class": "Item",
-              "act": "ui_component_base",
-              "components": [
-                {
-                  "__class": "JD_CarouselContentComponent_SearchPreset",
-                  "presetTags": ["Just Dance 2020"],
-                  "presetTitle": "Just Dance 2020",
-                  "trackingTitle": "Just Dance 2020"
-                }
-              ],
-              "isc": "grp_search_preset",
-              "actionList": "searchPreset"
-            },
-            {
-              "__class": "Item",
-              "act": "ui_component_base",
-              "components": [
-                {
-                  "__class": "JD_CarouselContentComponent_SearchPreset",
-                  "presetTags": ["Just Dance 2019"],
-                  "presetTitle": "Just Dance 2019",
-                  "trackingTitle": "Just Dance 2019"
-                }
-              ],
-              "isc": "grp_search_preset",
-              "actionList": "searchPreset"
-            },
-            {
-              "__class": "Item",
-              "act": "ui_component_base",
-              "components": [
-                {
-                  "__class": "JD_CarouselContentComponent_SearchPreset",
-                  "presetTags": ["Just Dance 2018"],
-                  "presetTitle": "Just Dance 2018",
-                  "trackingTitle": "Just Dance 2018"
-                }
-              ],
-              "isc": "grp_search_preset",
-              "actionList": "searchPreset"
-            },
-            {
-              "__class": "Item",
-              "act": "ui_component_base",
-              "components": [
-                {
-                  "__class": "JD_CarouselContentComponent_SearchPreset",
-                  "presetTags": ["Just Dance 2017"],
-                  "presetTitle": "Just Dance 2017",
-                  "trackingTitle": "Just Dance 2017"
-                }
-              ],
-              "isc": "grp_search_preset",
-              "actionList": "searchPreset"
-            },
-            {
-              "__class": "Item",
-              "act": "ui_component_base",
-              "components": [
-                {
-                  "__class": "JD_CarouselContentComponent_SearchPreset",
-                  "presetTags": ["Just Dance 2016"],
-                  "presetTitle": "Just Dance 2016",
-                  "trackingTitle": "Just Dance 2016"
-                }
-              ],
-              "isc": "grp_search_preset",
-              "actionList": "searchPreset"
-            },
-            {
-              "__class": "Item",
-              "act": "ui_component_base",
-              "components": [
-                {
-                  "__class": "JD_CarouselContentComponent_SearchPreset",
-                  "presetTags": ["Just Dance 2015"],
-                  "presetTitle": "Just Dance 2015",
-                  "trackingTitle": "Just Dance 2015"
-                }
-              ],
-              "isc": "grp_search_preset",
-              "actionList": "searchPreset"
-            },
-            {
-              "__class": "Item",
-              "act": "ui_component_base",
-              "components": [
-                {
-                  "__class": "JD_CarouselContentComponent_SearchPreset",
-                  "presetTags": ["Just Dance 2014"],
-                  "presetTitle": "Just Dance 2014",
-                  "trackingTitle": "Just Dance 2014"
-                }
-              ],
-              "isc": "grp_search_preset",
-              "actionList": "searchPreset"
-            },
-            {
-              "__class": "Item",
-              "act": "ui_component_base",
-              "components": [
-                {
-                  "__class": "JD_CarouselContentComponent_SearchPreset",
-                  "presetTags": ["Just Dance 4"],
-                  "presetTitle": "Just Dance 4",
-                  "trackingTitle": "Just Dance 4"
-                }
-              ],
-              "isc": "grp_search_preset",
-              "actionList": "searchPreset"
-            },
-            {
-              "__class": "Item",
-              "act": "ui_component_base",
-              "components": [
-                {
-                  "__class": "JD_CarouselContentComponent_SearchPreset",
-                  "presetTags": ["Just Dance 3"],
-                  "presetTitle": "Just Dance 3",
-                  "trackingTitle": "Just Dance 3"
-                }
-              ],
-              "isc": "grp_search_preset",
-              "actionList": "searchPreset"
-            },
-            {
-              "__class": "Item",
-              "act": "ui_component_base",
-              "components": [
-                {
-                  "__class": "JD_CarouselContentComponent_SearchPreset",
-                  "presetTags": ["Just Dance 2"],
-                  "presetTitle": "Just Dance 2",
-                  "trackingTitle": "Just Dance 2"
-                }
-              ],
-              "isc": "grp_search_preset",
-              "actionList": "searchPreset"
-            },
-            {
-              "__class": "Item",
-              "act": "ui_component_base",
-              "components": [
-                {
-                  "__class": "JD_CarouselContentComponent_SearchPreset",
-                  "presetTags": ["Just Dance"],
-                  "presetTitle": "Just Dance",
-                  "trackingTitle": "Just Dance"
-                }
-              ],
-              "isc": "grp_search_preset",
-              "actionList": "searchPreset"
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Solo"],
+              "presetTitle": "Solo",
+              "trackingTitle": "Solo"
             }
-          ]
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Duet"],
+              "presetTitle": "Duet",
+              "trackingTitle": "Duet"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Trio"],
+              "presetTitle": "Trio",
+              "trackingTitle": "Trio"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Quartet"],
+              "presetTitle": "Quartet",
+              "trackingTitle": "Quartet"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance 2021"],
+              "presetTitle": "Just Dance 2021",
+              "trackingTitle": "Just Dance 2021"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance 2020"],
+              "presetTitle": "Just Dance 2020",
+              "trackingTitle": "Just Dance 2020"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance 2019"],
+              "presetTitle": "Just Dance 2019",
+              "trackingTitle": "Just Dance 2019"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance 2018"],
+              "presetTitle": "Just Dance 2018",
+              "trackingTitle": "Just Dance 2018"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance 2017"],
+              "presetTitle": "Just Dance 2017",
+              "trackingTitle": "Just Dance 2017"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance 2016"],
+              "presetTitle": "Just Dance 2016",
+              "trackingTitle": "Just Dance 2016"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance 2015"],
+              "presetTitle": "Just Dance 2015",
+              "trackingTitle": "Just Dance 2015"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance 2014"],
+              "presetTitle": "Just Dance 2014",
+              "trackingTitle": "Just Dance 2014"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance 4"],
+              "presetTitle": "Just Dance 4",
+              "trackingTitle": "Just Dance 4"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance 3"],
+              "presetTitle": "Just Dance 3",
+              "trackingTitle": "Just Dance 3"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance 2"],
+              "presetTitle": "Just Dance 2",
+              "trackingTitle": "Just Dance 2"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
+        },
+        {
+          "__class": "Item",
+          "act": "ui_component_base",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_SearchPreset",
+              "presetTags": ["Just Dance"],
+              "presetTitle": "Just Dance",
+              "trackingTitle": "Just Dance"
+            }
+          ],
+          "isc": "grp_search_preset",
+          "actionList": "searchPreset"
         }
       ]
     }
